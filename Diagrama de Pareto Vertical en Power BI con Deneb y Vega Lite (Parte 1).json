@@ -18,8 +18,8 @@
       "name": "Diagrama de Pareto Vertical",
       "description": "Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Parte: 1)",
       "author": "Cristobal-Salcedo",
-      "uuid": "715a1ec0-a271-41f1-be53-abcd851299d6",
-      "generated": "2023-06-18T06:31:11.935Z"
+      "uuid": "88a97e3a-26fd-4c80-8e8f-98934537107d",
+      "generated": "2023-06-19T05:12:48.455Z"
     },
     "dataset": [
       {
@@ -127,45 +127,30 @@
     {
       "layer": [
         {
-          "mark": {"type": "bar"},
+          "mark": {
+            "type": "bar",
+            "opacity": 0.3,
+            "tooltip": true
+          },
           "encoding": {
             "x": {"field": "__1__"},
             "color": {
-              "field": "%_Acumulado",
-              "type": "nominal",
+              "field": "Total_Ventas_Acumulado",
+              "type": "quantitative",
               "scale": {
-                "domain": [
-                  "0% - 80%",
-                  "80% - 100%"
-                ],
                 "range": [
+                  "#000000",
                   "#7F7F7F",
                   "#D62728"
                 ]
               },
-              "title": "Principio de Pareto"
+              "legend": null
             }
           }
         },
         {
           "mark": {
             "type": "bar",
-            "opacity": 0.3,
-            "tooltip": true,
-            "color": {
-              "expr": "datum['%_Acumulado']<=0.8?'#7F7F7F': '#D62728'"
-            }
-          },
-          "encoding": {
-            "x": {"field": "__1__"}
-          }
-        },
-        {
-          "mark": {
-            "type": "bar",
-            "color": {
-              "expr": "datum['%_Acumulado']<=0.8?'#7F7F7F': '#D62728'"
-            },
             "tooltip": true
           },
           "encoding": {
@@ -182,6 +167,18 @@
                 "value": 0
               },
               "value": 1
+            },
+            "color": {
+              "field": "Total_Ventas_Acumulado",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  "#000000",
+                  "#7F7F7F",
+                  "#D62728"
+                ]
+              },
+              "legend": null
             }
           }
         },
@@ -222,7 +219,6 @@
         {
           "mark": {
             "type": "text",
-            "color": "#333333",
             "xOffset": 25
           },
           "encoding": {
@@ -245,6 +241,18 @@
                 ],
                 "tickCount": 4
               }
+            },
+            "color": {
+              "field": "Total_Ventas_Acumulado",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  "white",
+                  "white",
+                  "black"
+                ]
+              },
+              "legend": null
             }
           }
         },
@@ -263,7 +271,10 @@
     }
   ],
   "resolve": {
-    "scale": {"x": "independent"}
+    "scale": {
+      "x": "independent",
+      "color": "independent"
+    }
   },
   "encoding": {
     "y": {
