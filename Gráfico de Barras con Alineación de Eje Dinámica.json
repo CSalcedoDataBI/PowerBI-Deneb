@@ -1,0 +1,302 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.6.2.1",
+      "metaVersion": 1,
+      "provider": "vega",
+      "providerVersion": "5.26.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Gráfico de Barras con Alineación de Eje Dinámica",
+      "description": "Este gráfico de barras horizontal interactivo permite cambiar la alineación del eje de categorías de 'Izquierda' a 'Derecha', proporcionando una visualización flexible y adaptativa de los porcentajes asociados a cada categoría.",
+      "author": "Cristobal Salcedo Beltran",
+      "uuid": "fa2ad507-3fcc-42a9-a2dc-6d9153a01d7f",
+      "generated": "2024-03-14T02:39:15.992Z"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Categoria",
+        "description": "Item",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Medida",
+        "description": "% value",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__2__",
+        "name": "Parameter Opciones Value",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__3__",
+        "name": "Parameter Alineacion Value",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "autosize": {
+      "contains": "padding",
+      "type": "fit"
+    }
+  },
+  "background": "#f9f9f9",
+  "padding": 15,
+  "description": "Visualización que muestra la alineación de etiquetas en un eje dependiendo de una opción seleccionada, Author : Cristobal Salcedo Beltran. Fuente de inspirirado: post de Carlos Zapata  https://www.linkedin.com/posts/merod_excel-activity-7173334410480574465-TFEV?utm_source=share&utm_medium=member_desktop",
+  "data": [
+    {"name": "dataset"},
+    {
+      "name": "transformedData",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "maxValue",
+          "as": "maxValueField"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "selectionOption",
+      "description": "Esta señal captura la opción seleccionada del dataset, la cual determina el comportamiento de visualización.",
+      "update": "pluck(data('dataset'), '__2__')[0]"
+    },
+    {
+      "name": "maxValue",
+      "description": "Define el valor máximo a utilizar en la escala X, basado en la opción seleccionada. Si la opción es 1, el valor máximo será 100; de lo contrario, será 0.",
+      "update": "selectionOption == 1 ? 100 : 0"
+    },
+    {
+      "name": "labelAlignment",
+      "description": "Determina la alineación de las etiquetas del eje basada en un parámetro del dataset. Si el valor es 2, la alineación será a la izquierda; de lo contrario, a la derecha.",
+      "update": "pluck(data('dataset'), '__3__')[0] == 2 ? 'left': 'right'"
+    },
+    {
+      "name": "labelOffset",
+      "description": "Establece el desplazamiento de las etiquetas del eje en función de su alineación. Si las etiquetas están alineadas a la izquierda, el desplazamiento será 160; si están a la derecha, será 10.",
+      "update": "labelAlignment == 'left' ? 160: 10"
+    }
+  ],
+  "title": {
+    "anchor": "middle",
+    "font": {"value": "Tahoma"},
+    "fontSize": {"value": 30},
+    "fontWeight": "bold",
+    "dy": 30,
+    "encode": {
+      "title": {
+        "update": {
+          "text": {
+            "value": "left or right aligned axis?"
+          },
+          "fill": {"value": "black"}
+        }
+      }
+    }
+  },
+  "scales": [
+    {
+      "name": "yScale",
+      "type": "band",
+      "domain": {
+        "data": "transformedData",
+        "field": "__0__",
+        "sort": {
+          "op": "max",
+          "field": "__1__",
+          "order": "descending"
+        }
+      },
+      "range": "height",
+      "padding": 0.3,
+      "round": true
+    },
+    {
+      "name": "xScale",
+      "domain": {
+        "fields": [
+          {
+            "data": "transformedData",
+            "field": "__1__"
+          },
+          {
+            "data": "transformedData",
+            "field": "maxValueField"
+          }
+        ]
+      },
+      "nice": true,
+      "range": "width"
+    }
+  ],
+  "axes": [
+    {
+      "scale": "xScale",
+      "orient": "top",
+      "labelOpacity": 0,
+      "domain": false,
+      "title": "",
+      "ticks": false,
+      "tickCount": 2
+    },
+    {
+      "orient": "left",
+      "offset": {
+        "signal": "selectionOption == 2 ? 25 : 0"
+      },
+      "labelAlign": {
+        "signal": "labelAlignment"
+      },
+      "labelPadding": {
+        "signal": "labelOffset"
+      },
+      "ticks": false,
+      "domainOpacity": 0,
+      "labelFontSize": 18,
+      "labelFont": "Arial Monospaced MT",
+      "scale": "yScale",
+      "title": ""
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "transformedData"
+      },
+      "encode": {
+        "enter": {
+          "fill": {"value": "#d1484b"},
+          "x": {
+            "scale": "xScale",
+            "field": "__1__"
+          },
+          "x2": {
+            "scale": "xScale",
+            "value": 0
+          },
+          "y": {
+            "scale": "yScale",
+            "field": "__0__"
+          },
+          "height": {
+            "scale": "yScale",
+            "band": 1
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "transformedData"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "transparent"
+          },
+          "stroke": {"value": "black"},
+          "strokeWidth": {"value": 0.3},
+          "strokeDash": {
+            "value": [6, 4]
+          },
+          "x": {
+            "scale": "xScale",
+            "field": "maxValueField"
+          },
+          "x2": {
+            "scale": "xScale",
+            "field": "__1__"
+          },
+          "y": {
+            "scale": "yScale",
+            "field": "__0__",
+            "band": 0.03
+          },
+          "height": {
+            "scale": "yScale",
+            "band": 0.95
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "transformedData"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "signal": "selectionOption == 2 ? 'black': 'white'"
+          },
+          "x": {
+            "scale": "xScale",
+            "signal": "selectionOption == 2 ? -1 : 1"
+          },
+          "y": {
+            "scale": "yScale",
+            "field": "__0__",
+            "band": 0.6
+          },
+          "align": {
+            "signal": "selectionOption == 2 ?'right': 'left'"
+          },
+          "text": {
+            "signal": "selectionOption == 1 || selectionOption == 2 || selectionOption == 3 ? datum['__1__'] +' %':''"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "transformedData"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "signal": "selectionOption == 4 ? 'black': 'white'"
+          },
+          "x2": {
+            "offset": {
+              "signal": "selectionOption == 4 ? 4 : -30"
+            },
+            "scale": "xScale",
+            "field": "__1__"
+          },
+          "align": {"value": "left"},
+          "y": {
+            "scale": "yScale",
+            "field": "__0__",
+            "band": 0.6
+          },
+          "text": {
+            "signal": "selectionOption == 4 || selectionOption == 5 ? datum['__1__'] +' %':''"
+          }
+        }
+      }
+    }
+  ]
+}
