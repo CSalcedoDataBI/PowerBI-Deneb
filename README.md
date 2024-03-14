@@ -27,9 +27,10 @@ Si encuentras algún problema o tienes sugerencias para mejorar las plantillas, 
 
 Si tienes preguntas o necesitas ayuda adicional, contáctame a través de:
 
-- **LinkedIn**: [@LinkedIn](www.linkedin.com/in/cristobal-salcedo)
-- **Linkeding Newsletter**: [@Linkeding Newsletter]([https://twitter.com/tuTwitter](https://www.linkedin.com/build-relation/newsletter)
-- **YouTube**: [@CanalDeYouTube]([https://youtube.com/c/tuCanalDeYouTube](https://www.youtube.com/@PowerBI-Deneb-CS)
+- **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/cristobal-salcedo)
+- **LinkedIn Newsletter**: [LinkedIn Newsletter](https://www.linkedin.com/build-relation/newsletter)
+- **YouTube**: [Canal de YouTube](https://www.youtube.com/@PowerBI-Deneb-CS)
+
 
 ¡Esperamos que disfrutes creando visualizaciones de datos asombrosas!
 
