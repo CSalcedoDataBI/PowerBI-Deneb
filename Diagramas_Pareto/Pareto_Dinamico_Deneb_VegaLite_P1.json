@@ -1,0 +1,271 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.5.0.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.6.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": true,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Pareto",
+      "description": "[No Description Provided]",
+      "author": "Cristobal Salcedo",
+      "uuid": "a236726a-0d2a-4cdc-9963-44f0bf1dc803",
+      "generated": "2023-05-03T18:47:49.498Z",
+      "previewImageBase64PNG": "data:image/png;base64,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"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Product",
+        "description": "",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "% Acumulado de Ventas por Producto",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__2__",
+        "name": "Acumulado de ventas Por Producto",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__3__",
+        "name": "Total Ventas",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "path": {},
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {
+      "labelPadding": 5,
+      "labelAngle": 0
+    },
+    "axisY": {
+      "labelPadding": 10,
+      "labels": false
+    },
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 12,
+      "labelColor": "#605E5C"
+    }
+  },
+  "data": {"name": "dataset"},
+  "title": {
+    "text": "Ventas por producto (Principio de Pareto)",
+    "subtitle": "'Muestra la contribución de los productos al total de ventas",
+    "fontSize": 20,
+    "color": "#333333"
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "y": {"field": "__3__"},
+        "color": {
+          "field": "__1__",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "0% - 80%",
+              "80% - 100%"
+            ],
+            "range": [
+              "#7F7F7F",
+              "#D62728"
+            ]
+          },
+          "legend": {
+            "title": "Principio de Pareto",
+            "orient": "top",
+            "padding": 10,
+            "labelFont": "Helvetica Neue, Arial",
+            "labelFontSize": 14
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 0.3,
+        "tooltip": true,
+        "color": {
+          "expr": "datum['__1__']<=0.8?'#7F7F7F': '#D62728'"
+        }
+      },
+      "encoding": {
+        "y": {"field": "__3__"}
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "color": {
+          "expr": "datum['__1__']<=0.8?'#7F7F7F': '#D62728'"
+        },
+        "tooltip": true
+      },
+      "encoding": {
+        "y": {
+          "field": "__3____highlight"
+        },
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "step",
+        "color": "#1F77B4",
+        "point": {
+          "color": "#1F77B4",
+          "filled": false,
+          "fill": "white"
+        }
+      },
+      "encoding": {
+        "y": {"field": "__1__"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "#333333",
+        "yOffset": -16
+      },
+      "encoding": {
+        "text": {
+          "field": "__1__",
+          "format": "0.0%",
+          "formatType": "pbiFormat"
+        },
+        "y": {"field": "__1__"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "#333333",
+        "yOffset": -16
+      },
+      "encoding": {
+        "text": {
+          "field": "__3__",
+          "format": "$#0,0",
+          "formatType": "pbiFormat"
+        },
+        "y": {"field": "__3__"}
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {"y": "independent"}
+  },
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "type": "nominal",
+      "sort": {
+        "field": "__3__",
+        "op": "sum",
+        "order": "descending"
+      }
+    },
+    "y": {
+      "type": "quantitative",
+      "axis": {"title": ""}
+    },
+    "tooltip": [
+      {
+        "field": "__3__",
+        "title": "Monto de Venta |",
+        "format": "$#0,,0",
+        "formatType": "pbiFormat"
+      },
+      {
+        "field": "__1__",
+        "title": "Porcentaje |",
+        "format": "0.0%",
+        "formatType": "pbiFormat"
+      }
+    ]
+  }
+}

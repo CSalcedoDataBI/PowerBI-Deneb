@@ -1,0 +1,285 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.6.2.1",
+      "metaVersion": 1,
+      "provider": "vega",
+      "providerVersion": "5.26.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": true,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Diagrama de dispersión etiquetado",
+      "description": "Diagrama de dispersión etiquetado",
+      "author": "Cristobal Salcedo Beltran",
+      "uuid": "9d8fcff0-9b93-47bf-818c-1785d027ac09",
+      "generated": "2024-03-14T22:39:10.600Z"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Major Genre",
+        "description": "",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Title",
+        "description": "",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__2__",
+        "name": "Sum of IMDB Rating",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__3__",
+        "name": "Sum of Rotten Tomatoes Rating",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "autosize": {
+      "contains": "padding",
+      "type": "fit"
+    },
+    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "path": {},
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {"labelPadding": 5},
+    "axisY": {"labelPadding": 10},
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C"
+    },
+    "legend": {
+      "titleFont": "Segoe UI",
+      "titleFontWeight": "bold",
+      "titleColor": "#605E5C",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C",
+      "symbolType": "circle",
+      "symbolSize": 75
+    }
+  },
+  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings,",
+  "padding": 5,
+  "width": 800,
+  "height": 500,
+  "autosize": "pad",
+  "data": [
+    {
+      "name": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum['__3__'] != null && datum['__2__'] != null "
+        }
+      ]
+    },
+    {
+      "name": "fit",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "regression",
+          "method": "quad",
+          "x": "__3__",
+          "y": "__2__",
+          "as": ["u", "v"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "data": "dataset",
+        "field": "__3__"
+      },
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "data": "dataset",
+        "field": "__2__"
+      },
+      "range": "height"
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {
+        "data": "dataset",
+        "field": "__0__",
+        "sort": {"order": "descending"}
+      },
+      "range": "category"
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "y",
+      "title": ""
+    },
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "title": ""
+    }
+  ],
+  "marks": [
+    {
+      "name": "points",
+      "type": "symbol",
+      "from": {"data": "dataset"},
+      "encode": {
+        "enter": {
+          "fill": {
+            "scale": "color",
+            "field": "__0__"
+          },
+          "x": {
+            "scale": "x",
+            "field": "__3__"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__2__"
+          },
+          "size": {"value": 200},
+          "opacity": [
+            {
+              "test": "datum.__selected__ == 'on'",
+              "value": 1
+            },
+            {
+              "test": "datum.__selected__ == 'off' || datum['__2____highlight']==null",
+              "value": 0.1
+            },
+            {
+              "test": "datum.__selected__ == 'neutral'",
+              "value": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "trend",
+      "type": "line",
+      "from": {"data": "fit"},
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x",
+            "field": "u"
+          },
+          "y": {
+            "scale": "y",
+            "field": "v"
+          },
+          "stroke": {
+            "value": "firebrick"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "points"},
+      "encode": {
+        "enter": {
+          "text": {
+            "field": "datum['__1__']"
+          },
+          "fontSize": {"value": 12}
+        }
+      },
+      "transform": [
+        {
+          "type": "label",
+          "avoidMarks": ["points"],
+          "anchor": [
+            "top",
+            "bottom",
+            "right",
+            "left"
+          ],
+          "offset": [1],
+          "size": {
+            "signal": "[width + 60, height + 1 ]"
+          }
+        }
+      ]
+    }
+  ]
+}
