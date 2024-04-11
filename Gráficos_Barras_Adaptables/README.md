@@ -1,20 +1,18 @@
-# Gráfico de Dispersión con Filtrado Cruzado en Power BI usando Deneb y Vega
+# Gráfico Barras Adaptables VegaLite en Power BI usando Deneb y Vega
 
 ## Introducción
 
-¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro gráfico de dispersión con filtrado cruzado.
+¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro Gráfico Barras Adaptables VegaLite.
 
 ## Características
 
-### Filtrado Cruzado y Resaltado
+### Barras Adaptables
 
-![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
-
-Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
+![GIF de Barras Adaptables](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
 
 ### Editor de Deneb en Power BI
 
-![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Ver%20Editor%20de%20Deneb.gif)
+![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/400277d127b2ab90e29d3e5481f0b7897abdfebc/Gr%C3%A1ficos_Barras_Adaptables/Files/Editor%20de%20Deneb.gif)
 
 Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
 
@@ -25,7 +23,7 @@ Para usar este visual en tus informes de Power BI, sigue estos pasos:
 
 Abre el archivo en Power BI.
 Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
-Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.pbix)
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Gr%C3%A1ficos_Barras_Adaptables/Files/Barras_Adaptables_VegaLite.pbix)
 
 ### Contribuir
 
@@ -53,236 +51,167 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
 
 ```json
 {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
     "deneb": {
       "build": "1.6.2.1",
       "metaVersion": 1,
-      "provider": "vega",
-      "providerVersion": "5.26.1"
+      "provider": "vegaLite",
+      "providerVersion": "5.16.3"
     },
     "interactivity": {
       "tooltip": true,
       "contextMenu": true,
-      "selection": true,
-      "highlight": true,
+      "selection": false,
+      "highlight": false,
       "dataPointLimit": 50
     },
     "information": {
-      "name": "Diagrama de dispersión etiquetado",
-      "description": "Diagrama de dispersión etiquetado",
-      "author": "Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
-      "uuid": "7d85ecb7-3084-43d3-95ce-36def5c165f3",
-      "generated": "2024-04-11T03:08:54.210Z"
+      "name": "Barras_Adaptables_VegaLite",
+      "description": "Barras_Adaptables_VegaLite",
+      "author": "Cristobal Salcedo Beltran",
+      "uuid": "8272f06d-59bc-4293-b435-cd28b9702582",
+      "generated": "2024-03-14T23:01:34.379Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Categoría de Datos",
-        "description": "Esta categoría agrupa los datos según un criterio específico, facilitando su comparación visual en el diagrama de dispersión.",
+        "name": "a",
+        "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "Categoría de Color",
-        "description": "Define el color de los puntos en el gráfico, permitiendo distinguir visualmente diferentes grupos o categorías dentro de los datos.",
-        "type": "text",
-        "kind": "column"
-      },
-      {
-        "key": "__2__",
-        "name": "Valor para Eje Y",
-        "description": "Representa la variable dependiente en el gráfico. Cada punto en el eje Y corresponde a un valor de esta medida, permitiendo análisis de tendencias o comparaciones.",
-        "type": "numeric",
-        "kind": "measure"
-      },
-      {
-        "key": "__3__",
-        "name": "Valor para Eje X",
-        "description": "Representa la variable independiente. Los puntos en el eje X se utilizan para observar cómo cambia la variable representada en el eje Y en relación a los cambios en esta medida.",
+        "name": "b",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       }
     ]
   },
-  "config": {},
-  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: https://vega.github.io/vega/examples/loess-regression/",
-  "padding": 5,
-  "width": 800,
-  "height": 400,
-  "autosize": "pad",
-  "data": [
-    {
-      "name": "dataset",
-      "transform": [
-        {
-          "type": "filter",
-          "expr": "datum['__3__'] != null && datum['__2__'] != null "
-        }
-      ]
+  "config": {
+    "view": {"stroke": "transparent"},
+    "background": "transparent",
+    "font": "Segoe UI",
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C"
     },
-    {
-      "name": "fit",
-      "source": "dataset",
-      "transform": [
-        {
-          "type": "regression",
-          "method": "quad",
-          "x": "__3__",
-          "y": "__2__",
-          "as": [
-            "u",
-            "v"
-          ]
-        }
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisBand": {"tickExtra": true},
+    "axisX": {"labelPadding": 5},
+    "axisY": {"labelPadding": 10},
+    "bar": {"fill": "#118DFF"},
+    "line": {
+      "stroke": "#118DFF",
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "arc": {"fill": "#118DFF"},
+    "area": {
+      "fill": "#118DFF",
+      "line": true,
+      "opacity": 0.6
+    },
+    "path": {"stroke": "#118DFF"},
+    "rect": {"fill": "#118DFF"},
+    "point": {
+      "fill": "#118DFF",
+      "filled": true,
+      "size": 75
+    },
+    "shape": {"stroke": "#118DFF"},
+    "symbol": {
+      "fill": "#118DFF",
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "legend": {
+      "titleFont": "Segoe UI",
+      "titleFontWeight": "bold",
+      "titleColor": "#605E5C",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C",
+      "symbolType": "circle",
+      "symbolSize": 75
+    },
+    "range": {
+      "category": [
+        "#118DFF",
+        "#12239E",
+        "#E66C37",
+        "#6B007B",
+        "#E044A7",
+        "#744EC2",
+        "#D9B300",
+        "#D64550"
+      ],
+      "diverging": [
+        "#DEEFFF",
+        "#118DFF"
+      ],
+      "heatmap": ["#DEEFFF", "#118DFF"],
+      "ordinal": [
+        "#DEEFFF",
+        "#c7e4ff",
+        "#b0d9ff",
+        "#9aceff",
+        "#83c3ff",
+        "#6cb9ff",
+        "#55aeff",
+        "#3fa3ff",
+        "#2898ff",
+        "#118DFF"
       ]
     }
-  ],
-  "scales": [
-    {
-      "name": "x",
-      "type": "linear",
-      "domain": {
-        "data": "dataset",
-        "field": "__3__"
-      },
-      "range": "width"
-    },
-    {
-      "name": "y",
-      "type": "linear",
-      "domain": {
-        "data": "dataset",
-        "field": "__2__"
-      },
-      "range": "height"
-    },
-    {
-      "name": "color",
-      "type": "ordinal",
-      "domain": {
-        "data": "dataset",
+  },
+  "description": "A simple bar chart with embedded data.Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
+  "data": {"name": "dataset"},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "type": "nominal",
+      "axis": {"labelAngle": 0},
+      "sort": {
         "field": "__1__",
-        "sort": {
-          "order": "descending"
-        }
-      },
-      "range": "category"
-    }
-  ],
-  "axes": [
-    {
-      "orient": "left",
-      "scale": "y",
-      "title": "Medida para el eje Y"
-    },
-    {
-      "orient": "bottom",
-      "scale": "x",
-      "title": "Medida para el eje X"
-    }
-  ],
-  "marks": [
-    {
-      "name": "points",
-      "type": "symbol",
-      "from": {
-        "data": "dataset"
-      },
-      "encode": {
-        "enter": {
-          "fill": {
-            "scale": "color",
-            "field": "__1__"
-          },
-          "x": {
-            "scale": "x",
-            "field": "__3__"
-          },
-          "y": {
-            "scale": "y",
-            "field": "__2__"
-          },
-          "size": {
-            "value": 200
-          },
-          "opacity": [
-            {
-              "test": "datum.__selected__ == 'on'",
-              "value": 1
-            },
-            {
-              "test": "datum.__selected__ == 'off' || datum['__2____highlight']==null",
-              "value": 0.1
-            },
-            {
-              "test": "datum.__selected__ == 'neutral'",
-              "value": 1
-            }
-          ]
-        }
+        "order": "ascending"
       }
     },
-    {
-      "name": "trend",
-      "type": "line",
-      "from": {
-        "data": "fit"
-      },
-      "encode": {
-        "enter": {
-          "x": {
-            "scale": "x",
-            "field": "u"
-          },
-          "y": {
-            "scale": "y",
-            "field": "v"
-          },
-          "stroke": {
-            "value": "firebrick"
-          }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "from": {
-        "data": "points"
-      },
-      "encode": {
-        "enter": {
-          "text": {
-            "field": "datum['__0__']"
-          },
-          "fontSize": {
-            "value": 12
-          }
-        }
-      },
-      "transform": [
-        {
-          "type": "label",
-          "avoidMarks": [
-            "points"
-          ],
-          "anchor": [
-            "top",
-            "bottom",
-            "right",
-            "left"
-          ],
-          "offset": [
-            1
-          ],
-          "size": {
-            "signal": "[width + 60, height + 1 ]"
-          }
-        }
-      ]
+    "y": {
+      "field": "__1__",
+      "type": "quantitative"
     }
-  ]
+  }
 }
 ```
 
