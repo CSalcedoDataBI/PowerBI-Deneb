@@ -61,7 +61,7 @@ Si tienes alguna consulta o necesitas más información, no dudes en contactarno
     "information": {
       "name": "Diagrama de dispersión etiquetado",
       "description": "Diagrama de dispersión etiquetado",
-      "author": "Cristobal Salcedo Beltran",
+      "author": "Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
       "uuid": "7d85ecb7-3084-43d3-95ce-36def5c165f3",
       "generated": "2024-04-11T03:08:54.210Z"
     },
