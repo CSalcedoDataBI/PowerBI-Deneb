@@ -8,13 +8,13 @@
 
 ### Filtrado Cruzado y Resaltado
 
-![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/c1bef4fa338a975cbb26fa72089cc947e1ca9d26/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
+![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
 
 Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
 
 ### Editor de Deneb en Power BI
 
-![GIF del Editor de Deneb](ENLACE_A_TU_GIF)
+![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Ver%20Editor%20de%20Deneb.gif)
 
 Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
 
@@ -25,7 +25,7 @@ Para usar este visual en tus informes de Power BI, sigue estos pasos:
 
 Abre el archivo en Power BI.
 Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
-Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada. :file_folder:
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.pbix)
 
 ### Contribuir
 
