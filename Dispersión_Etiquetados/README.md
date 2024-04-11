@@ -8,7 +8,7 @@
 
 ### Filtrado Cruzado y Resaltado
 
-![GIF de Filtrado Cruzado y Resaltado](ENLACE_A_TU_GIF)
+![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/c1bef4fa338a975cbb26fa72089cc947e1ca9d26/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
 
 Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
 
