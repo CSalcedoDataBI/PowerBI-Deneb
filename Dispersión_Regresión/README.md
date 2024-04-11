@@ -1,20 +1,20 @@
-# Gráfico de Dispersión con Filtrado Cruzado en Power BI usando Deneb y Vega
+# Selected Method Regression (ScatterPlot) Power BI usando Deneb y Vega
 
 ## Introducción
 
-¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro gráfico de dispersión con filtrado cruzado.
+¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro gráfico de dispersión con selección dinamica del metodo de regresión.
 
 ## Características
 
-### Filtrado Cruzado y Resaltado
+### Selected Method Regression
 
-![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
+![Selected Method Regression](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/068e5deccdbe4fc4af8ff6a86775b9ea47248cdd/Dispersi%C3%B3n_Regresi%C3%B3n/Files/ScatterPlot_Regression_SelectedMethod.gif)
 
 Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
 
 ### Editor de Deneb en Power BI
 
-![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Ver%20Editor%20de%20Deneb.gif)
+![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/068e5deccdbe4fc4af8ff6a86775b9ea47248cdd/Dispersi%C3%B3n_Regresi%C3%B3n/Files/Editor%20de%20Deneb.gif)
 
 Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
 
@@ -25,7 +25,7 @@ Para usar este visual en tus informes de Power BI, sigue estos pasos:
 
 Abre el archivo en Power BI.
 Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
-Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.pbix)
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Regresi%C3%B3n/Files/ScatterPlot_Regression_SelectedMethod.pbix)
 
 ### Contribuir
 
@@ -56,10 +56,10 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "usermeta": {
     "deneb": {
-      "build": "1.6.2.1",
+      "build": "1.5.1.0",
       "metaVersion": 1,
       "provider": "vega",
-      "providerVersion": "5.26.1"
+      "providerVersion": "5.23.0"
     },
     "interactivity": {
       "tooltip": true,
@@ -69,72 +69,201 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       "dataPointLimit": 50
     },
     "information": {
-      "name": "Diagrama de dispersión etiquetado",
-      "description": "Diagrama de dispersión etiquetado",
-      "author": "Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
-      "uuid": "7d85ecb7-3084-43d3-95ce-36def5c165f3",
-      "generated": "2024-04-11T03:08:54.210Z"
+      "name": "Selected Method Regression (ScatterPlot)",
+      "description": "Selected Method Regression (ScatterPlot)",
+      "author": "Cristobal-Salcedo",
+      "uuid": "b4d72b67-65bf-4fcc-8479-c3c021d851e8",
+      "generated": "2023-06-10T06:06:14.885Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Categoría de Datos",
-        "description": "Esta categoría agrupa los datos según un criterio específico, facilitando su comparación visual en el diagrama de dispersión.",
+        "name": "Major Genre",
+        "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "Categoría de Color",
-        "description": "Define el color de los puntos en el gráfico, permitiendo distinguir visualmente diferentes grupos o categorías dentro de los datos.",
+        "name": "Title",
+        "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__2__",
-        "name": "Valor para Eje Y",
-        "description": "Representa la variable dependiente en el gráfico. Cada punto en el eje Y corresponde a un valor de esta medida, permitiendo análisis de tendencias o comparaciones.",
+        "name": "IMDB Rating",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__3__",
-        "name": "Valor para Eje X",
-        "description": "Representa la variable independiente. Los puntos en el eje X se utilizan para observar cómo cambia la variable representada en el eje Y en relación a los cambios en esta medida.",
+        "name": "Rotten Tomatoes Rating",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__4__",
+        "name": "PolyValue",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__5__",
+        "name": "MethodSelected",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__6__",
+        "name": "GroupbySelected",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       }
     ]
   },
-  "config": {},
-  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: https://vega.github.io/vega/examples/loess-regression/",
+  "config": {
+    "autosize": {
+      "contains": "padding",
+      "type": "fit"
+    },
+    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "path": {},
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": true,
+      "grid": true,
+      "domain": true,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {"labelPadding": 5},
+    "axisY": {"labelPadding": 10},
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C"
+    },
+    "legend": {
+      "titleFont": "Segoe UI",
+      "titleFontWeight": "bold",
+      "titleColor": "#605E5C",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C",
+      "symbolType": "circle",
+      "symbolSize": 75
+    }
+  },
+  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings,",
   "padding": 5,
   "width": 800,
-  "height": 400,
+  "height": 480,
   "autosize": "pad",
+  "signals": [
+    {
+      "name": "methodValue",
+      "update": "pluck(data('dataset'),'__5__')[0]"
+    },
+    {
+      "name": "methodSelect",
+      "update": "methodValue === 1 ? 'linear': methodValue === 2 ? 'log': methodValue === 3 ? 'exp': methodValue === 4 ? 'pow': methodValue === 5 ? 'quad': 'poly'"
+    },
+    {
+      "name": "currentMethod",
+      "update": "methodValue === 1 ? '(linear): y = a + b * x': methodValue === 2 ? '(log): y = a + b * log(x)': methodValue === 3 ? '(exp): y = a + eb * x': methodValue === 4 ? '(pow): y = a * xb': methodValue === 5 ? '(quad): y = a + b * x + c * x2': '(poly): y = a + b * x + … + k * xorder'"
+    },
+    {
+      "name": "polyOrder",
+      "update": "pluck(data('dataset'),'__4__')[0]"
+    },
+    {
+      "name": "groupbySelected",
+      "update": "pluck(data('dataset'),'__6__')[0]"
+    },
+    {
+      "name": "groupby",
+      "update": "groupbySelected === 1 ? 'none' : 'genre' "
+    }
+  ],
   "data": [
     {
       "name": "dataset",
       "transform": [
         {
           "type": "filter",
-          "expr": "datum['__3__'] != null && datum['__2__'] != null "
+          "expr": "datum['__3__'] != null && datum['__2__'] != null && datum['__0__'] != null "
         }
       ]
     },
     {
-      "name": "fit",
+      "name": "trend",
       "source": "dataset",
       "transform": [
         {
           "type": "regression",
-          "method": "quad",
+          "groupby": [
+            {
+              "signal": "groupby === 'genre' ? '__0__' : 'foo'"
+            }
+          ],
+          "method": {
+            "signal": "methodSelect"
+          },
+          "order": {
+            "signal": "polyOrder"
+          },
+          "extent": {
+            "signal": "domain('x')"
+          },
           "x": "__3__",
           "y": "__2__",
-          "as": [
-            "u",
-            "v"
-          ]
+          "as": ["u", "v"]
         }
       ]
     }
@@ -163,10 +292,8 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       "type": "ordinal",
       "domain": {
         "data": "dataset",
-        "field": "__1__",
-        "sort": {
-          "order": "descending"
-        }
+        "field": "__0__",
+        "sort": {"order": "descending"}
       },
       "range": "category"
     }
@@ -175,26 +302,41 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
     {
       "orient": "left",
       "scale": "y",
-      "title": "Medida para el eje Y"
+      "title": "__2__"
     },
     {
       "orient": "bottom",
       "scale": "x",
-      "title": "Medida para el eje X"
+      "title": "__3__"
     }
   ],
   "marks": [
     {
+      "type": "text",
+      "encode": {
+        "update": {
+          "text": {
+            "signal": "currentMethod"
+          },
+          "x": {"value": 200},
+          "y": {"value": 450},
+          "fill": {"value": "grey"},
+          "fillOpacity": {
+            "value": 0.25
+          },
+          "fontSize": {"value": 40}
+        }
+      }
+    },
+    {
       "name": "points",
       "type": "symbol",
-      "from": {
-        "data": "dataset"
-      },
+      "from": {"data": "dataset"},
       "encode": {
         "enter": {
           "fill": {
             "scale": "color",
-            "field": "__1__"
+            "field": "__0__"
           },
           "x": {
             "scale": "x",
@@ -204,9 +346,7 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
             "scale": "y",
             "field": "__2__"
           },
-          "size": {
-            "value": 200
-          },
+          "size": {"value": 80},
           "opacity": [
             {
               "test": "datum.__selected__ == 'on'",
@@ -225,57 +365,58 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       }
     },
     {
-      "name": "trend",
-      "type": "line",
+      "type": "group",
       "from": {
-        "data": "fit"
+        "facet": {
+          "data": "trend",
+          "name": "curve",
+          "groupby": "__0__"
+        }
       },
-      "encode": {
-        "enter": {
-          "x": {
-            "scale": "x",
-            "field": "u"
-          },
-          "y": {
-            "scale": "y",
-            "field": "v"
-          },
-          "stroke": {
-            "value": "firebrick"
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "curve"},
+          "encode": {
+            "enter": {
+              "x": {
+                "scale": "x",
+                "field": "u"
+              },
+              "y": {
+                "scale": "y",
+                "field": "v"
+              },
+              "stroke": {
+                "value": "firebrick"
+              }
+            }
           }
         }
-      }
+      ]
     },
     {
       "type": "text",
-      "from": {
-        "data": "points"
-      },
+      "from": {"data": "points"},
       "encode": {
         "enter": {
           "text": {
-            "field": "datum['__0__']"
+            "field": "datum['__1__']"
           },
-          "fontSize": {
-            "value": 12
-          }
+          "fontSize": {"value": 12}
         }
       },
       "transform": [
         {
           "type": "label",
-          "avoidMarks": [
-            "points"
-          ],
+          "avoidMarks": ["points"],
           "anchor": [
             "top",
             "bottom",
             "right",
             "left"
           ],
-          "offset": [
-            1
-          ],
+          "offset": [1],
           "size": {
             "signal": "[width + 60, height + 1 ]"
           }
