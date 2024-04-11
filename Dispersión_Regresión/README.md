@@ -10,8 +10,6 @@
 
 ![Selected Method Regression](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/068e5deccdbe4fc4af8ff6a86775b9ea47248cdd/Dispersi%C3%B3n_Regresi%C3%B3n/Files/ScatterPlot_Regression_SelectedMethod.gif)
 
-Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
-
 ### Editor de Deneb en Power BI
 
 ![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/068e5deccdbe4fc4af8ff6a86775b9ea47248cdd/Dispersi%C3%B3n_Regresi%C3%B3n/Files/Editor%20de%20Deneb.gif)
