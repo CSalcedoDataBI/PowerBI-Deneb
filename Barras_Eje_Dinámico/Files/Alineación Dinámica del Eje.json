@@ -16,23 +16,23 @@
     },
     "information": {
       "name": "Gráfico de Barras con Alineación de Eje Dinámica",
-      "description": "Este gráfico de barras horizontal interactivo permite cambiar la alineación del eje de categorías de 'Izquierda' a 'Derecha', proporcionando una visualización flexible y adaptativa de los porcentajes asociados a cada categoría.",
+      "description": "Gráfico de Barras con Alineación de Eje Dinámica",
       "author": "Cristobal Salcedo Beltran",
-      "uuid": "fa2ad507-3fcc-42a9-a2dc-6d9153a01d7f",
-      "generated": "2024-03-14T02:39:15.992Z"
+      "uuid": "9f29a249-c803-46ee-a17f-7c7a2615135b",
+      "generated": "2024-04-11T02:42:55.695Z"
     },
     "dataset": [
       {
         "key": "__0__",
         "name": "Categoria",
-        "description": "Item",
+        "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
         "name": "Medida",
-        "description": "% value",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       },
@@ -58,9 +58,9 @@
       "type": "fit"
     }
   },
+  "description": "Visualización que muestra la alineación de etiquetas en un eje dependiendo de una opción seleccionada, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: post de Carlos Zapata  https://www.linkedin.com/posts/merod_excel-activity-7173334410480574465-TFEV?utm_source=share&utm_medium=member_desktop",
   "background": "#f9f9f9",
   "padding": 15,
-  "description": "Visualización que muestra la alineación de etiquetas en un eje dependiendo de una opción seleccionada, Author : Cristobal Salcedo Beltran. Fuente de inspirirado: post de Carlos Zapata  https://www.linkedin.com/posts/merod_excel-activity-7173334410480574465-TFEV?utm_source=share&utm_medium=member_desktop",
   "data": [
     {"name": "dataset"},
     {

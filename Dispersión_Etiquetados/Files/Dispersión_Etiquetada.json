@@ -18,117 +18,45 @@
       "name": "Diagrama de dispersión etiquetado",
       "description": "Diagrama de dispersión etiquetado",
       "author": "Cristobal Salcedo Beltran",
-      "uuid": "9d8fcff0-9b93-47bf-818c-1785d027ac09",
-      "generated": "2024-03-14T22:39:10.600Z"
+      "uuid": "7d85ecb7-3084-43d3-95ce-36def5c165f3",
+      "generated": "2024-04-11T03:08:54.210Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Major Genre",
-        "description": "",
+        "name": "Categoría de Datos",
+        "description": "Esta categoría agrupa los datos según un criterio específico, facilitando su comparación visual en el diagrama de dispersión.",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "Title",
-        "description": "",
+        "name": "Categoría de Color",
+        "description": "Define el color de los puntos en el gráfico, permitiendo distinguir visualmente diferentes grupos o categorías dentro de los datos.",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__2__",
-        "name": "Sum of IMDB Rating",
-        "description": "",
+        "name": "Valor para Eje Y",
+        "description": "Representa la variable dependiente en el gráfico. Cada punto en el eje Y corresponde a un valor de esta medida, permitiendo análisis de tendencias o comparaciones.",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__3__",
-        "name": "Sum of Rotten Tomatoes Rating",
-        "description": "",
+        "name": "Valor para Eje X",
+        "description": "Representa la variable independiente. Los puntos en el eje X se utilizan para observar cómo cambia la variable representada en el eje Y en relación a los cambios en esta medida.",
         "type": "numeric",
         "kind": "measure"
       }
     ]
   },
-  "config": {
-    "autosize": {
-      "contains": "padding",
-      "type": "fit"
-    },
-    "view": {"stroke": "transparent"},
-    "font": "Segoe UI",
-    "arc": {},
-    "area": {
-      "line": true,
-      "opacity": 0.6
-    },
-    "bar": {},
-    "line": {
-      "strokeWidth": 3,
-      "strokeCap": "round",
-      "strokeJoin": "round"
-    },
-    "path": {},
-    "point": {
-      "filled": true,
-      "size": 75
-    },
-    "rect": {},
-    "shape": {},
-    "symbol": {
-      "strokeWidth": 1.5,
-      "size": 50
-    },
-    "text": {
-      "font": "Segoe UI",
-      "fontSize": 12,
-      "fill": "#605E5C"
-    },
-    "axis": {
-      "ticks": false,
-      "grid": false,
-      "domain": false,
-      "labelColor": "#605E5C",
-      "labelFontSize": 12,
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleColor": "#252423",
-      "titleFontSize": 16,
-      "titleFontWeight": "normal"
-    },
-    "axisQuantitative": {
-      "tickCount": 3,
-      "grid": true,
-      "gridColor": "#C8C6C4",
-      "gridDash": [1, 5],
-      "labelFlush": false
-    },
-    "axisX": {"labelPadding": 5},
-    "axisY": {"labelPadding": 10},
-    "header": {
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleFontSize": 16,
-      "titleColor": "#252423",
-      "labelFont": "Segoe UI",
-      "labelFontSize": 13.333333333333332,
-      "labelColor": "#605E5C"
-    },
-    "legend": {
-      "titleFont": "Segoe UI",
-      "titleFontWeight": "bold",
-      "titleColor": "#605E5C",
-      "labelFont": "Segoe UI",
-      "labelFontSize": 13.333333333333332,
-      "labelColor": "#605E5C",
-      "symbolType": "circle",
-      "symbolSize": 75
-    }
-  },
-  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings,",
+  "config": {},
+  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: https://vega.github.io/vega/examples/loess-regression/",
   "padding": 5,
   "width": 800,
-  "height": 500,
+  "height": 400,
   "autosize": "pad",
   "data": [
     {
@@ -149,7 +77,10 @@
           "method": "quad",
           "x": "__3__",
           "y": "__2__",
-          "as": ["u", "v"]
+          "as": [
+            "u",
+            "v"
+          ]
         }
       ]
     }
@@ -178,8 +109,10 @@
       "type": "ordinal",
       "domain": {
         "data": "dataset",
-        "field": "__0__",
-        "sort": {"order": "descending"}
+        "field": "__1__",
+        "sort": {
+          "order": "descending"
+        }
       },
       "range": "category"
     }
@@ -188,24 +121,26 @@
     {
       "orient": "left",
       "scale": "y",
-      "title": ""
+      "title": "Medida para el eje Y"
     },
     {
       "orient": "bottom",
       "scale": "x",
-      "title": ""
+      "title": "Medida para el eje X"
     }
   ],
   "marks": [
     {
       "name": "points",
       "type": "symbol",
-      "from": {"data": "dataset"},
+      "from": {
+        "data": "dataset"
+      },
       "encode": {
         "enter": {
           "fill": {
             "scale": "color",
-            "field": "__0__"
+            "field": "__1__"
           },
           "x": {
             "scale": "x",
@@ -215,7 +150,9 @@
             "scale": "y",
             "field": "__2__"
           },
-          "size": {"value": 200},
+          "size": {
+            "value": 200
+          },
           "opacity": [
             {
               "test": "datum.__selected__ == 'on'",
@@ -236,7 +173,9 @@
     {
       "name": "trend",
       "type": "line",
-      "from": {"data": "fit"},
+      "from": {
+        "data": "fit"
+      },
       "encode": {
         "enter": {
           "x": {
@@ -255,26 +194,34 @@
     },
     {
       "type": "text",
-      "from": {"data": "points"},
+      "from": {
+        "data": "points"
+      },
       "encode": {
         "enter": {
           "text": {
-            "field": "datum['__1__']"
+            "field": "datum['__0__']"
           },
-          "fontSize": {"value": 12}
+          "fontSize": {
+            "value": 12
+          }
         }
       },
       "transform": [
         {
           "type": "label",
-          "avoidMarks": ["points"],
+          "avoidMarks": [
+            "points"
+          ],
           "anchor": [
             "top",
             "bottom",
             "right",
             "left"
           ],
-          "offset": [1],
+          "offset": [
+            1
+          ],
           "size": {
             "signal": "[width + 60, height + 1 ]"
           }
