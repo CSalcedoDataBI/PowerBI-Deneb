@@ -8,7 +8,7 @@
 
 ### Barras Adaptables
 
-![GIF de Barras Adaptables](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
+![GIF de Barras Adaptables](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/5548ce4488bdd82a1a208dee654d3da02334f4b4/Gr%C3%A1ficos_Barras_Adaptables/Barras_Adaptables_VegaLite.gif)
 
 ### Editor de Deneb en Power BI
 
