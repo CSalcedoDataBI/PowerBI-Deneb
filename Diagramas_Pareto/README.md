@@ -16,7 +16,7 @@ Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permite
 
 ![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/70f4049c4b85d7ad063a4471f63806da73737474/Diagramas_Pareto/FIles/Editor%20de%20Deneb.gif)
 
-Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
+Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega-Lite que proporcionamos.
 
 Cómo Usar
 Para usar este visual en tus informes de Power BI, sigue estos pasos:
