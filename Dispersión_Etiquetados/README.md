@@ -35,9 +35,19 @@ Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada. 
 
 Este proyecto está licenciado bajo la Licencia MIT - mira el archivo LICENSE.md para más detalles.
 
-### Contacto
+### Contacto :telephone_receiver:
 
-Si tienes alguna consulta o necesitas más información, no dudes en contactarnos en <csalcedo90@email.com>.
+Para cualquier consulta, colaboración o simplemente para saludar, puedes contactarme a través de las siguientes plataformas:
+
+- **LinkedIn**: Visita mi perfil para conectar profesionalmente. Estoy siempre abierto a nuevas oportunidades y colaboraciones.
+
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Cristobal%20Salcedo-blue)](https://www.linkedin.com/in/cristobal-salcedo)
+
+- **Correo Electrónico**: Si prefieres comunicarte directamente, no dudes en enviarme un email y te responderé a la brevedad posible.
+
+  :e-mail: <csalcedo90@email.com>
+
+Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
 
 ### La Plantilla
 
