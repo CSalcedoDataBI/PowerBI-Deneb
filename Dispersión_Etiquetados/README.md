@@ -275,3 +275,5 @@ Si tienes alguna consulta o necesitas más información, no dudes en contactarno
   ]
 }
 ```
+
+© 2024 Cristobal Salcedo. Todos los derechos reservados. Impulsado por la creatividad y el café. :coffee:👍☕️
