@@ -14,7 +14,7 @@
 
 ![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/400277d127b2ab90e29d3e5481f0b7897abdfebc/Gr%C3%A1ficos_Barras_Adaptables/Files/Editor%20de%20Deneb.gif)
 
-Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
+Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla VegaLite que proporcionamos.
 
 Cómo Usar
 Para usar este visual en tus informes de Power BI, sigue estos pasos:
