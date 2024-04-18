@@ -1,6 +1,55 @@
-# Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite
+# Gráfico de Tarjeta Dinámica en Power BI con Vega-Lite y Deneb
 
-![Descripción de la imagen](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/aa1aa09433ee85df9e18996df0f1e829c67a1186/Tarjetas_Din%C3%A1micas/Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite.PNG)
+## Introducción
+
+¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega-Lite! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro Gráfico de Tarjeta Dinámica.
+
+## Características
+
+### Filtrado Cruzado y Resaltado
+
+![GIF](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/2f5ab1fcf41a9a51418ab626fe342db64ceb6d66/Tarjetas_Din%C3%A1micas/Files/Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite.gif)
+
+Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
+
+### Editor de Deneb en Power BI
+
+![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/2f5ab1fcf41a9a51418ab626fe342db64ceb6d66/Tarjetas_Din%C3%A1micas/Files/Editor_Deneb.gif)
+
+Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
+
+Cómo Usar
+Para usar este visual en tus informes de Power BI, sigue estos pasos:
+
+### Descarga el archivo .pbix desde este enlace
+
+Abre el archivo en Power BI.
+Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.pbix)
+
+### Contribuir
+
+¡Tus contribuciones son bienvenidas! Si tienes sugerencias o mejoras, no dudes en hacer fork de este repositorio y enviar tus pull requests. Para cambios importantes, por favor abre un issue primero para discutir lo que te gustaría cambiar. :handshake:
+
+### Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - mira el archivo LICENSE.md para más detalles.
+
+### Contacto :telephone_receiver:
+
+Para cualquier consulta, colaboración o simplemente para saludar, puedes contactarme a través de las siguientes plataformas:
+
+- **LinkedIn**: Visita mi perfil para conectar profesionalmente. Estoy siempre abierto a nuevas oportunidades y colaboraciones.
+
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Cristobal%20Salcedo-blue)](https://www.linkedin.com/in/cristobal-salcedo)
+
+- **Correo Electrónico**: Si prefieres comunicarte directamente, no dudes en enviarme un email y te responderé a la brevedad posible.
+
+  :e-mail: <csalcedo90@email.com>
+
+Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
+
+### La Plantilla
 
 ```json
 {
@@ -362,3 +411,6 @@
     }
   }
 }
+```
+
+© 2024 Cristobal Salcedo. Todos los derechos reservados. Impulsado por la creatividad y el café. :coffee:👍☕️
