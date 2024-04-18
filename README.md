@@ -34,3 +34,29 @@ Si tienes preguntas o necesitas ayuda adicional, contáctame a través de:
 
 ¡Esperamos que disfrutes creando visualizaciones de datos asombrosas!
 
+
+### Alineación de Eje Dinámica
+
+![GIF Gráfico de Barras con Alineación de Eje Dinámica](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/087e5b69d98616aaf1e389883461fa2a4f1ec3fa/Barras_Eje_Din%C3%A1mico/Files/Alineaci%C3%B3n_Din%C3%A1mica_del_Eje.gif)
+
+
+### Pareto Vertical
+
+![GIF de Pareto Vertical](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/93733fe256c6d2f7f75be6f4b5b7b84d21389db2/Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.gif)
+
+### Pareto Horizontal
+
+![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/087e5b69d98616aaf1e389883461fa2a4f1ec3fa/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P2.gif)
+
+# Gráfico de Dispersión con Filtrado Cruzado en Power BI usando Deneb y Vega
+
+![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
+
+### Selected Method Regression
+
+![Selected Method Regression](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/068e5deccdbe4fc4af8ff6a86775b9ea47248cdd/Dispersi%C3%B3n_Regresi%C3%B3n/Files/ScatterPlot_Regression_SelectedMethod.gif)
+
+### Barras Adaptables
+
+![GIF de Barras Adaptables](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/5548ce4488bdd82a1a208dee654d3da02334f4b4/Gr%C3%A1ficos_Barras_Adaptables/Barras_Adaptables_VegaLite.gif)
+

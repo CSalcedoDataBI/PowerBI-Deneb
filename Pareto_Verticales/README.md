@@ -6,9 +6,9 @@
 
 ## Características
 
-### Filtrado Cruzado y Resaltado
+### Pareto Vertical
 
-![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/93733fe256c6d2f7f75be6f4b5b7b84d21389db2/Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.gif)
+![GIF de Pareto Vertical](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/93733fe256c6d2f7f75be6f4b5b7b84d21389db2/Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.gif)
 
 Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
 
