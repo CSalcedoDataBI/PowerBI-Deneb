@@ -1,20 +1,20 @@
-# Gráfico de Dispersión con Filtrado Cruzado en Power BI usando Deneb y Vega
+# Gráfico de Pareto Vertical PowerBI Deneb Vega-Lite
 
 ## Introducción
 
-¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro gráfico de dispersión con filtrado cruzado.
+¡Bienvenidos a esta herramienta de visualización dinámica que combina el poder de las visualizaciones personalizadas de Deneb con la flexibilidad de la gramática de Vega-Lite! :sparkles: Este README ofrece una visión general de las características interactivas disponibles en nuestro gráfico de Pareto Vertical.
 
 ## Características
 
 ### Filtrado Cruzado y Resaltado
 
-![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.gif)
+![GIF de Filtrado Cruzado y Resaltado](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/93733fe256c6d2f7f75be6f4b5b7b84d21389db2/Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.gif)
 
 Experimenta capacidades de filtrado cruzado y resaltado sin fisuras, que permiten un análisis intuitivo de conjuntos de datos complejos. Simplemente seleccionando un punto de datos, puedes ver instantáneamente la información relacionada resaltada en otros visuales. :mag:
 
 ### Editor de Deneb en Power BI
 
-![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/57b0678961104a11282e45bba0c2a8580a2a6d44/Dispersi%C3%B3n_Etiquetados/Files/Ver%20Editor%20de%20Deneb.gif)
+![GIF del Editor de Deneb](https://github.com/cristobalsalcedo90/PowerBI-Deneb/blob/93733fe256c6d2f7f75be6f4b5b7b84d21389db2/Pareto_Verticales/Files/Editor_Deneb.gif)
 
 Sumérgete en el editor de Deneb en Power BI y explora las diferentes capas de código. Cada capa corresponde a una pieza del rompecabezas visual, incluyendo datos, escalas, ejes y marcas como se describe en la plantilla Vega que proporcionamos.
 
@@ -53,13 +53,13 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
 
 ```json
 {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
     "deneb": {
-      "build": "1.6.2.1",
+      "build": "1.5.1.0",
       "metaVersion": 1,
-      "provider": "vega",
-      "providerVersion": "5.26.1"
+      "provider": "vegaLite",
+      "providerVersion": "5.6.1"
     },
     "interactivity": {
       "tooltip": true,
@@ -69,220 +69,370 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       "dataPointLimit": 50
     },
     "information": {
-      "name": "Diagrama de dispersión etiquetado",
-      "description": "Diagrama de dispersión etiquetado",
-      "author": "Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
-      "uuid": "7d85ecb7-3084-43d3-95ce-36def5c165f3",
-      "generated": "2024-04-11T03:08:54.210Z"
+      "name": "Diagrama de Pareto Vertical",
+      "description": "Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Parte 2 )",
+      "author": "Cristobal-Salcedo",
+      "uuid": "30b29750-4291-4dec-aba7-59ba83b9e8cb",
+      "generated": "2023-06-20T05:01:06.585Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Categoría de Datos",
-        "description": "Esta categoría agrupa los datos según un criterio específico, facilitando su comparación visual en el diagrama de dispersión.",
+        "name": "Category",
+        "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "Categoría de Color",
-        "description": "Define el color de los puntos en el gráfico, permitiendo distinguir visualmente diferentes grupos o categorías dentro de los datos.",
-        "type": "text",
-        "kind": "column"
-      },
-      {
-        "key": "__2__",
-        "name": "Valor para Eje Y",
-        "description": "Representa la variable dependiente en el gráfico. Cada punto en el eje Y corresponde a un valor de esta medida, permitiendo análisis de tendencias o comparaciones.",
+        "name": "Total Ventas",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       },
       {
-        "key": "__3__",
-        "name": "Valor para Eje X",
-        "description": "Representa la variable independiente. Los puntos en el eje X se utilizan para observar cómo cambia la variable representada en el eje Y en relación a los cambios en esta medida.",
+        "key": "__2__",
+        "name": "ParameterValue",
+        "description": "",
         "type": "numeric",
         "kind": "measure"
       }
     ]
   },
-  "config": {},
-  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: https://vega.github.io/vega/examples/loess-regression/",
-  "padding": 5,
-  "width": 800,
-  "height": 400,
-  "autosize": "pad",
-  "data": [
+  "config": {
+    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "path": {},
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {
+      "labelPadding": 5,
+      "labelAngle": 0
+    },
+    "axisY": {
+      "labelPadding": 10,
+      "labels": false
+    },
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 12,
+      "labelColor": "#605E5C"
+    },
+    "legend": {
+      "title": "Principio de Pareto",
+      "orient": "top",
+      "symbolStrokeWidth": 0,
+      "padding": 10,
+      "labelFont": "Helvetica Neue, Arial",
+      "labelFontSize": 14,
+      "labelFontWeight": "normal",
+      "labelColor": "#333333",
+      "titleFont": "Helvetica Neue, Arial",
+      "titleFontSize": 14,
+      "titleFontWeight": "normal",
+      "titleColor": "#333333",
+      "gradientLength": 200,
+      "gradientStrokeWidth": 0,
+      "gradientHeight": 20,
+      "gradientThickness": 10,
+      "gradientLabelOffset": 4,
+      "gradientLabelFont": "Helvetica Neue, Arial",
+      "gradientLabelFontSize": 12,
+      "gradientLabelFontWeight": "normal",
+      "gradientLabelColor": "#333333"
+    }
+  },
+  "data": {"name": "dataset"},
+  "params": [
     {
-      "name": "dataset",
-      "transform": [
-        {
-          "type": "filter",
-          "expr": "datum['__3__'] != null && datum['__2__'] != null "
-        }
-      ]
+      "name": "Style",
+      "expr": "pluck(data('dataset'),'__2__')[0]"
     },
     {
-      "name": "fit",
-      "source": "dataset",
-      "transform": [
-        {
-          "type": "regression",
-          "method": "quad",
-          "x": "__3__",
-          "y": "__2__",
-          "as": [
-            "u",
-            "v"
-          ]
-        }
-      ]
+      "name": "color1",
+      "expr": "Style === 1? 'black': Style=== 2? '#080202': '#799351'"
+    },
+    {
+      "name": "color2",
+      "expr": "Style ===1? 'gray':Style===2? '#454545': '#F7D060'"
+    },
+    {
+      "name": "color3",
+      "expr": "Style ===1? 'red': Style=== 2?'#DDE6ED': '#CD1818'"
     }
   ],
-  "scales": [
+  "transform": [
     {
-      "name": "x",
-      "type": "linear",
-      "domain": {
-        "data": "dataset",
-        "field": "__3__"
-      },
-      "range": "width"
-    },
-    {
-      "name": "y",
-      "type": "linear",
-      "domain": {
-        "data": "dataset",
-        "field": "__2__"
-      },
-      "range": "height"
-    },
-    {
-      "name": "color",
-      "type": "ordinal",
-      "domain": {
-        "data": "dataset",
-        "field": "__1__",
-        "sort": {
+      "sort": [
+        {
+          "field": "__1__",
           "order": "descending"
         }
-      },
-      "range": "category"
-    }
-  ],
-  "axes": [
-    {
-      "orient": "left",
-      "scale": "y",
-      "title": "Medida para el eje Y"
+      ],
+      "window": [
+        {
+          "field": "__1__",
+          "op": "sum",
+          "as": "Total_Ventas_Acumulado"
+        }
+      ],
+      "ignorePeers": true
     },
     {
-      "orient": "bottom",
-      "scale": "x",
-      "title": "Medida para el eje X"
+      "sort": [{"field": "__1__"}],
+      "window": [
+        {
+          "field": "__1__",
+          "op": "sum",
+          "as": "_GranTotal_Ventas"
+        }
+      ],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "datum.Total_Ventas_Acumulado/datum._GranTotal_Ventas",
+      "as": "%_Acumulado"
+    },
+    {
+      "calculate": "datum['__1__']/datum._GranTotal_Ventas",
+      "as": "PCT"
     }
   ],
-  "marks": [
+  "layer": [
     {
-      "name": "points",
-      "type": "symbol",
-      "from": {
-        "data": "dataset"
-      },
-      "encode": {
-        "enter": {
-          "fill": {
-            "scale": "color",
-            "field": "__1__"
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "opacity": 0.3,
+            "tooltip": true
           },
-          "x": {
-            "scale": "x",
-            "field": "__3__"
+          "encoding": {
+            "x": {"field": "__1__"},
+            "color": {
+              "field": "%_Acumulado",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  {"expr": "color1"},
+                  {"expr": "color2"},
+                  {"expr": "color3"}
+                ]
+              },
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "bar",
+            "tooltip": true
           },
-          "y": {
-            "scale": "y",
-            "field": "__2__"
-          },
-          "size": {
-            "value": 200
-          },
-          "opacity": [
-            {
-              "test": "datum.__selected__ == 'on'",
-              "value": 1
+          "encoding": {
+            "x": {
+              "field": "__1____highlight",
+              "axis": {"labels": false}
             },
-            {
-              "test": "datum.__selected__ == 'off' || datum['__2____highlight']==null",
-              "value": 0.1
+            "color": {
+              "field": "%_Acumulado",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  {"expr": "color1"},
+                  {"expr": "color2"},
+                  {"expr": "color3"}
+                ]
+              },
+              "legend": null
             },
-            {
-              "test": "datum.__selected__ == 'neutral'",
+            "opacity": {
+              "condition": {
+                "test": {
+                  "field": "__selected__",
+                  "equal": "off"
+                },
+                "value": 0
+              },
               "value": 1
             }
-          ]
-        }
-      }
-    },
-    {
-      "name": "trend",
-      "type": "line",
-      "from": {
-        "data": "fit"
-      },
-      "encode": {
-        "enter": {
-          "x": {
-            "scale": "x",
-            "field": "u"
-          },
-          "y": {
-            "scale": "y",
-            "field": "v"
-          },
-          "stroke": {
-            "value": "firebrick"
           }
-        }
-      }
-    },
-    {
-      "type": "text",
-      "from": {
-        "data": "points"
-      },
-      "encode": {
-        "enter": {
-          "text": {
-            "field": "datum['__0__']"
-          },
-          "fontSize": {
-            "value": 12
-          }
-        }
-      },
-      "transform": [
+        },
         {
-          "type": "label",
-          "avoidMarks": [
-            "points"
-          ],
-          "anchor": [
-            "top",
-            "bottom",
-            "right",
-            "left"
-          ],
-          "offset": [
-            1
-          ],
-          "size": {
-            "signal": "[width + 60, height + 1 ]"
+          "mark": {
+            "type": "text",
+            "color": "#333333",
+            "xOffset": 20
+          },
+          "encoding": {
+            "text": {
+              "field": "__1__",
+              "format": "0.2s"
+            },
+            "x": {"field": "__1__"}
+          }
+        }
+      ]
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "color": "black",
+            "point": {
+              "color": "black",
+              "filled": false,
+              "fill": "white"
+            }
+          },
+          "encoding": {
+            "x": {
+              "field": "%_Acumulado"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "color": "#333333",
+            "xOffset": 25
+          },
+          "encoding": {
+            "text": {
+              "field": "%_Acumulado",
+              "format": "0.0%",
+              "formatType": "pbiFormat"
+            },
+            "x": {
+              "field": "%_Acumulado",
+              "axis": {
+                "orient": "bottom",
+                "formatType": "pbiFormat",
+                "format": "0.0%",
+                "values": [
+                  0,
+                  0.4,
+                  0.8,
+                  1
+                ],
+                "tickCount": 4
+              }
+            },
+            "color": {
+              "field": "%_Acumulado",
+              "type": "quantitative",
+              "scale": {
+                "range": [
+                  "#17202A",
+                  "#D7DBDD",
+                  "#ECF0F1"
+                ],
+                "reverse": true
+              },
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {"type": "text"},
+          "encoding": {
+            "text": {
+              "field": "PCT",
+              "format": "0.0%",
+              "formatType": "pbiFormat"
+            },
+            "x": {"value": -25}
           }
         }
       ]
     }
-  ]
+  ],
+  "resolve": {
+    "scale": {
+      "x": "independent",
+      "color": "independent"
+    }
+  },
+  "encoding": {
+    "y": {
+      "field": "__0__",
+      "type": "nominal",
+      "sort": {
+        "field": "__1__",
+        "op": "sum",
+        "order": "descending"
+      },
+      "axis": {
+        "labels": true,
+        "title": "",
+        "labelFontSize": 14,
+        "offset": 40
+      }
+    },
+    "x": {
+      "type": "quantitative",
+      "axis": {"title": ""}
+    },
+    "tooltip": [
+      {
+        "field": "__1__",
+        "title": "Monto de Venta |",
+        "format": "$#0,,0",
+        "formatType": "pbiFormat"
+      },
+      {
+        "field": "%_Acumulado",
+        "title": "Porcentaje |",
+        "format": "0.0%",
+        "formatType": "pbiFormat"
+      }
+    ]
+  }
 }
 ```
 
