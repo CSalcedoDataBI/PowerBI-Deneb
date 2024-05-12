@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
     "deneb": {
-      "build": "1.5.0.0",
+      "build": "1.6.2.1",
       "metaVersion": 1,
       "provider": "vegaLite",
-      "providerVersion": "5.6.1"
+      "providerVersion": "5.16.3"
     },
     "interactivity": {
       "tooltip": true,
@@ -18,8 +18,8 @@
       "name": "Gráfico de Pareto Dinámico con Deneb y Vega-Lite",
       "description": "Plantilla de gráfico de Pareto para visualizar distribución de ventas por producto. Detecta productos clave con el Principio de Pareto. Ideal para analistas, especialistas en visualización y comunicación efectiva de patrones de ventas.",
       "author": "Cristobal-Salcedo",
-      "uuid": "90c5a2ce-2e15-4007-a4ce-65864a96eff5",
-      "generated": "2023-05-11T03:00:01.132Z"
+      "uuid": "2dd4d879-524a-48c4-8180-b43e81ca0e71",
+      "generated": "2024-05-12T01:48:24.975Z"
     },
     "dataset": [
       {
@@ -39,29 +39,11 @@
     ]
   },
   "config": {
-    "view": {"stroke": "transparent"},
-    "font": "Segoe UI",
-    "arc": {},
-    "area": {
-      "line": true,
-      "opacity": 0.6
-    },
-    "bar": {},
-    "line": {
-      "strokeWidth": 3,
-      "strokeCap": "round",
-      "strokeJoin": "round"
-    },
-    "path": {},
+    "view": { "stroke": "transparent" },
+    "line": { "strokeWidth": 3 },
     "point": {
       "filled": true,
       "size": 75
-    },
-    "rect": {},
-    "shape": {},
-    "symbol": {
-      "strokeWidth": 1.5,
-      "size": 50
     },
     "text": {
       "font": "Segoe UI",
@@ -71,36 +53,16 @@
     "axis": {
       "ticks": false,
       "grid": false,
-      "domain": false,
-      "labelColor": "#605E5C",
-      "labelFontSize": 12,
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleColor": "#252423",
-      "titleFontSize": 16,
-      "titleFontWeight": "normal"
-    },
-    "axisQuantitative": {
-      "tickCount": 3,
-      "grid": true,
-      "gridColor": "#C8C6C4",
-      "gridDash": [1, 5],
-      "labelFlush": false
+      "domain": false
     },
     "axisX": {
       "labelPadding": 5,
-      "labelAngle": 0
+      "labelAngle": 0,
+      "labelFontSize": 14
     },
     "axisY": {
       "labelPadding": 10,
       "labels": false
-    },
-    "header": {
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleFontSize": 16,
-      "titleColor": "#252423",
-      "labelFont": "Segoe UI",
-      "labelFontSize": 12,
-      "labelColor": "#605E5C"
     },
     "legend": {
       "title": "Principio de Pareto",
@@ -114,19 +76,11 @@
       "titleFont": "Helvetica Neue, Arial",
       "titleFontSize": 14,
       "titleFontWeight": "normal",
-      "titleColor": "#333333",
-      "gradientLength": 200,
-      "gradientStrokeWidth": 0,
-      "gradientHeight": 20,
-      "gradientThickness": 10,
-      "gradientLabelOffset": 4,
-      "gradientLabelFont": "Helvetica Neue, Arial",
-      "gradientLabelFontSize": 12,
-      "gradientLabelFontWeight": "normal",
-      "gradientLabelColor": "#333333"
+      "titleColor": "#333333"
     }
   },
-  "data": {"name": "dataset"},
+  "description": "Gráfico de Pareto Dinámico con Deneb y Vega-Lite, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
+  "data": { "name": "dataset" },
   "transform": [
     {
       "sort": [
@@ -145,7 +99,7 @@
       "ignorePeers": true
     },
     {
-      "sort": [{"field": "__1__"}],
+      "sort": [{ "field": "__1__" }],
       "window": [
         {
           "field": "__1__",
@@ -170,21 +124,15 @@
     {
       "layer": [
         {
-          "mark": {"type": "bar"},
+          "mark": { "type": "bar" },
           "encoding": {
-            "y": {"field": "__1__"},
+            "y": { "field": "__1__" },
             "color": {
               "field": "%_Acumulado",
               "type": "nominal",
               "scale": {
-                "domain": [
-                  "0% - 80%",
-                  "80% - 100%"
-                ],
-                "range": [
-                  "#7F7F7F",
-                  "#D62728"
-                ]
+                "domain": ["0% - 80%", "80% - 100%"],
+                "range": ["#7F7F7F", "#D62728"]
               },
               "title": "Principio de Pareto"
             }
@@ -200,7 +148,7 @@
             }
           },
           "encoding": {
-            "y": {"field": "__1__"}
+            "y": { "field": "__1__" }
           }
         },
         {
@@ -239,7 +187,7 @@
               "format": "$#0,0",
               "formatType": "pbiFormat"
             },
-            "y": {"field": "__1__"}
+            "y": { "field": "__1__" }
           }
         }
       ]
@@ -283,7 +231,7 @@
     }
   ],
   "resolve": {
-    "scale": {"y": "independent"}
+    "scale": { "y": "independent" }
   },
   "encoding": {
     "x": {
@@ -297,7 +245,7 @@
     },
     "y": {
       "type": "quantitative",
-      "axis": {"title": ""}
+      "axis": { "title": "" }
     },
     "tooltip": [
       {
