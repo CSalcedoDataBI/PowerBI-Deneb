@@ -54,51 +54,22 @@
   },
   "config": {
     "view": {"stroke": "transparent"},
-    "font": "Segoe UI",
-    "arc": {},
-    "area": {
-      "line": true,
-      "opacity": 0.6
-    },
-    "bar": {},
     "line": {
       "strokeWidth": 3,
       "strokeCap": "round",
       "strokeJoin": "round"
     },
-    "path": {},
-    "point": {
-      "filled": true,
-      "size": 75
-    },
-    "rect": {},
-    "shape": {},
-    "symbol": {
-      "strokeWidth": 1.5,
-      "size": 50
-    },
     "text": {
       "font": "Segoe UI",
-      "fontSize": 12,
-      "fill": "#6E5746"
+      "fontSize": 18,
+      "fill": "#605E5C"
     },
     "axis": {
       "ticks": false,
       "grid": false,
       "domain": false,
-      "labelColor": "#6E5746",
-      "labelFontSize": 12,
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleColor": "#24212E",
-      "titleFontSize": 16,
-      "titleFontWeight": "normal"
-    },
-    "axisQuantitative": {
-      "tickCount": 3,
-      "grid": true,
-      "gridColor": "#EDE8E1",
-      "gridDash": [1, 5],
-      "labelFlush": false
+      "labelColor": "#605E5C",
+      "labelFontSize": 18
     },
     "axisX": {
       "labelPadding": 5,
@@ -107,14 +78,6 @@
     "axisY": {
       "labelPadding": 10,
       "labels": false
-    },
-    "header": {
-      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
-      "titleFontSize": 16,
-      "titleColor": "#24212E",
-      "labelFont": "Segoe UI",
-      "labelFontSize": 13.333333333333332,
-      "labelColor": "#6E5746"
     }
   },
   "description": "Gráfico de Pareto Dinámico, Autor: Cristóbal Salcedo. Contacto: csalcedo90@gmail.com. Artículos relacionados: https://csalcedodatabi.github.io/posts/diagrama-pareto-parte-1/",
