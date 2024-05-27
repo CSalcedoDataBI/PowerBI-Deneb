@@ -16,44 +16,37 @@
     },
     "information": {
       "name": "Gráfico de Pareto Dinámico",
-      "description": "Gráfico de Pareto Dinámico",
-      "author": "Gráfico de Pareto Dinámico",
-      "uuid": "0fdc2305-7a56-4227-b162-f841a2064494",
-      "generated": "2024-05-15T04:10:07.835Z"
+      "description": "Esta plantilla permite la creación de un gráfico de Pareto dinámico, el cual puede ser personalizado según las necesidades del usuario. Los campos de datos y medidas son ejemplos y pueden ser reemplazados para adaptarse a diferentes categorías y métricas.",
+      "author": "Cristobal Salcedo Beltran, Contacto: csalcedo90@gmail.com.",
+      "uuid": "267e3e24-a51c-4d9c-9474-4fb34725506b",
+      "generated": "2024-05-27T21:20:00.612Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Product Category",
-        "description": "",
+        "name": "Product",
+        "description": "Este campo categórico puede ser reemplazado por cualquier otro, según las necesidades del usuario",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "Total  Sales",
-        "description": "",
+        "name": "Total Ventas",
+        "description": "Esta medida representa el total de ventas acumuladas. Puede ser remplazada por cualquier otra medida, según las necesidades del usuario",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__2__",
-        "name": "% Acumulado de Ventas por Producto",
-        "description": "",
+        "name": "Acumulado de ventas Por Producto",
+        "description": "Muestra el total acumulado de ventas para cada producto. Descripción opcional para el usuario final. Puede ser remplazada por cualquier otra medida, según las necesidades del usuario",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__3__",
-        "name": "Acumulado de ventas Por Producto",
-        "description": "",
-        "type": "numeric",
-        "kind": "measure"
-      },
-      {
-        "key": "__4__",
-        "name": "Total Ventas",
-        "description": "",
+        "name": "% Acumulado de Ventas por Producto",
+        "description": "Indica el porcentaje acumulado de ventas por producto. Descripción opcional para el usuario final. Puede ser remplazada por cualquier otra medida, según las necesidades del usuario",
         "type": "numeric",
         "kind": "measure"
       }
@@ -61,31 +54,49 @@
   },
   "config": {
     "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
     "line": {
       "strokeWidth": 3,
       "strokeCap": "round",
       "strokeJoin": "round"
     },
+    "path": {},
     "point": {
       "filled": true,
       "size": 75
     },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
     "text": {
       "font": "Segoe UI",
-      "fontSize": 18,
-      "fill": "#605E5C"
+      "fontSize": 12,
+      "fill": "#6E5746"
     },
     "axis": {
       "ticks": false,
       "grid": false,
       "domain": false,
-      "labelColor": "#605E5C",
-      "labelFontSize": 18
+      "labelColor": "#6E5746",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#24212E",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
     },
     "axisQuantitative": {
       "tickCount": 3,
       "grid": true,
-      "gridColor": "#C8C6C4",
+      "gridColor": "#EDE8E1",
       "gridDash": [1, 5],
       "labelFlush": false
     },
@@ -96,23 +107,98 @@
     "axisY": {
       "labelPadding": 10,
       "labels": false
+    },
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#24212E",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#6E5746"
     }
   },
-  "description": "Explora la distribución de ventas por producto con nuestro Gráfico de Pareto Dinámico en Deneb/Vega-Lite, ideal para analistas y especialistas en visualización de datos. Esta herramienta te permite identificar productos clave para maximizar ingresos eficazmente. Contacto: Cristóbal Salcedo (csalcedo90@mail.com).",
+  "description": "Gráfico de Pareto Dinámico, Autor: Cristóbal Salcedo. Contacto: csalcedo90@gmail.com. Artículos relacionados: https://csalcedodatabi.github.io/posts/diagrama-pareto-parte-1/",
   "data": {"name": "dataset"},
   "title": {
     "text": "Ventas por producto (Principio de Pareto)",
     "subtitle": "'Muestra la contribución de los productos al total de ventas",
-    "fontSize": 25,
+    "fontSize": 20,
     "color": "#333333"
   },
   "layer": [
     {
+      "mark": {
+        "type": "bar",
+        "tooltip": true,
+        "color": {
+          "expr": "datum['__3__']<=0.8?'#7F7F7F': '#D62728'"
+        }
+      },
+      "encoding": {
+        "y": {"field": "__1__"},
+        "opacity": {
+          "condition": {
+            "test": {
+              "field": "__selected__",
+              "equal": "off"
+            },
+            "value": 0.3
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "linear",
+        "color": "blue",
+        "point": {
+          "color": "#1F77B4",
+          "filled": false,
+          "fill": "white"
+        }
+      },
+      "encoding": {
+        "y": {"field": "__3__"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "#333333",
+        "yOffset": -16
+      },
+      "encoding": {
+        "text": {
+          "field": "__3__",
+          "format": "0.0%",
+          "formatType": "pbiFormat"
+        },
+        "y": {"field": "__3__"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "#333333",
+        "yOffset": -8
+      },
+      "encoding": {
+        "text": {
+          "field": "__1__",
+          "format": "$#0,0",
+          "formatType": "pbiFormat"
+        },
+        "y": {"field": "__1__"}
+      }
+    },
+    {
       "mark": {"type": "bar"},
       "encoding": {
-        "y": {"field": "__4__"},
+        "y": {"field": "__1__"},
         "color": {
-          "field": "__2__",
+          "field": "__3__",
           "type": "nominal",
           "scale": {
             "domain": [
@@ -126,95 +212,14 @@
           },
           "legend": {
             "title": "Principio de Pareto",
-            "titleFontSize": 18,
             "orient": "top",
             "padding": 10,
-            "labelFont": "Arial",
-            "labelFontSize": 16
+            "labelFont": "Helvetica Neue, Arial",
+            "labelFontSize": 14,
+            "symbolType": "square",
+            "symbolSize": 100
           }
         }
-      }
-    },
-    {
-      "mark": {
-        "type": "bar",
-        "opacity": 0.3,
-        "tooltip": true,
-        "color": {
-          "expr": "datum['__2__']<=0.8?'#7F7F7F': '#D62728'"
-        }
-      },
-      "encoding": {
-        "y": {"field": "__4__"}
-      }
-    },
-    {
-      "mark": {
-        "type": "bar",
-        "color": {
-          "expr": "datum['__2__']<=0.8?'#7F7F7F': '#D62728'"
-        },
-        "tooltip": true
-      },
-      "encoding": {
-        "y": {
-          "field": "__4____highlight"
-        },
-        "opacity": {
-          "condition": {
-            "test": {
-              "field": "__selected__",
-              "equal": "off"
-            },
-            "value": 0
-          },
-          "value": 1
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "line",
-        "interpolate": "step",
-        "color": "#1F77B4",
-        "point": {
-          "color": "#1F77B4",
-          "filled": false,
-          "fill": "white"
-        }
-      },
-      "encoding": {
-        "y": {"field": "__2__"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "color": "#333333",
-        "yOffset": -16
-      },
-      "encoding": {
-        "text": {
-          "field": "__2__",
-          "format": "0.0%",
-          "formatType": "pbiFormat"
-        },
-        "y": {"field": "__2__"}
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "color": "#333333",
-        "yOffset": -16
-      },
-      "encoding": {
-        "text": {
-          "field": "__4__",
-          "format": "$#0,0",
-          "formatType": "pbiFormat"
-        },
-        "y": {"field": "__4__"}
       }
     }
   ],
@@ -226,28 +231,14 @@
       "field": "__0__",
       "type": "nominal",
       "sort": {
-        "field": "__4__",
-        "op": "sum",
+        "field": "__1__",
+        "op": "max",
         "order": "descending"
       }
     },
     "y": {
       "type": "quantitative",
-      "axis": {"title": ""}
-    },
-    "tooltip": [
-      {
-        "field": "__4__",
-        "title": "Monto de Venta |",
-        "format": "$#0,,0",
-        "formatType": "pbiFormat"
-      },
-      {
-        "field": "__2__",
-        "title": "Porcentaje |",
-        "format": "0.0%",
-        "formatType": "pbiFormat"
-      }
-    ]
+      "axis": {"title": " "}
+    }
   }
 }
