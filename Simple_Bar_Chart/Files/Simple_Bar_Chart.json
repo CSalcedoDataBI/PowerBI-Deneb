@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.6.2.1",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.16.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Simple Bar Chart Template",
+      "description": "This simple bar chart template is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+      "author": "Cristobal Salcedo",
+      "uuid": "19669a01-08fc-477c-a357-9a1c6c134a1e",
+      "generated": "2024-05-29T03:47:47.358Z"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Category Name",
+        "description": "Name of the category",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Measure",
+        "description": "Quantitative measure associated with each category",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelColor": "#605E5C",
+      "labelFontSize": 18,
+      "titleFontSize": 20
+    },
+    "axisX": {
+      "labelPadding": 5,
+      "labelAngle": 0
+    },
+    "axisY": {
+      "labelPadding": 10
+    }
+  },
+  "description": "Simple Bar Chart template based on the official Vega-Lite example adapted for Deneb Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "data": {
+    "name": "dataset"
+  },
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "type": "nominal",
+      "axis": {
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "__1__",
+      "type": "quantitative"
+    },
+    "opacity": {
+      "condition": {
+        "test": {
+          "field": "__selected__",
+          "equal": "off"
+        },
+        "value": 0.3
+      },
+      "value": 1
+    }
+  }
+}
