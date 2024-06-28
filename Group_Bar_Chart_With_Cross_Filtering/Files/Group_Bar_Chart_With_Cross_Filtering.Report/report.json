@@ -1,9 +1,7 @@
 {
   "config": "{\"version\":\"5.54\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU05\",\"version\":\"5.54\",\"type\":2},\"customTheme\":{\"name\":\"Accessible_Tidal7908178527836247.json\",\"version\":\"5.54\",\"type\":1}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
-  "publicCustomVisuals": [
-    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
-  ],
+  "publicCustomVisuals": ["deneb7E15AEF80B9E4D4F8E12924291ECE89A"],
   "resourcePackages": [
     {
       "resourcePackage": {
@@ -81,10 +79,10 @@
   "sections": [
     {
       "config": "{}",
-      "displayName": "Grouped Bar Chart With Cross-Filtering V1",
+      "displayName": "Grouped Bar Chart With Cross-Filtering (V1)",
       "displayOption": 1,
       "filters": "[]",
-      "height": 720.00,
+      "height": 720.0,
       "name": "01dafc4a073eb00e7deb",
       "ordinal": 1,
       "visualContainers": [
@@ -95,17 +93,17 @@
           "width": 951.79,
           "x": 185.51,
           "y": 18.55,
-          "z": 0.00
+          "z": 0.0
         }
       ],
-      "width": 1280.00
+      "width": 1280.0
     },
     {
       "config": "{}",
-      "displayName": "Grouped Bar Chart With Cross-Filtering V3",
+      "displayName": "Grouped Bar Chart With Cross-Filtering (V3)",
       "displayOption": 1,
       "filters": "[]",
-      "height": 720.00,
+      "height": 720.0,
       "name": "0fa77b34c5ff4abf3bd1",
       "ordinal": 3,
       "visualContainers": [
@@ -114,19 +112,19 @@
           "filters": "[]",
           "height": 617.33,
           "width": 913.33,
-          "x": 168.00,
-          "y": 44.00,
-          "z": 0.00
+          "x": 168.0,
+          "y": 44.0,
+          "z": 0.0
         }
       ],
-      "width": 1280.00
+      "width": 1280.0
     },
     {
       "config": "{}",
-      "displayName": "Grouped Bar Chart With Cross-Filtering V2",
+      "displayName": "Grouped Bar Chart With Cross-Filtering (V2)",
       "displayOption": 1,
       "filters": "[]",
-      "height": 720.00,
+      "height": 720.0,
       "name": "599072d1c57c147cd81b",
       "ordinal": 2,
       "visualContainers": [
@@ -137,27 +135,27 @@
           "width": 951.79,
           "x": 185.51,
           "y": 18.55,
-          "z": 0.00
+          "z": 0.0
         }
       ],
-      "width": 1280.00
+      "width": 1280.0
     },
     {
       "config": "{}",
       "displayName": "Thank You!",
       "displayOption": 1,
       "filters": "[]",
-      "height": 720.00,
+      "height": 720.0,
       "name": "e0c5b71f1be9e9adde12",
       "visualContainers": [
         {
           "config": "{\"name\":\"06fce18929bd9f6def50\",\"layouts\":[{\"id\":0,\"position\":{\"x\":164.05969847913855,\"y\":120.07423275837887,\"z\":7000,\"width\":60,\"height\":60,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Power_BI_(Blue)9114952214621155.png\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'PBI Image'\"}}}}}]}}}",
           "filters": "[]",
-          "height": 60.00,
-          "width": 60.00,
+          "height": 60.0,
+          "width": 60.0,
           "x": 164.06,
           "y": 120.07,
-          "z": 7000.00
+          "z": 7000.0
         },
         {
           "config": "{\"name\":\"1e0335ad7b38957559a6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":222.57393215013587,\"y\":7.82608695652174,\"z\":0,\"width\":1048.3825895889947,\"height\":703.5652173913044,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Consulting Service\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"28pt\"}}]},{\"textRuns\":[{\"value\":\"https://www.linkedin.com/company/pesante-analytics-llc/\",\"textStyle\":{\"fontSize\":\"28pt\",\"color\":\"#094780\"},\"url\":\"https://www.linkedin.com/company/pesante-analytics-llc/\"}]},{\"textRuns\":[{\"value\":\"Blogs, Archives and Templates\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"28pt\"}}]},{\"textRuns\":[{\"value\":\"https://csalcedodatabi.github.io/\",\"textStyle\":{\"fontSize\":\"32pt\"},\"url\":\"https://csalcedodatabi.github.io/\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"Linkeding \",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"27pt\",\"color\":\"#070f25\"}},{\"value\":\"Newsletter\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"28pt\",\"color\":\"#070f25\"},\"url\":\"https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7059614190973440001\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"https://www.linkedin.com/build-relation/newsletter\",\"textStyle\":{\"fontFamily\":\"Arial\",\"fontSize\":\"28pt\",\"color\":\"#094780\"},\"url\":\"https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7059614190973440001\"},{\"value\":\"﻿\",\"textStyle\":{\"fontSize\":\"27pt\"}}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"YouTube\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"27pt\",\"color\":\"#333333\"}}]},{\"textRuns\":[{\"value\":\"https://www.youtube.com/@PowerBI-Deneb-CS\",\"textStyle\":{\"fontFamily\":\"Arial\",\"fontSize\":\"28pt\",\"color\":\"#094780\"},\"url\":\"https://www.youtube.com/@PowerBI-Deneb-CS\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"LinkedIn\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"27pt\",\"color\":\"#333333\"}}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"www.linkedin.com/in/cristobal-salcedo\",\"textStyle\":{\"fontFamily\":\"Arial\",\"fontSize\":\"28pt\"},\"url\":\"https://www.linkedin.com/in/cristobal-salcedo\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}],\"horizontalTextAlignment\":\"right\"}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#707DA1'\"}}}}},\"border\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#394668'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"foreground\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Links'\"}}},\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"visualTooltip\":[{\"properties\":{\"titleFontColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#C8C8C8'\"}}}}},\"valueFontColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#EAEAEA'\"}}}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#394668'\"}}}}}}}],\"general\":[{\"properties\":{\"keepLayerOrder\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
@@ -166,16 +164,16 @@
           "width": 1048.38,
           "x": 222.57,
           "y": 7.83,
-          "z": 0.00
+          "z": 0.0
         },
         {
           "config": "{\"name\":\"30588204b3d337e7e3b3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":3.4993924665856624,\"y\":0,\"z\":1000,\"width\":144,\"height\":704,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]},{\"textRuns\":[{\"value\":\"\"}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Business Info Frame Background'\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
           "filters": "[]",
-          "height": 704.00,
-          "width": 144.00,
-          "x": 3.50,
-          "y": 0.00,
-          "z": 1000.00
+          "height": 704.0,
+          "width": 144.0,
+          "x": 3.5,
+          "y": 0.0,
+          "z": 1000.0
         },
         {
           "config": "{\"name\":\"425a351d7880e205ceb5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":5.052631578947369,\"y\":135.1578947368421,\"z\":8000,\"width\":142.73684210526315,\"height\":113.6842105263158,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"foto8981243419023581.jpg\"}}}}}],\"imageScaling\":[{\"properties\":{\"imageScalingType\":{\"expr\":{\"Literal\":{\"Value\":\"'Fill'\"}}}}}]}}}",
@@ -184,61 +182,61 @@
           "width": 142.74,
           "x": 5.05,
           "y": 135.16,
-          "z": 8000.00
+          "z": 8000.0
         },
         {
           "config": "{\"name\":\"46f87890cacd8bc8712e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":164.05969847913855,\"y\":491.88468233310556,\"z\":4000,\"width\":60,\"height\":60,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"LinkedIn_Logo_(HC_Blue)6301627523644462.png\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'LinkedIn Image'\"}}}}}]}}}",
           "filters": "[]",
-          "height": 60.00,
-          "width": 60.00,
+          "height": 60.0,
+          "width": 60.0,
           "x": 164.06,
           "y": 491.88,
-          "z": 4000.00
+          "z": 4000.0
         },
         {
           "config": "{\"name\":\"8daf0443b80f403b8e11\",\"layouts\":[{\"id\":0,\"position\":{\"x\":164.05969847913858,\"y\":237.95868772782504,\"z\":5000,\"width\":60,\"height\":60,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"LinkedIn_Logo_(HC_Blue)6301627523644462.png\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'LinkedIn Image'\"}}}}}]}}}",
           "filters": "[]",
-          "height": 60.00,
-          "width": 60.00,
+          "height": 60.0,
+          "width": 60.0,
           "x": 164.06,
           "y": 237.96,
-          "z": 5000.00
+          "z": 5000.0
         },
         {
           "config": "{\"name\":\"93bc8d1b6f8650536531\",\"layouts\":[{\"id\":0,\"position\":{\"x\":164.05969847913855,\"y\":371.15564223590013,\"z\":6000,\"width\":60,\"height\":60,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Youtube_Blue_Cropped6418143789085649.png\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'YouTube Image'\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
           "filters": "[]",
-          "height": 60.00,
-          "width": 60.00,
+          "height": 60.0,
+          "width": 60.0,
           "x": 164.06,
           "y": 371.16,
-          "z": 6000.00
+          "z": 6000.0
         },
         {
           "config": "{\"name\":\"9f72e789451a3debdffa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":161.19033449977536,\"y\":8.890363840406858,\"z\":2000,\"width\":64,\"height\":704,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"\"}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Icon Frame Background'\"}}}}}]}}}",
           "filters": "[]",
-          "height": 704.00,
-          "width": 64.00,
+          "height": 704.0,
+          "width": 64.0,
           "x": 161.19,
           "y": 8.89,
-          "z": 2000.00
+          "z": 2000.0
         },
         {
           "config": "{\"name\":\"c03f6a95bceb8f11c4a8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":5.249088699878493,\"y\":20.121506682867558,\"z\":10000,\"width\":149.59902794653706,\"height\":114.60510328068044,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"PAL-NEW-2021-SOFT_(2)9333178659248393.png\"}}}}}]}}}",
           "filters": "[]",
           "height": 114.61,
-          "width": 149.60,
+          "width": 149.6,
           "x": 5.25,
           "y": 20.12,
-          "z": 10000.00
+          "z": 10000.0
         },
         {
           "config": "{\"name\":\"cc723f7194e287402ed5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":164.05969847913858,\"y\":8.748481166464156,\"z\":9000,\"width\":60,\"height\":60,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Values_&_Beliefs_(Blue)7799394988088633.png\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Consulting Image'\"}}}}}]}}}",
           "filters": "[]",
-          "height": 60.00,
-          "width": 60.00,
+          "height": 60.0,
+          "width": 60.0,
           "x": 164.06,
           "y": 8.75,
-          "z": 9000.00
+          "z": 9000.0
         },
         {
           "config": "{\"name\":\"f0f50e58356078f5d2e7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":3.7894736842105265,\"y\":276.63157894736844,\"z\":3000,\"width\":150.31578947368422,\"height\":435.7894736842105,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"My name is Cristobal Salcedo, and I am deeply passionate about advanced data visualization using tools like Vega and Vega-Lite through Deneb in Power BI. I also enjoy creating efficient ETL processes with Power Query, Dataflow, and Microsoft Fabric tools such as notebooks. Follow my blog to explore detailed tutorials, case studies, and my insights on the latest trends in data visualization and BI analysis.\",\"textStyle\":{\"fontSize\":\"10.5pt\"}}]}]}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Text Description'\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
@@ -247,10 +245,10 @@
           "width": 150.32,
           "x": 3.79,
           "y": 276.63,
-          "z": 3000.00
+          "z": 3000.0
         }
       ],
-      "width": 1280.00
+      "width": 1280.0
     }
   ],
   "theme": "Accessible_Tidal7908178527836247.json"
