@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Group_Bar_Chart_With_Cross_Filtering.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Group_Bar_Chart_With_Cross_Filtering"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ebfd5cf2-5eda-4152-a507-7247810d6f62"
+  }
+}

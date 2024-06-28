@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Group_Bar_Chart_With_Cross_Filtering"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2f7d78ac-65aa-45b5-9832-df98a8845221"
+  }
+}
