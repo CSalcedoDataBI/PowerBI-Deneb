@@ -1,0 +1,537 @@
+table FlowPreFactRequest
+	lineageTag: a37babc4-a298-4293-848a-152f5e0d726a
+
+	column 'Request Type'
+		dataType: string
+		lineageTag: b5fd6d78-7517-45dd-95dd-91d896f71898
+		summarizeBy: none
+		sourceColumn: Request Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assignment Rate Card Type'
+		dataType: string
+		lineageTag: c2926619-7a28-403a-b5dd-7129b96edddd
+		summarizeBy: none
+		sourceColumn: Assignment Rate Card Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Allows Direct Sourcing'
+		dataType: string
+		lineageTag: c5720322-26fa-4aa7-9540-f24e4705d557
+		summarizeBy: none
+		sourceColumn: Request Allows Direct Sourcing
+
+		annotation SummarizationSetBy = Automatic
+
+	column Request_ID
+		dataType: string
+		lineageTag: 7c6f6dea-3b8f-44bb-9e4b-d4720771f61e
+		summarizeBy: none
+		sourceColumn: Request_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Currency Exchange Rate to USD'
+		dataType: double
+		lineageTag: be177bf3-91b0-4251-b487-5d5e59c324ca
+		summarizeBy: sum
+		sourceColumn: Currency Exchange Rate to USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Request Status'
+		dataType: string
+		lineageTag: f8421da8-c3b8-4ff9-8190-8663d511d820
+		summarizeBy: none
+		sourceColumn: Request Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Open Bid'
+		dataType: string
+		lineageTag: e4f5a55c-55fb-4475-9282-14198217deea
+		summarizeBy: none
+		sourceColumn: Request Open Bid
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienNameInternal
+		dataType: string
+		lineageTag: 819591a5-7ace-4299-9064-6af0fb4dbff6
+		summarizeBy: none
+		sourceColumn: ClienNameInternal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Pre-Identified'
+		dataType: string
+		lineageTag: 40c6cb57-7b02-481b-a760-cf94132cedf2
+		summarizeBy: none
+		sourceColumn: Request Pre-Identified
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Number of Openings'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7982fd80-62ec-424b-a207-7b271e7342c2
+		summarizeBy: sum
+		sourceColumn: Request Number of Openings
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Duration (In Months)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 48173133-35e5-4da6-85a4-e962e8c72863
+		summarizeBy: sum
+		sourceColumn: Request Duration (In Months)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suppliers Released To'
+		dataType: int64
+		formatString: 0
+		lineageTag: cab68afa-c946-45ab-bf96-c77ba203433f
+		summarizeBy: sum
+		sourceColumn: Suppliers Released To
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rate Card Rate RT'
+		dataType: double
+		lineageTag: 45895113-85a9-42fc-98e8-19f8fe8220bd
+		summarizeBy: sum
+		sourceColumn: Rate Card Rate RT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UDF1_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fee7c14-fba9-4964-b268-0636a602382d
+		summarizeBy: sum
+		sourceColumn: UDF1_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Filled Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 90fa0033-bd00-434c-834e-263ee06f1209
+		summarizeBy: none
+		sourceColumn: Request Filled Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Request Created Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf70f6d2-51eb-4686-97ad-e977125ef96e
+		summarizeBy: none
+		sourceColumn: Request Created Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Request On Hold Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f74f9991-d58d-4916-b806-7cacb920f864
+		summarizeBy: none
+		sourceColumn: Request On Hold Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Request Submitted Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5ceb8dd4-7dfb-428e-8434-60d18405e68d
+		summarizeBy: none
+		sourceColumn: Request Submitted Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Request Rejected Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 969dc4d2-cd7e-49d1-87e6-74b3a03a6be5
+		summarizeBy: none
+		sourceColumn: Request Rejected Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Request Desired Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9c287ff-75f3-4d38-b376-8973622d2720
+		summarizeBy: none
+		sourceColumn: Request Desired Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UDF2_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a635f87-da1b-4be8-92eb-0c70ff4fa90c
+		summarizeBy: sum
+		sourceColumn: UDF2_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Procurement_Type_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 7930dbb4-926d-4565-8f97-4d942091b2e4
+		summarizeBy: sum
+		sourceColumn: Procurement_Type_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column UDF5_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b72378c-379d-48a7-a61d-a7f88723674c
+		summarizeBy: sum
+		sourceColumn: UDF5_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Released Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b1a751ff-42e3-45db-b674-561577e0829b
+		summarizeBy: none
+		sourceColumn: Request Released Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UDF3_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 94968cbb-0210-4e7e-a3b6-f51c3ffa63c6
+		summarizeBy: sum
+		sourceColumn: UDF3_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rate_Card_Category_1_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 9648e588-1791-4a75-acd6-115f6e16c54a
+		summarizeBy: sum
+		sourceColumn: Rate_Card_Category_1_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Approved Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 04970b11-83c4-46ff-b22c-471cb8fc3cf1
+		summarizeBy: none
+		sourceColumn: Request Approved Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Data Refreshed Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 91333845-1b53-43c1-b62a-7b29f08ad62d
+		summarizeBy: none
+		sourceColumn: Data Refreshed Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Business_Unit_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: e1cdf9ac-d232-4670-96d5-c1bfb2a34741
+		summarizeBy: sum
+		sourceColumn: Business_Unit_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e56f118-d9b3-4791-8577-f85939d25d8e
+		summarizeBy: sum
+		sourceColumn: Currency_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Work_Location_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 5be48c56-a3ee-4d52-8e37-8a8b5ff79f31
+		summarizeBy: sum
+		sourceColumn: Work_Location_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Job_Title_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e77208c-4075-4fbe-b0ea-825cc1f53219
+		summarizeBy: sum
+		sourceColumn: Job_Title_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rate_Card_Category_2_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 387352f4-efe9-42fa-9215-0e53f46c6a03
+		summarizeBy: sum
+		sourceColumn: Rate_Card_Category_2_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Client_Name_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 34655597-fcb5-486f-8941-c8a539f88dd9
+		summarizeBy: sum
+		sourceColumn: Client_Name_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Labor_Category_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 4161a75f-b4ac-4c3b-afd2-11a97a12191f
+		summarizeBy: sum
+		sourceColumn: Labor_Category_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Job_Class_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 23ee28d1-8aba-4bb6-b986-aaa5e8b8b978
+		summarizeBy: sum
+		sourceColumn: Job_Class_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hiring_Manager_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 89eb4d9a-fb44-42bb-bd3a-f867c385709e
+		summarizeBy: sum
+		sourceColumn: Hiring_Manager_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column UDF4_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f564aa3-ecaa-4d53-87da-01d2acf16bdf
+		summarizeBy: sum
+		sourceColumn: UDF4_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost_Center_KEY
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e603e07-b075-4b9a-bf7c-89f0e2809a0f
+		summarizeBy: sum
+		sourceColumn: Cost_Center_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% Interviewed'
+		dataType: double
+		lineageTag: ea34677a-dba5-4293-993c-0723fd575569
+		summarizeBy: sum
+		sourceColumn: % Interviewed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Candidates Declined'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d7522f7-09b6-4736-a9e5-be09e2b6d02b
+		summarizeBy: sum
+		sourceColumn: Candidates Declined
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Hired'
+		dataType: int64
+		formatString: 0
+		lineageTag: adf692a8-ad34-4834-9a1c-587dff06e280
+		summarizeBy: sum
+		sourceColumn: Candidates Hired
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Offered'
+		dataType: int64
+		formatString: 0
+		lineageTag: 490816f5-c863-42b8-bf09-9931e902c39d
+		summarizeBy: sum
+		sourceColumn: Candidates Offered
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Requested'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c6bee26-9a74-4ea7-a40f-e93740b3f549
+		summarizeBy: sum
+		sourceColumn: Candidates Requested
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Submitted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 319972e1-cf8a-471f-8647-cfd5f6c65b09
+		summarizeBy: sum
+		sourceColumn: Candidates Submitted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interviews Completed'
+		dataType: int64
+		formatString: 0
+		lineageTag: 08b3e332-d3ea-43d9-b679-02a6122aa27f
+		summarizeBy: sum
+		sourceColumn: Interviews Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interviews Scheduled'
+		dataType: int64
+		formatString: 0
+		lineageTag: 42242f5a-6bb3-4cbf-9ce6-fc2077182c74
+		summarizeBy: sum
+		sourceColumn: Interviews Scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Received Position'
+		dataType: int64
+		formatString: 0
+		lineageTag: a144d29b-e294-4149-ac5f-5625c77202ea
+		summarizeBy: sum
+		sourceColumn: Supplier Received Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suppliers Responded To'
+		dataType: int64
+		formatString: 0
+		lineageTag: a9f72d46-de61-4d26-a11f-f060b3177f6e
+		summarizeBy: sum
+		sourceColumn: Suppliers Responded To
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cycle Time From Request Submitted To Request Approved (Cal Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ce9dae60-d346-477d-b80b-26350788497f
+		summarizeBy: sum
+		sourceColumn: Cycle Time From Request Submitted To Request Approved (Cal Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cycle Time From Request Approved To Request Released (Cal Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 14568398-f4b1-48f7-a492-9aeaff63070a
+		summarizeBy: sum
+		sourceColumn: Cycle Time From Request Approved To Request Released (Cal Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Lead Time (In Days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c1f373ed-3e33-479a-bbd7-1663f4814433
+		summarizeBy: sum
+		sourceColumn: Request Lead Time (In Days)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Lead Time Category'
+		dataType: string
+		lineageTag: c7dac7d7-2626-43b5-a86e-4fc10cf4a179
+		summarizeBy: none
+		sourceColumn: Request Lead Time Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suppliers Released To Category'
+		dataType: string
+		lineageTag: 3f8466c0-8ded-4356-9cc2-9052e28d73f2
+		summarizeBy: none
+		sourceColumn: Suppliers Released To Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suppliers Responded To Category'
+		dataType: string
+		lineageTag: 788df0d0-38a9-495b-9769-97e7b585292b
+		summarizeBy: none
+		sourceColumn: Suppliers Responded To Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Request Number of Openings Category'
+		dataType: string
+		lineageTag: 4f062390-6358-41be-8413-f641979147f7
+		summarizeBy: none
+		sourceColumn: Request Number of Openings Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FlowPreFactRequest = m
+		mode: import
+		source =
+				let
+				    Source = FlowAux_MergeRequests,
+				    #"Merged queries" = Table.NestedJoin(Source, {"Request_ID"}, FlowAux_MergeRequestSummaryCounts, {"Request_ID"}, "FlowAuxMergeRequestSummaryCounts", JoinKind.LeftOuter),
+				    #"Expanded FlowAuxMergeRequestSummaryCounts" = Table.ExpandTableColumn(#"Merged queries", "FlowAuxMergeRequestSummaryCounts", {"% Interviewed", "Candidates Declined", "Candidates Hired", "Candidates Offered", "Candidates Requested", "Candidates Submitted", "Interviews Completed", "Interviews Scheduled", "Supplier Received Position", "Suppliers Responded To"}, {"% Interviewed", "Candidates Declined", "Candidates Hired", "Candidates Offered", "Candidates Requested", "Candidates Submitted", "Interviews Completed", "Interviews Scheduled", "Supplier Received Position", "Suppliers Responded To"}),
+				    #"NewColumnCycleTimeFromRequestSubmittedToRequestApproved(CalDays)" = Table.AddColumn(#"Expanded FlowAuxMergeRequestSummaryCounts", "Cycle Time From Request Submitted To Request Approved (Cal Days)", each Duration.Days([Request Approved Date] - [Request Submitted Date]), type nullable Int64.Type),
+				    #"NewColumnCycleTimeFromRequestApprovedToRequestReleased(CalDays)" = Table.AddColumn(#"NewColumnCycleTimeFromRequestSubmittedToRequestApproved(CalDays)", "Cycle Time From Request Approved To Request Released (Cal Days)", each Duration.Days([Request Approved Date] - [Request Released Date]), type nullable Int64.Type),
+				    #"NewColumnRequestLeadTime(In Days)" = Table.AddColumn(#"NewColumnCycleTimeFromRequestApprovedToRequestReleased(CalDays)", "Request Lead Time (In Days)", each Duration.Days([Request Desired Start Date] - [Request Submitted Date]), type nullable Int64.Type),
+				    NewColumnRequestLeadTimeCategory = Table.AddColumn(#"NewColumnRequestLeadTime(In Days)", "Request Lead Time Category", each if [#"Request Lead Time (In Days)"] = null then "(N/A)" else if [#"Request Lead Time (In Days)"] < 0 then "Backdated" else if [#"Request Lead Time (In Days)"] = 0 then "Same Day" else if [#"Request Lead Time (In Days)"] >= 7 then "1 Week" else if [#"Request Lead Time (In Days)"] >= 14 then "1-2 Weeks" else if [#"Request Lead Time (In Days)"] >= 28 then "3-4 Weeks" else if [#"Request Lead Time (In Days)"] >= 56 then "4-8 Weeks" else if [#"Request Lead Time (In Days)"] > 56 then "9+ Weeks" else "(N/A)",  type text),
+				    NewColumnSuppliersReleasedToCategory = Table.AddColumn(NewColumnRequestLeadTimeCategory, "Suppliers Released To Category", each if [Suppliers Released To] = null then "(NULL)" else if [Suppliers Released To] = 0 then "0 Supplier" else if [Suppliers Released To] = 1 then "1 Supplier" else if [Suppliers Released To] = 2 then "2 Supplier" else if [Suppliers Released To] >= 3 then "3+ Suppliers" else "(NULL)",  type text),
+				    NewColumnSuppliersRespondedToCategory = Table.AddColumn(NewColumnSuppliersReleasedToCategory, "Suppliers Responded To Category", each if [Suppliers Responded To] = null then "(NULL)" else if [Suppliers Responded To] = 0 then "0 Supplier" else if [Suppliers Responded To] = 1 then "1 Supplier" else if [Suppliers Responded To] = 2 then "2 Suppliers" else if [Suppliers Responded To] >= 3 then "3+ Suppliers" else "(NULL)",  type text),
+				    NewColumnRequestNumberOfOpeningsCategory = Table.AddColumn(NewColumnSuppliersRespondedToCategory, "Request Number of Openings Category", each if [Request Number of Openings] = null then "(NULL)" else if [Request Number of Openings] = 0 then "0 Openings" else if [Request Number of Openings] = 1 then "1 Openings" else if [Request Number of Openings] >= 2 then "2+ Openings" else "(NULL)", type text),
+				    RenamedColumnsAssignmentRateCardType = Table.RenameColumns(NewColumnRequestNumberOfOpeningsCategory, {{"Rate Card Rate Type", "Assignment Rate Card Type"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(RenamedColumnsAssignmentRateCardType,{{"Request Filled Date", type date}, {"Request Created Date", type date}, {"Request On Hold Date", type date}, {"Request Submitted Date", type date}, {"Request Rejected Date", type date}, {"Request Desired Start Date", type date}, {"Request Released Date", type date}, {"Request Approved Date", type date}, {"Data Refreshed Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

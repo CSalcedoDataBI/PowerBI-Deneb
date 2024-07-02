@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.130.930.0 (24.06)
+
+annotation PBI_QueryOrder = ["FlowPreFactRequestsSupplier (2)","FlowPreFactRequestsSupplier","FlowAux_Merge_Request_Dates_and_IDs","FlowPreFactRequestCandidate","FlowAux_Median_Submitted_Bill_Rates","FlowAux_FirstQualifiedCandidate","FlowAux_Candidates_Submitted_Count_For_Supplier_Name","FlowAux_MergeRequests","FlowPreFactRequest","FlowAux_MergeRequestSummaryCounts","FlowAux_PreFactRequest"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FlowPreFactRequestsSupplier
+ref table FlowAux_Merge_Request_Dates_and_IDs
+ref table FlowPreFactRequestCandidate
+ref table FlowAux_Median_Submitted_Bill_Rates
+ref table FlowAux_FirstQualifiedCandidate
+ref table FlowAux_Candidates_Submitted_Count_For_Supplier_Name
+ref table FlowAux_MergeRequests
+ref table FlowPreFactRequest
+ref table FlowAux_MergeRequestSummaryCounts
+ref table FlowAux_PreFactRequest
+
+ref cultureInfo en-US
+

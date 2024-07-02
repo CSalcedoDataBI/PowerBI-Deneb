@@ -1,0 +1,132 @@
+table FlowAux_MergeRequestSummaryCounts
+	lineageTag: 07acf50a-54fc-446e-b6f5-48158d9671f6
+
+	column 'Client Name'
+		dataType: string
+		lineageTag: 6f0ca4b8-418a-41f5-a7da-9c70bbfa47c0
+		summarizeBy: none
+		sourceColumn: Client Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% Interviewed'
+		dataType: double
+		lineageTag: 86870e2c-a023-443d-96e2-e3b72597a63b
+		summarizeBy: sum
+		sourceColumn: % Interviewed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Candidates Declined'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f784dd0-5f97-4620-86ca-8eb6cee752ef
+		summarizeBy: sum
+		sourceColumn: Candidates Declined
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Hired'
+		dataType: int64
+		formatString: 0
+		lineageTag: feb55ae5-6ff3-4522-8b1e-6634a4666d5f
+		summarizeBy: sum
+		sourceColumn: Candidates Hired
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Offered'
+		dataType: int64
+		formatString: 0
+		lineageTag: a09d8a80-878e-4bef-a8c3-07be4ec614e0
+		summarizeBy: sum
+		sourceColumn: Candidates Offered
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Requested'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c9a7efb-bbd1-4596-b57c-b23a639f7738
+		summarizeBy: sum
+		sourceColumn: Candidates Requested
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Candidates Submitted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f62c380-fcfb-4e97-b48b-0c8d0bb30792
+		summarizeBy: sum
+		sourceColumn: Candidates Submitted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interviews Completed'
+		dataType: int64
+		formatString: 0
+		lineageTag: fa31a1d0-040a-4d9c-bbbe-69c39a107933
+		summarizeBy: sum
+		sourceColumn: Interviews Completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Interviews Scheduled'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e358e9b-1448-4798-b9c2-e6930f4f2d51
+		summarizeBy: sum
+		sourceColumn: Interviews Scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Received Position'
+		dataType: int64
+		formatString: 0
+		lineageTag: 862fbc26-c96c-4c5a-8b96-9f0683249613
+		summarizeBy: sum
+		sourceColumn: Supplier Received Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Suppliers Responded To'
+		dataType: int64
+		formatString: 0
+		lineageTag: b866221a-ddae-4925-9020-d074f5adfe43
+		summarizeBy: sum
+		sourceColumn: Suppliers Responded To
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClientNameInternal
+		dataType: string
+		lineageTag: 621eadba-b0a8-4ed4-889b-db4a5a510743
+		summarizeBy: none
+		sourceColumn: ClientNameInternal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Request_ID
+		dataType: string
+		lineageTag: 8fd0d0ad-8987-4b05-b139-936de9a05161
+		summarizeBy: none
+		sourceColumn: Request_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FlowAux_MergeRequestSummaryCounts = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(),
+				    Workspaces = Source{[Id = "Workspaces"]}[Data],
+				    Workspace = Workspaces{[workspaceId = "8a87c474-d74a-479b-8616-3bbb0e4f223d"]}[Data],
+				    Dataflow = Workspace{[dataflowId = "22bc9ade-d2a9-44e0-bfe4-2f00ff94f2ed"]}[Data],
+				    Navigation = Dataflow{[entity = "FlowAuxMergeRequestSummaryCounts", version = ""]}[Data]
+				in
+				    Navigation
+
+	annotation PBI_ResultType = Table
+

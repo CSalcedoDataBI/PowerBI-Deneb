@@ -1,0 +1,20 @@
+relationship ff0cd45c-9c0d-4fbc-8062-89eab9dcc138
+	fromColumn: FlowPreFactRequestsSupplier.Request_ID
+	toColumn: FlowAux_PreFactRequest.Request_ID
+
+	annotation PBI_IsFromSource = FS
+
+relationship b9d433e2-4ad9-4ac6-87f8-768ea3e4db3c
+	fromColumn: FlowPreFactRequestCandidate.Request_ID
+	toColumn: FlowAux_Median_Submitted_Bill_Rates.Request_ID
+
+	annotation PBI_IsFromSource = FS
+
+relationship 490e086d-e0cc-4e60-897e-1ea7010046a0
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: FlowAux_MergeRequestSummaryCounts.Request_ID
+	toColumn: FlowAux_PreFactRequest.Request_ID
+
+	annotation PBI_IsFromSource = FS
+

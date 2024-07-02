@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2262.3830500146937,
+            "y": 88.9925553898002
+          },
+          "nodeIndex": "FlowAux_FirstQualifiedCandidate",
+          "nodeLineageTag": "2b28b032-15e0-4458-b01c-3f34107ec96f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988.3830500146937,
+            "y": 78.9925553898002
+          },
+          "nodeIndex": "FlowAux_Median_Submitted_Bill_Rates",
+          "nodeLineageTag": "94891ef9-1a97-4233-802e-72bc2a0bfb0a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2546.3830500146937,
+            "y": 14.992555389800202
+          },
+          "nodeIndex": "FlowAux_Merge_Request_Dates_and_IDs",
+          "nodeLineageTag": "6658ba99-ca9d-4a00-b19c-8650dfcf026f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704.3830500146937,
+            "y": 4.9925553898002022
+          },
+          "nodeIndex": "FlowPreFactRequestCandidate",
+          "nodeLineageTag": "ea46e582-6544-4c02-9812-a1e597b74de5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852.38305001469382,
+            "y": 88.9925553898002
+          },
+          "nodeIndex": "FlowAux_Candidates_Submitted_Count_For_Supplier_Name",
+          "nodeLineageTag": "bc4fbd49-ff20-48e1-8354-735bd22d54f1",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.3830500146937,
+            "y": 14.992555389800202
+          },
+          "nodeIndex": "FlowAux_MergeRequests",
+          "nodeLineageTag": "086cf9ef-cc2b-44d5-a7a3-e5f5c172c5ad",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 578.38305001469371,
+            "y": -10
+          },
+          "nodeIndex": "FlowAux_MergeRequestSummaryCounts",
+          "nodeLineageTag": "07acf50a-54fc-446e-b6f5-48158d9671f6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 294.20156119318511,
+            "y": 108.84469795984606
+          },
+          "nodeIndex": "FlowAux_PreFactRequest",
+          "nodeLineageTag": "76993efd-d306-4964-a85f-438eabff7106",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420.3830500146937,
+            "y": 14.992555389800202
+          },
+          "nodeIndex": "FlowPreFactRequest",
+          "nodeLineageTag": "a37babc4-a298-4293-848a-152f5e0d726a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 19.985110779600404
+          },
+          "nodeIndex": "FlowPreFactRequestsSupplier",
+          "nodeLineageTag": "7295a3c9-bb33-430f-8c69-099d55ad5b8b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
