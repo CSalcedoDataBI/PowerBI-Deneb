@@ -25,7 +25,7 @@ Para usar este visual en tus informes de Power BI, sigue estos pasos:
 
 Abre el archivo en Power BI.
 Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
-Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](Tarjetas_Dinamicas/Files)
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder]([Tarjetas_Dinamicas/Files](https://github.com/CSalcedoDataBI/PowerBI-Deneb/tree/4d27d857b6d817432c8271af702e93eeb4df1b47/Tarjetas_Dinamicas/Files)
 
 ### Contribuir
 
