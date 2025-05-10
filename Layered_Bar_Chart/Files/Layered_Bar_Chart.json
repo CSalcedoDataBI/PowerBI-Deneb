@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "information": {
+      "uuid": "f1235fc5-778a-4e37-be73-87beefca0455",
+      "generated": "2024-09-06T02:12:54.724Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Layered Bar Chart",
+      "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI. Note: Cross-filtering interactivity is limited when using 'aggregate'.",
+      "author": "Cristobal-Salcedo"
+    },
+    "deneb": {
+      "build": "1.7.1.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.20.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "config": "{\r\n  \"background\": \"transparent\",\r\n  \"view\": {\r\n    \"stroke\": \"transparent\"\r\n  },\r\n  \"axisY\": {\r\n    \"tickColor\": {\r\n      \"expr\": \"datum.index==0 || datum.index==0.25||datum.index==0.5 ||datum.index==0.75 || datum.index==1? 'black':'' \"\r\n    },\r\n    \"gridColor\": {\r\n      \"expr\": \"datum.index==0 || datum.index==0.25||datum.index==0.5 ||datum.index==0.75 || datum.index==1? '#eee':'' \"\r\n    },\r\n    \"labelExpr\": \"datum.index==0 || datum.index==0.25||datum.index==0.5 ||datum.index==0.75 || datum.index==1? pbiFormatAutoUnit(datum.value):'' \",\r\n    \"labelFontSize\":16,\r\n    \"titleFontSize\":18\r\n  },\r\n  \"axisX\": {\r\n    \"labelAngle\": 0,\r\n    \"offset\": 3,\r\n    \"labelFontSize\":16,\r\n    \"titleFontSize\":18\r\n  },\r\n  // Legend configuration\r\n  \"legend\": {\r\n    \"title\": \"\", // No title for the legend\r\n    \"orient\": \"top\",\r\n    \"symbolSize\": 280, // Size of the symbols in the legend\r\n    \"disable\": false, // Ensure legend is enabled\r\n    \"labelFontSize\": 14, // Font size of legend labels\r\n    \"labelFontWeight\": \"bold\", // Bold font for legend labels\r\n    \"columnPadding\": 10, // Padding between legend columns\r\n    \"labelColor\": {\r\n      \"expr\": \"datum.label == 'Male' ?  '#ca8861':'#675193' \" // Conditional color for labels\r\n    },\r\n    \"labelAlign\": \"left\" // Align legend text to the left of the symbol\r\n  }\r\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "year",
+        "description": "",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "sex",
+        "description": "",
+        "kind": "column",
+        "type": "numeric"
+      },
+      {
+        "key": "__2__",
+        "name": "age",
+        "description": "",
+        "kind": "column",
+        "type": "numeric"
+      },
+      {
+        "key": "__3__",
+        "name": "people",
+        "description": "",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "description": "Layered Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI. Note: Cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "transform": [
+    {
+      "filter": "datum['__0__'] == '2000' "
+    },
+    {
+      "calculate": "datum['__1__'] == 2 ? 'Female' : 'Male'",
+      "as": "gender"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "width": {
+      "expr": "datum.gender==='Female'?width/40: width/20"
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "__2__",
+      "type": "ordinal"
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "__3__",
+      "title": "population",
+      "stack": null
+    },
+    "color": {
+      "field": "gender",
+      "scale": {
+        "range": [
+          "#675193",
+          "#ca8861"
+        ]
+      }
+    },
+    "opacity": {
+      "value": 0.7
+    }
+  },
+  "title": {
+    "text": "US population distribution of age groups and gender in 2000",
+    // Chart title
+    "fontSize": 25,
+    "fontWeight": "bold",
+    "fontStyle": "arial"
+  }
+}

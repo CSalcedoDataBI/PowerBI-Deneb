@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.6.2.1",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.16.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Horizontal Stacked Bar Chart",
+      "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com",
+      "author": "Cristobal Salcedo Beltran",
+      "uuid": "290227de-ebef-42ff-977d-6015324bb0fd",
+      "generated": "2024-07-24T04:59:06.947Z"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Category",
+        "description": "Represents the type or variety of the item. Example: \"Barley Variety\".",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Detail Category",
+        "description": "Provides more specific details or sub-categories related to the main category. Example: \"Experimental Site\"",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__2__",
+        "name": "Measure",
+        "description": "Represents the quantitative measurement related to the categories. Example: \"Total Production Units",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "background": "#eee",
+    "axisX": {
+      "labels": false,
+      "ticks": false,
+      "domain": false,
+      "grid": false,
+      "title": ""
+    },
+    "axisY": {
+      "labelFont": "arial",
+      "offset": 5,
+      "labelFontSize": 20,
+      "title": ""
+    }
+  },
+  "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "data": {"name": "dataset"},
+  "encoding": {
+    "x": {
+      "aggregate": "sum",
+      "field": "__2__",
+      "type": "quantitative",
+      "title": "Total Yield (units)",
+      "stack": "zero"
+    },
+    "y": {
+      "field": "__0__",
+      "sort": {
+        "op": "sum",
+        "field": "__2__",
+        "order": "descending"
+      }
+    },
+    "color": {
+      "field": "__1__",
+      "type": "nominal",
+      "scale": {"scheme": "category20"},
+      "legend": {
+        "titleFontSize": 20,
+        "title": "Site",
+        "labelFontStyle": "italic",
+        "labelFont": "Arial",
+        "orient": "right",
+        "labelFontSize": 18
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "opacity": 1,
+        "stroke": "white",
+        "strokeWidth": 2.5
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 16
+      },
+      "encoding": {
+        "color": {"value": "white"},
+        "text": {
+          "aggregate": "sum",
+          "field": "__2__",
+          "type": "quantitative",
+          "format": "#,0",
+          "formatType": "pbiFormat"
+        },
+        "x": {
+          "aggregate": "sum",
+          "field": "__2__",
+          "bandPosition": 0.5,
+          "type": "quantitative",
+          "title": ""
+        },
+        "detail": {"field": "__1__"}
+      }
+    }
+  ],
+  "title": {
+    "text": "Total Yield of Different Barley Varieties by Experimental Site (1931-1932)",
+    "subtitle": "Yield comparison across six experimental sites over two years",
+    "subtitleFontSize": 18,
+    "subtitleFontStyle": "italic",
+    "font": "arial",
+    "fontStyle": "normal",
+    "fontSize": 20,
+    "fontWeight": "bold"
+  }
+}
