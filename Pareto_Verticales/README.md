@@ -25,7 +25,7 @@ Para usar este visual en tus informes de Power BI, sigue estos pasos:
 
 Abre el archivo en Power BI.
 Navega al panel 'Visualizaciones' y selecciona el visual personalizado de Deneb.
-Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetada.pbix)
+Carga tus datos y vincula los campos de acuerdo con la plantilla proporcionada.  [file_folder](https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.pbix)
 
 ### Contribuir
 
