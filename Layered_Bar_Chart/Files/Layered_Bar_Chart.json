@@ -100,7 +100,6 @@
   },
   "title": {
     "text": "US population distribution of age groups and gender in 2000",
-    // Chart title
     "fontSize": 25,
     "fontWeight": "bold",
     "fontStyle": "arial"

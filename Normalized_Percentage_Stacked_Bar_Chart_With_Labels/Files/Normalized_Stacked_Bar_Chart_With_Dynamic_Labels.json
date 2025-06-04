@@ -63,46 +63,35 @@
     ]
   },
   "description": "Normalized (Percentage) Stacked Bar Chart With Dynamic Labels: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI. Note: Cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
-  // Parameter configuration
   "params": [
     {
       "name": "DisplayValueMode",
       "expr": "pluck(data('dataset'),'DisplayOptionsValue')[0]"
     }
   ],
-  // Dataset configuration
   "data": {
     "name": "dataset"
-    // Name of the dataset
   },
-  // Data transformations
   "transform": [
     {
-      // Filter to include only data from the year 2000
       "filter": "datum['__0__'] == 2000"
     },
     {
-      // Create a new field 'gender' based on the 'sex' value
       "calculate": "datum['__1__'] == 2 ? 'Female' : 'Male'",
       "as": "gender"
     }
   ],
-  // Encoding configuration for the chart
   "encoding": {
-    // X-axis configuration for age groups
     "x": {
       "aggregate": "sum",
       "field": "__2__",
       "stack": "normalize",
-      // Normalize to show percentage
       "title": "Percentage of Population"
     },
-    // Y-axis configuration for percentage of population
     "y": {
       "field": "__3__",
       "title": "Age Group"
     },
-    // Color encoding for gender differentiation
     "color": {
       "field": "gender",
       "scale": {
@@ -110,31 +99,25 @@
           "#9d2993",
           "#116e9d"
         ]
-        // Colors for Female and Male
       }
     }
   },
-  // Layer configuration for the chart elements
   "layer": [
     {
-      // Configuration for the bar marks
       "mark": {
         "type": "bar",
         "opacity": 1,
         "stroke": "white",
-        // White stroke for bar separation
         "strokeWidth": 0.5
       }
     },
     {
-      // Configuration for the text labels
       "mark": {
         "type": "text",
         "fontSize": 14
       },
       "transform": [
         {
-          // Calculate the total population per age group
           "window": [
             {
               "field": "__2__",
@@ -151,7 +134,6 @@
           ]
         },
         {
-          // Calculate the total population per gender and age group
           "window": [
             {
               "field": "__2__",
@@ -171,22 +153,18 @@
           ]
         },
         {
-          // Calculate the percentage of population for each gender per age group
           "calculate": "pbiFormat(datum.TotalPopulationPerGenderAge/datum.TotalPopulationPerAgeGroup,'0%')",
           "as": "percentageOfPopulation"
         },
         {
-          // Format the total population per gender for display
           "calculate": "pbiFormat(datum.TotalPopulationPerGenderAge,'#,0,,.#M')",
           "as": "formattedTotalPopulation"
         },
         {
-          // Concatenate gender, percentage, and total population for label display
           "calculate": "datum.gender + '_' + datum.formattedTotalPopulation +  ' | ' +  datum.percentageOfPopulation ",
           "as": "labelTextFirst"
         },
         {
-          // Concatenate gender, percentage, and total population for label display
           "calculate": "DisplayValueMode==4? (datum['__3__']=='0'?datum.gender + ' | ' + datum.formattedTotalPopulation +  ' | ' +  datum.percentageOfPopulation: datum.gender + '_' + datum.formattedTotalPopulation +  ' | ' +  datum.percentageOfPopulation ): datum.labelTextFirst",
           "as": "labelText"
         }
@@ -194,15 +172,12 @@
       "encoding": {
         "color": {
           "value": "white"
-          // White text for contrast
         },
         "text": {
           "value": {
             "expr": "DisplayValueMode==1? split(split(datum.labelText,'_')[1],'|')[0]: DisplayValueMode==2? split(datum.labelText,'|')[1]: DisplayValueMode==3? split(datum.labelText,'_')[1]: datum['__3__']=='0'? datum.labelText: split(datum.labelText,'_')[1]"
-            // Extract the percentage and total population for text
           }
         },
-        // Position text labels in the middle of the bars
         "x": {
           "aggregate": "sum",
           "field": "__2__",
@@ -212,15 +187,12 @@
         },
         "detail": {
           "field": "labelText"
-          // Detail field to uniquely identify text labels
         }
       }
     }
   ],
-  // Title configuration for the chart
   "title": {
     "text": "Age and Gender Distribution of Population in 2000",
-    // Chart title
     "fontSize": 25,
     "fontWeight": "bold",
     "fontStyle": "arial"
