@@ -207,7 +207,7 @@ Learn how to build and customize these visualizations:
 - 🎥 **[Scatter Regression Guide](https://www.youtube.com/@PowerBI-Deneb-CS)** — Correlation analysis with Vega
 
 → **[Subscribe for more](https://www.youtube.com/@PowerBI-Deneb-CS)**
-→ **[Browse the full gallery with live demos and walkthroughs](https://csalcedodatabi.com/deneb/)** at csalcedodatabi.com — every template shown in context with real Power BI data.
+→ **[Browse the template gallery](https://csalcedodatabi.com/deneb/)** at csalcedodatabi.com — each template with its Vega-Lite spec ready to copy and a "how to use it in Power BI" walkthrough (in Spanish).
 
 ---
 
