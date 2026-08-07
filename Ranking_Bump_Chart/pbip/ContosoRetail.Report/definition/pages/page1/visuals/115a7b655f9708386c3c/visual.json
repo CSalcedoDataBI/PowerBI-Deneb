@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "115a7b655f9708386c3c",
   "position": {
     "x": 40,
@@ -75,7 +75,7 @@
             "jsonSpec": {
               "expr": {
                 "Literal": {
-                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega-lite/v5.json\",\"usermeta\":{\"deneb\":{\"build\":\"1.6.2.1\",\"metaVersion\":1,\"provider\":\"vegaLite\",\"providerVersion\":\"5.16.3\"},\"interactivity\":{\"tooltip\":true,\"contextMenu\":true,\"selection\":true,\"highlight\":true,\"dataPointLimit\":200},\"information\":{\"name\":\"Ranking en el tiempo (bump chart)\",\"description\":\"Bump chart de ranking: el puesto de cada categoria se recalcula dentro del propio spec con un window rank por periodo. Autor: Cristobal Salcedo Beltran.\"},\"dataset\":[{\"key\":\"__0__\",\"name\":\"Categoría\",\"description\":\"Serie que compite en el ranking (una línea por valor)\",\"type\":\"text\",\"kind\":\"column\"},{\"key\":\"__1__\",\"name\":\"Periodo\",\"description\":\"Eje temporal del ranking (mes, trimestre, año)\",\"type\":\"date\",\"kind\":\"column\"},{\"key\":\"__2__\",\"name\":\"Valor\",\"description\":\"Medida que ordena el ranking dentro de cada periodo\",\"type\":\"numeric\",\"kind\":\"measure\"}]},\"config\":{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"view\":{\"stroke\":\"transparent\"},\"axis\":{\"grid\":false,\"domain\":false,\"ticks\":false,\"labelColor\":\"#605E5C\",\"labelFontSize\":12.5,\"titleColor\":\"#252423\",\"titleFontWeight\":\"normal\"},\"text\":{\"font\":\"Segoe UI\"}},\"title\":{\"text\":\"Quién manda cada mes\",\"subtitle\":\"Puesto por valor · 1º arriba\",\"anchor\":\"start\",\"font\":\"Segoe UI\",\"fontSize\":18,\"fontWeight\":600,\"color\":\"#252423\",\"subtitleFont\":\"Segoe UI\",\"subtitleFontSize\":12.5,\"subtitleColor\":\"#797775\",\"subtitlePadding\":8,\"offset\":16},\"description\":\"Bump chart de ranking: cada línea es una categoría y su altura es el puesto que ocupa en cada periodo (1 = arriba). El puesto se calcula dentro del spec con un window rank por periodo.\",\"height\":340,\"padding\":{\"left\":4,\"top\":4,\"bottom\":4,\"right\":100},\"data\":{\"name\":\"dataset\"},\"transform\":[{\"window\":[{\"op\":\"rank\",\"as\":\"ranking\"}],\"groupby\":[\"__1__\"],\"sort\":[{\"field\":\"__2__\",\"order\":\"descending\"}]},{\"window\":[{\"op\":\"row_number\",\"as\":\"pasoFinal\"}],\"groupby\":[\"__0__\"],\"sort\":[{\"field\":\"__1__\",\"order\":\"descending\"}]}],\"encoding\":{\"x\":{\"field\":\"__1__\",\"type\":\"temporal\",\"title\":null,\"scale\":{\"type\":\"utc\",\"padding\":18},\"axis\":{\"format\":\"%b\",\"tickCount\":{\"interval\":\"month\",\"step\":1},\"labelAngle\":0,\"labelPadding\":14,\"grid\":true,\"gridColor\":\"#EDEBE9\",\"gridWidth\":1}},\"y\":{\"field\":\"ranking\",\"type\":\"quantitative\",\"title\":null,\"scale\":{\"reverse\":true,\"nice\":false,\"zero\":false,\"padding\":26},\"axis\":{\"tickMinStep\":1,\"labelExpr\":\"datum.value + ''º''\",\"labelPadding\":14,\"labelFontWeight\":600,\"labelColor\":\"#3B3A39\"}},\"color\":{\"field\":\"__0__\",\"type\":\"nominal\",\"legend\":null,\"scale\":{\"range\":[\"#2E5E7E\",\"#C9724A\",\"#4C8577\",\"#A8456B\",\"#7E6BB0\",\"#B08A1E\"]}},\"opacity\":{\"condition\":[{\"test\":\"datum.__selected__ === ''off''\",\"value\":0.12},{\"param\":\"serieHover\",\"value\":1}],\"value\":0.16}},\"layer\":[{\"description\":\"Cinta invisible y ancha: es la que recibe el cursor (una línea de 3 px no se atrapa). Anula la opacidad heredada para no pintarse nunca.\",\"mark\":{\"type\":\"line\",\"interpolate\":\"monotone\",\"strokeWidth\":22},\"params\":[{\"name\":\"serieHover\",\"select\":{\"type\":\"point\",\"fields\":[\"__0__\"],\"on\":\"pointerover\",\"clear\":\"pointerout\"}}],\"encoding\":{\"opacity\":{\"value\":0}}},{\"description\":\"La línea visible.\",\"mark\":{\"type\":\"line\",\"interpolate\":\"monotone\",\"strokeCap\":\"round\",\"strokeJoin\":\"round\"},\"encoding\":{\"strokeWidth\":{\"condition\":{\"param\":\"serieHover\",\"empty\":false,\"value\":4.5},\"value\":3}}},{\"description\":\"Los nodos: un punto por periodo, con halo blanco para que el cruce se lea.\",\"mark\":{\"type\":\"point\",\"filled\":true,\"stroke\":\"#FFFFFF\",\"strokeWidth\":2.5},\"encoding\":{\"size\":{\"condition\":{\"param\":\"serieHover\",\"empty\":false,\"value\":170},\"value\":110},\"tooltip\":[{\"field\":\"__0__\",\"type\":\"nominal\",\"title\":\"Categoría\"},{\"field\":\"__1__\",\"type\":\"temporal\",\"title\":\"Periodo\",\"format\":\"%b %Y\"},{\"field\":\"ranking\",\"type\":\"quantitative\",\"title\":\"Puesto\"},{\"field\":\"__2__\",\"type\":\"quantitative\",\"title\":\"Valor\",\"format\":\",.0f\"}]}},{\"description\":\"Etiqueta al final de cada línea: sustituye a la leyenda, sin saltos de vista.\",\"transform\":[{\"filter\":\"datum.pasoFinal === 1\"}],\"mark\":{\"type\":\"text\",\"align\":\"left\",\"baseline\":\"middle\",\"dx\":14,\"fontSize\":12.5,\"fontWeight\":600},\"encoding\":{\"text\":{\"field\":\"__0__\",\"type\":\"nominal\"}}}]}'"
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega-lite/v5.json\",\"usermeta\":{\"deneb\":{\"build\":\"1.6.2.1\",\"metaVersion\":1,\"provider\":\"vegaLite\",\"providerVersion\":\"5.16.3\"},\"interactivity\":{\"tooltip\":true,\"contextMenu\":true,\"selection\":true,\"highlight\":true,\"dataPointLimit\":200},\"information\":{\"name\":\"Ranking en el tiempo (bump chart)\",\"description\":\"Bump chart de ranking enlazado al modelo Contoso Retail: CategoryName, YearMonth y [Total Sales]. Autor: Cristobal Salcedo Beltran.\"}},\"config\":{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"view\":{\"stroke\":\"transparent\"},\"axis\":{\"grid\":false,\"domain\":false,\"ticks\":false,\"labelColor\":\"#605E5C\",\"labelFontSize\":12.5,\"titleColor\":\"#252423\",\"titleFontWeight\":\"normal\"},\"text\":{\"font\":\"Segoe UI\"}},\"title\":{\"text\":\"Quién manda cada mes\",\"subtitle\":\"Puesto por ventas · 1º arriba\",\"anchor\":\"start\",\"font\":\"Segoe UI\",\"fontSize\":18,\"fontWeight\":600,\"color\":\"#252423\",\"subtitleFont\":\"Segoe UI\",\"subtitleFontSize\":12.5,\"subtitleColor\":\"#797775\",\"subtitlePadding\":8,\"offset\":16},\"description\":\"Bump chart de ranking: cada línea es una categoría y su altura es el puesto que ocupa en cada periodo (1 = arriba).\",\"height\":340,\"padding\":{\"left\":4,\"top\":4,\"bottom\":4,\"right\":100},\"data\":{\"name\":\"dataset\"},\"transform\":[{\"window\":[{\"op\":\"rank\",\"as\":\"ranking\"}],\"groupby\":[\"YearMonth\"],\"sort\":[{\"field\":\"Total Sales\",\"order\":\"descending\"}]},{\"window\":[{\"op\":\"row_number\",\"as\":\"pasoFinal\"}],\"groupby\":[\"CategoryName\"],\"sort\":[{\"field\":\"YearMonth\",\"order\":\"descending\"}]}],\"encoding\":{\"x\":{\"field\":\"YearMonth\",\"type\":\"temporal\",\"title\":null,\"scale\":{\"type\":\"utc\",\"padding\":18},\"axis\":{\"format\":\"%b %y\",\"tickCount\":{\"interval\":\"month\",\"step\":1},\"labelAngle\":0,\"labelPadding\":14,\"grid\":true,\"gridColor\":\"#EDEBE9\",\"gridWidth\":1}},\"y\":{\"field\":\"ranking\",\"type\":\"quantitative\",\"title\":null,\"scale\":{\"reverse\":true,\"nice\":false,\"zero\":false,\"padding\":26},\"axis\":{\"tickMinStep\":1,\"labelExpr\":\"datum.value + ''º''\",\"labelPadding\":14,\"labelFontWeight\":600,\"labelColor\":\"#3B3A39\"}},\"color\":{\"field\":\"CategoryName\",\"type\":\"nominal\",\"legend\":null,\"scale\":{\"range\":[\"#2E5E7E\",\"#C9724A\",\"#4C8577\",\"#A8456B\",\"#7E6BB0\",\"#B08A1E\"]}},\"opacity\":{\"condition\":[{\"test\":\"datum.__selected__ === ''off''\",\"value\":0.12},{\"param\":\"serieHover\",\"value\":1}],\"value\":0.16}},\"layer\":[{\"description\":\"Cinta invisible y ancha: es la que recibe el cursor.\",\"mark\":{\"type\":\"line\",\"interpolate\":\"monotone\",\"strokeWidth\":22},\"params\":[{\"name\":\"serieHover\",\"select\":{\"type\":\"point\",\"fields\":[\"CategoryName\"],\"on\":\"pointerover\",\"clear\":\"pointerout\"}}],\"encoding\":{\"opacity\":{\"value\":0}}},{\"description\":\"La línea visible.\",\"mark\":{\"type\":\"line\",\"interpolate\":\"monotone\",\"strokeCap\":\"round\",\"strokeJoin\":\"round\"},\"encoding\":{\"strokeWidth\":{\"condition\":{\"param\":\"serieHover\",\"empty\":false,\"value\":4.5},\"value\":3}}},{\"description\":\"Los nodos.\",\"mark\":{\"type\":\"point\",\"filled\":true,\"stroke\":\"#FFFFFF\",\"strokeWidth\":2.5},\"encoding\":{\"size\":{\"condition\":{\"param\":\"serieHover\",\"empty\":false,\"value\":170},\"value\":110},\"tooltip\":[{\"field\":\"CategoryName\",\"type\":\"nominal\",\"title\":\"Categoría\"},{\"field\":\"YearMonth\",\"type\":\"temporal\",\"title\":\"Periodo\",\"format\":\"%b %Y\"},{\"field\":\"ranking\",\"type\":\"quantitative\",\"title\":\"Puesto\"},{\"field\":\"Total Sales\",\"type\":\"quantitative\",\"title\":\"Ventas\",\"format\":\",.0f\"}]}},{\"description\":\"Etiqueta al final de cada línea.\",\"transform\":[{\"filter\":\"datum.pasoFinal === 1\"}],\"mark\":{\"type\":\"text\",\"align\":\"left\",\"baseline\":\"middle\",\"dx\":14,\"fontSize\":12.5,\"fontWeight\":600},\"encoding\":{\"text\":{\"field\":\"CategoryName\",\"type\":\"nominal\"}}}]}'"
                 }
               }
             },
@@ -89,7 +89,7 @@
             "version": {
               "expr": {
                 "Literal": {
-                  "Value": "'6.2.0'"
+                  "Value": "'6.4.1'"
                 }
               }
             },
@@ -125,6 +125,39 @@
               "expr": {
                 "Literal": {
                   "Value": "200D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "610D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1190D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.9.1.0'"
                 }
               }
             }
