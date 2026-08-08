@@ -62,18 +62,23 @@
     }
   },
   "title": {
-    "text": "Quién manda cada mes",
-    "subtitle": "Puesto por valor · 1º arriba",
+    "text": "Quién manda, mes a mes",
+    "subtitle": [
+      "Puesto por valor · 1º arriba · Top 6 series",
+      "Pasa el cursor por una línea para seguir su recorrido"
+    ],
     "anchor": "start",
     "font": "Segoe UI",
-    "fontSize": 18,
+    "fontSize": 21,
     "fontWeight": 600,
-    "color": "#252423",
+    "color": "#1B1A19",
     "subtitleFont": "Segoe UI",
-    "subtitleFontSize": 12.5,
-    "subtitleColor": "#797775",
-    "subtitlePadding": 8,
-    "offset": 16
+    "subtitleFontSize": 12,
+    "subtitleFontWeight": "normal",
+    "subtitleColor": "#8A8886",
+    "subtitleLineHeight": 17,
+    "subtitlePadding": 10,
+    "offset": 24
   },
   "description": "Bump chart de ranking: cada línea es una categoría y su altura es el puesto que ocupa en cada periodo (1 = arriba). El puesto se calcula dentro del spec con un window rank por periodo.",
   "height": 340,
