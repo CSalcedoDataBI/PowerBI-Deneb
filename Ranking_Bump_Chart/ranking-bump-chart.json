@@ -1,44 +1,50 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "usermeta": {
+    "information": {
+      "uuid": "5ed0d5a4-2f71-420c-bef6-4b95c4156118",
+      "generated": "2026-08-08T03:01:49.951Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Ranking en el tiempo (bump chart)",
+      "description": "Una linea por categoria; su altura es el puesto que ocupa en cada periodo, 1o arriba. El puesto se calcula dentro del spec con un window rank por periodo, y trae un Top 6 incorporado.",
+      "author": "Cristobal Salcedo Beltran"
+    },
     "deneb": {
-      "build": "1.6.2.1",
+      "build": "1.9.0",
       "metaVersion": 1,
       "provider": "vegaLite",
-      "providerVersion": "5.16.3"
+      "providerVersion": "6.4.1"
     },
     "interactivity": {
       "tooltip": true,
       "contextMenu": true,
       "selection": true,
+      "selectionMode": "simple",
       "highlight": true,
       "dataPointLimit": 200
     },
-    "information": {
-      "name": "Ranking en el tiempo (bump chart)",
-      "description": "Bump chart de ranking: el puesto de cada categoría se recalcula dentro del propio spec con un window rank por periodo. Autor: Cristobal Salcedo Beltrán."
-    },
+    "config": "{\n  \"view\": {\n    \"stroke\": \"transparent\"\n  }\n}",
     "dataset": [
       {
         "key": "__0__",
-        "name": "Categoría",
-        "description": "Serie que compite en el ranking (una línea por valor)",
-        "type": "text",
-        "kind": "column"
+        "name": "SubCategoryName",
+        "description": "",
+        "kind": "column",
+        "type": "text"
       },
       {
         "key": "__1__",
-        "name": "Periodo",
-        "description": "Eje temporal del ranking (mes, trimestre, año)",
-        "type": "date",
-        "kind": "column"
+        "name": "YearMonth",
+        "description": "",
+        "kind": "column",
+        "type": "text"
       },
       {
         "key": "__2__",
-        "name": "Valor",
-        "description": "Medida que ordena el ranking dentro de cada periodo",
-        "type": "numeric",
-        "kind": "measure"
+        "name": "Total Sales",
+        "description": "",
+        "kind": "measure",
+        "type": "numeric"
       }
     ]
   },
@@ -62,10 +68,10 @@
     }
   },
   "title": {
-    "text": "Ranking de categorías por valor",
+    "text": "Ranking de subcategorías por ventas · 2023–2024",
     "subtitle": [
-      "Top 6 series · 1º arriba",
-      "Pasa el cursor por una línea para seguir su recorrido"
+      "Top 6 por ventas totales · 1º arriba",
+      "Contoso Retail · pasa el cursor por una línea para seguirla"
     ],
     "anchor": "middle",
     "font": "Segoe UI",
@@ -80,13 +86,13 @@
     "subtitlePadding": 10,
     "offset": 24
   },
-  "description": "Bump chart de ranking: cada línea es una categoría y su altura es el puesto que ocupa en cada periodo (1 = arriba). El puesto se calcula dentro del spec con un window rank por periodo.",
+  "description": "Bump chart de ranking sobre las 6 subcategorías con más ventas.",
   "height": 340,
   "padding": {
     "left": 4,
     "top": 4,
     "bottom": 4,
-    "right": 100
+    "right": 190
   },
   "data": {
     "name": "dataset"
@@ -166,15 +172,15 @@
         "padding": 18
       },
       "axis": {
-        "format": "%b",
+        "format": "%b %y",
         "tickCount": {
           "interval": "month",
-          "step": 1
+          "step": 3
         },
         "labelAngle": 0,
         "labelPadding": 14,
         "grid": true,
-        "gridColor": "#EDEBE9",
+        "gridColor": "#F0EEEC",
         "gridWidth": 1
       }
     },
@@ -227,7 +233,7 @@
   },
   "layer": [
     {
-      "description": "Cinta invisible y ancha: es la que recibe el cursor (una línea de 3 px no se atrapa). Anula la opacidad heredada para no pintarse nunca.",
+      "description": "Cinta invisible y ancha: recibe el cursor Y el clic de cross-filter (una línea de 3 px no se atrapa).",
       "mark": {
         "type": "line",
         "interpolate": "monotone",
@@ -272,7 +278,7 @@
       }
     },
     {
-      "description": "Los nodos: un punto por periodo, con halo blanco para que el cruce se lea.",
+      "description": "Los nodos: cada uno es un punto clicable para el cross-filter de Power BI.",
       "mark": {
         "type": "point",
         "filled": true,
@@ -292,7 +298,7 @@
           {
             "field": "__0__",
             "type": "nominal",
-            "title": "Categoría"
+            "title": "Subcategoría"
           },
           {
             "field": "__1__",
@@ -308,14 +314,14 @@
           {
             "field": "__2__",
             "type": "quantitative",
-            "title": "Valor",
+            "title": "Ventas",
             "format": ",.0f"
           }
         ]
       }
     },
     {
-      "description": "Etiqueta al final de cada línea: sustituye a la leyenda, sin saltos de vista.",
+      "description": "Etiqueta al final de cada línea.",
       "transform": [
         {
           "filter": "datum.pasoFinal === 1"
@@ -326,7 +332,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 14,
-        "fontSize": 12.5,
+        "fontSize": 13,
         "fontWeight": 600
       },
       "encoding": {

@@ -29,11 +29,12 @@ recibe el `pointerover`. Al resaltar una serie, las demás bajan a 0,16.
 
 | Rol | Tipo | En el ejemplo |
 |-----|------|---------------|
-| `__0__` Categoría | texto | `DimProduct[SubCategoryName]` (top 6) |
-| `__1__` Periodo | fecha | `DimDate[YearMonth]` |
-| `__2__` Valor | medida | `[Total Sales]` |
+| `__0__` **SubCategoryName** — la serie que compite | texto | `DimProduct[SubCategoryName]` (top 6) |
+| `__1__` **YearMonth** — el eje temporal | texto | `DimDate[YearMonth]`, vale `"2024-01"` |
+| `__2__` **Total Sales** — la medida que ordena | medida | `[Total Sales]` |
 
-El orden importa: Deneb mapea los roles por posición.
+El orden importa: **Deneb mapea los roles por posición**. Los nombres son los del
+modelo de ejemplo; sobre tu propio modelo enlazas lo tuyo en ese mismo orden.
 
 **Un periodo = una fila por categoría.** El `rank` compara filas dentro de cada
 periodo, así que el campo de periodo debe venir ya al grano que quieres ver. Por
