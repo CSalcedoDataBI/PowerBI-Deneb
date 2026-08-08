@@ -29,7 +29,7 @@ recibe el `pointerover`. Al resaltar una serie, las demás bajan a 0,16.
 
 | Rol | Tipo | En el ejemplo |
 |-----|------|---------------|
-| `__0__` Categoría | texto | `DimProduct[CategoryName]` |
+| `__0__` Categoría | texto | `DimProduct[SubCategoryName]` (top 6) |
 | `__1__` Periodo | fecha | `DimDate[YearMonth]` |
 | `__2__` Valor | medida | `[Total Sales]` |
 

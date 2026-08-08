@@ -88,6 +88,35 @@
   },
   "transform": [
     {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "__2__",
+          "as": "totalSerie"
+        }
+      ],
+      "groupby": [
+        "__0__"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "dense_rank",
+          "as": "puestoSerie"
+        }
+      ],
+      "sort": [
+        {
+          "field": "totalSerie",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.puestoSerie <= 6"
+    },
+    {
       "window": [
         {
           "op": "rank",
