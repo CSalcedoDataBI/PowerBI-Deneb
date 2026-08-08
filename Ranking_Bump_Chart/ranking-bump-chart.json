@@ -62,12 +62,12 @@
     }
   },
   "title": {
-    "text": "Quién manda, mes a mes",
+    "text": "Ranking de categorías por valor",
     "subtitle": [
-      "Puesto por valor · 1º arriba · Top 6 series",
+      "Top 6 series · 1º arriba",
       "Pasa el cursor por una línea para seguir su recorrido"
     ],
-    "anchor": "start",
+    "anchor": "middle",
     "font": "Segoe UI",
     "fontSize": 21,
     "fontWeight": 600,
