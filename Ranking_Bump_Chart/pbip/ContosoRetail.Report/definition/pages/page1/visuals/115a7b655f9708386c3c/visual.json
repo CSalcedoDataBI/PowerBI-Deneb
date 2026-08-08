@@ -1,0 +1,215 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "115a7b655f9708386c3c",
+  "position": {
+    "x": 24,
+    "y": 0,
+    "z": 0,
+    "height": 472,
+    "width": 1216,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimProduct"
+                    }
+                  },
+                  "Property": "SubCategoryName"
+                }
+              },
+              "queryRef": "DimProduct.SubCategoryName",
+              "nativeQueryRef": "SubCategoryName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "YearMonth"
+                }
+              },
+              "queryRef": "DimDate.YearMonth",
+              "nativeQueryRef": "YearMonth"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\r\n  \"usermeta\": {\r\n    \"deneb\": {\r\n      \"build\": \"1.6.2.1\",\r\n      \"metaVersion\": 1,\r\n      \"provider\": \"vegaLite\",\r\n      \"providerVersion\": \"5.16.3\"\r\n    },\r\n    \"interactivity\": {\r\n      \"tooltip\": true,\r\n      \"contextMenu\": true,\r\n      \"selection\": true,\r\n      \"highlight\": true,\r\n      \"dataPointLimit\": 200\r\n    },\r\n    \"information\": {\r\n      \"name\": \"Ranking en el tiempo (bump chart)\",\r\n      \"description\": \"Bump chart enlazado al modelo Contoso Retail: SubCategoryName, YearMonth y [Total Sales], recortado al Top 6 dentro del spec. Autor: Cristobal Salcedo Beltran.\"\r\n    }\r\n  },\r\n  \"config\": {\r\n    \"background\": \"transparent\",\r\n    \"font\": \"Segoe UI\",\r\n    \"view\": {\r\n      \"stroke\": \"transparent\"\r\n    },\r\n    \"axis\": {\r\n      \"grid\": false,\r\n      \"domain\": false,\r\n      \"ticks\": false,\r\n      \"labelColor\": \"#605E5C\",\r\n      \"labelFontSize\": 12.5,\r\n      \"titleColor\": \"#252423\",\r\n      \"titleFontWeight\": \"normal\"\r\n    },\r\n    \"text\": {\r\n      \"font\": \"Segoe UI\"\r\n    }\r\n  },\r\n  \"title\": {\r\n    \"text\": \"Ranking de subcategorías por ventas · 2023–2024\",\r\n    \"subtitle\": [\r\n      \"Top 6 por ventas totales · 1º arriba\",\r\n      \"Contoso Retail · pasa el cursor por una línea para seguirla\"\r\n    ],\r\n    \"anchor\": \"middle\",\r\n    \"font\": \"Segoe UI\",\r\n    \"fontSize\": 21,\r\n    \"fontWeight\": 600,\r\n    \"color\": \"#1B1A19\",\r\n    \"subtitleFont\": \"Segoe UI\",\r\n    \"subtitleFontSize\": 12,\r\n    \"subtitleFontWeight\": \"normal\",\r\n    \"subtitleColor\": \"#8A8886\",\r\n    \"subtitleLineHeight\": 17,\r\n    \"subtitlePadding\": 10,\r\n    \"offset\": 24\r\n  },\r\n  \"description\": \"Bump chart de ranking sobre las 6 subcategorías con más ventas.\",\r\n  \"height\": 340,\r\n  \"padding\": {\r\n    \"left\": 4,\r\n    \"top\": 4,\r\n    \"bottom\": 4,\r\n    \"right\": 12\r\n  },\r\n  \"data\": {\r\n    \"name\": \"dataset\"\r\n  },\r\n  \"transform\": [\r\n    {\r\n      \"joinaggregate\": [\r\n        {\r\n          \"op\": \"sum\",\r\n          \"field\": \"Total Sales\",\r\n          \"as\": \"totalSerie\"\r\n        }\r\n      ],\r\n      \"groupby\": [\r\n        \"SubCategoryName\"\r\n      ]\r\n    },\r\n    {\r\n      \"window\": [\r\n        {\r\n          \"op\": \"dense_rank\",\r\n          \"as\": \"puestoSerie\"\r\n        }\r\n      ],\r\n      \"sort\": [\r\n        {\r\n          \"field\": \"totalSerie\",\r\n          \"order\": \"descending\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"filter\": \"datum.puestoSerie <= 6\"\r\n    },\r\n    {\r\n      \"window\": [\r\n        {\r\n          \"op\": \"rank\",\r\n          \"as\": \"ranking\"\r\n        }\r\n      ],\r\n      \"groupby\": [\r\n        \"YearMonth\"\r\n      ],\r\n      \"sort\": [\r\n        {\r\n          \"field\": \"Total Sales\",\r\n          \"order\": \"descending\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"window\": [\r\n        {\r\n          \"op\": \"row_number\",\r\n          \"as\": \"pasoFinal\"\r\n        }\r\n      ],\r\n      \"groupby\": [\r\n        \"SubCategoryName\"\r\n      ],\r\n      \"sort\": [\r\n        {\r\n          \"field\": \"YearMonth\",\r\n          \"order\": \"descending\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"encoding\": {\r\n    \"x\": {\r\n      \"field\": \"YearMonth\",\r\n      \"type\": \"temporal\",\r\n      \"title\": null,\r\n      \"scale\": {\r\n        \"type\": \"utc\",\r\n        \"padding\": 18\r\n      },\r\n      \"axis\": {\r\n        \"format\": \"%b %y\",\r\n        \"tickCount\": {\r\n          \"interval\": \"month\",\r\n          \"step\": 3\r\n        },\r\n        \"labelAngle\": 0,\r\n        \"labelPadding\": 14,\r\n        \"grid\": true,\r\n        \"gridColor\": \"#F0EEEC\",\r\n        \"gridWidth\": 1\r\n      }\r\n    },\r\n    \"y\": {\r\n      \"field\": \"ranking\",\r\n      \"type\": \"quantitative\",\r\n      \"title\": null,\r\n      \"scale\": {\r\n        \"reverse\": true,\r\n        \"nice\": false,\r\n        \"zero\": false,\r\n        \"padding\": 26\r\n      },\r\n      \"axis\": {\r\n        \"tickMinStep\": 1,\r\n        \"labelExpr\": \"datum.value + ''º''\",\r\n        \"labelPadding\": 14,\r\n        \"labelFontWeight\": 600,\r\n        \"labelColor\": \"#3B3A39\"\r\n      }\r\n    },\r\n    \"color\": {\r\n      \"field\": \"SubCategoryName\",\r\n      \"type\": \"nominal\",\r\n      \"legend\": null,\r\n      \"scale\": {\r\n        \"range\": [\r\n          \"#2E5E7E\",\r\n          \"#C9724A\",\r\n          \"#4C8577\",\r\n          \"#A8456B\",\r\n          \"#7E6BB0\",\r\n          \"#B08A1E\"\r\n        ]\r\n      }\r\n    },\r\n    \"opacity\": {\r\n      \"condition\": [\r\n        {\r\n          \"test\": \"datum.__selected__ === ''off''\",\r\n          \"value\": 0.12\r\n        },\r\n        {\r\n          \"param\": \"serieHover\",\r\n          \"value\": 1\r\n        }\r\n      ],\r\n      \"value\": 0.16\r\n    }\r\n  },\r\n  \"layer\": [\r\n    {\r\n      \"description\": \"Cinta invisible y ancha: recibe el cursor Y el clic de cross-filter (una línea de 3 px no se atrapa).\",\r\n      \"mark\": {\r\n        \"type\": \"line\",\r\n        \"interpolate\": \"monotone\",\r\n        \"strokeWidth\": 22\r\n      },\r\n      \"params\": [\r\n        {\r\n          \"name\": \"serieHover\",\r\n          \"select\": {\r\n            \"type\": \"point\",\r\n            \"fields\": [\r\n              \"SubCategoryName\"\r\n            ],\r\n            \"on\": \"pointerover\",\r\n            \"clear\": \"pointerout\"\r\n          }\r\n        }\r\n      ],\r\n      \"encoding\": {\r\n        \"opacity\": {\r\n          \"value\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"description\": \"La línea visible.\",\r\n      \"mark\": {\r\n        \"type\": \"line\",\r\n        \"interpolate\": \"monotone\",\r\n        \"strokeCap\": \"round\",\r\n        \"strokeJoin\": \"round\"\r\n      },\r\n      \"encoding\": {\r\n        \"strokeWidth\": {\r\n          \"condition\": {\r\n            \"param\": \"serieHover\",\r\n            \"empty\": false,\r\n            \"value\": 4.5\r\n          },\r\n          \"value\": 3\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"description\": \"Los nodos: cada uno es un punto clicable para el cross-filter de Power BI.\",\r\n      \"mark\": {\r\n        \"type\": \"point\",\r\n        \"filled\": true,\r\n        \"stroke\": \"#FFFFFF\",\r\n        \"strokeWidth\": 2.5\r\n      },\r\n      \"encoding\": {\r\n        \"size\": {\r\n          \"condition\": {\r\n            \"param\": \"serieHover\",\r\n            \"empty\": false,\r\n            \"value\": 170\r\n          },\r\n          \"value\": 110\r\n        },\r\n        \"tooltip\": [\r\n          {\r\n            \"field\": \"SubCategoryName\",\r\n            \"type\": \"nominal\",\r\n            \"title\": \"Subcategoría\"\r\n          },\r\n          {\r\n            \"field\": \"YearMonth\",\r\n            \"type\": \"temporal\",\r\n            \"title\": \"Periodo\",\r\n            \"format\": \"%b %Y\"\r\n          },\r\n          {\r\n            \"field\": \"ranking\",\r\n            \"type\": \"quantitative\",\r\n            \"title\": \"Puesto\"\r\n          },\r\n          {\r\n            \"field\": \"Total Sales\",\r\n            \"type\": \"quantitative\",\r\n            \"title\": \"Ventas\",\r\n            \"format\": \",.0f\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"description\": \"Etiqueta al final de cada línea.\",\r\n      \"transform\": [\r\n        {\r\n          \"filter\": \"datum.pasoFinal === 1\"\r\n        }\r\n      ],\r\n      \"mark\": {\r\n        \"type\": \"text\",\r\n        \"align\": \"left\",\r\n        \"baseline\": \"middle\",\r\n        \"dx\": 14,\r\n        \"fontSize\": 13,\r\n        \"fontWeight\": 600\r\n      },\r\n      \"encoding\": {\r\n        \"text\": {\r\n          \"field\": \"SubCategoryName\",\r\n          \"type\": \"nominal\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\n    \"stroke\": \"transparent\"\n  }\n}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.1'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "200D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "462D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1206D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.9.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ac220d9fe2651982372a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimProduct"
+              }
+            },
+            "Property": "SubCategoryName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "183c3284090287db1c60",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "YearMonth"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b5e156eabbccc939714b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

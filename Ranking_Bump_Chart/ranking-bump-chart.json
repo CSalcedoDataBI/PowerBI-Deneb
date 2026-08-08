@@ -1,0 +1,346 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "usermeta": {
+    "information": {
+      "uuid": "5ed0d5a4-2f71-420c-bef6-4b95c4156118",
+      "generated": "2026-08-08T03:01:49.951Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Ranking en el tiempo (bump chart)",
+      "description": "Una linea por categoria; su altura es el puesto que ocupa en cada periodo, 1o arriba. El puesto se calcula dentro del spec con un window rank por periodo, y trae un Top 6 incorporado.",
+      "author": "Cristobal Salcedo Beltran"
+    },
+    "deneb": {
+      "build": "1.9.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "selectionMode": "simple",
+      "highlight": true,
+      "dataPointLimit": 200
+    },
+    "config": "{\n  \"view\": {\n    \"stroke\": \"transparent\"\n  }\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "SubCategoryName",
+        "description": "",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "YearMonth",
+        "description": "",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__2__",
+        "name": "Total Sales",
+        "description": "",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12.5,
+      "titleColor": "#252423",
+      "titleFontWeight": "normal"
+    },
+    "text": {
+      "font": "Segoe UI"
+    }
+  },
+  "title": {
+    "text": "Ranking de subcategorías por ventas · 2023–2024",
+    "subtitle": [
+      "Top 6 por ventas totales · 1º arriba",
+      "Contoso Retail · pasa el cursor por una línea para seguirla"
+    ],
+    "anchor": "middle",
+    "font": "Segoe UI",
+    "fontSize": 21,
+    "fontWeight": 600,
+    "color": "#1B1A19",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 12,
+    "subtitleFontWeight": "normal",
+    "subtitleColor": "#8A8886",
+    "subtitleLineHeight": 17,
+    "subtitlePadding": 10,
+    "offset": 24
+  },
+  "description": "Bump chart de ranking sobre las 6 subcategorías con más ventas.",
+  "height": 340,
+  "padding": {
+    "left": 4,
+    "top": 4,
+    "bottom": 4,
+    "right": 12
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "__2__",
+          "as": "totalSerie"
+        }
+      ],
+      "groupby": [
+        "__0__"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "dense_rank",
+          "as": "puestoSerie"
+        }
+      ],
+      "sort": [
+        {
+          "field": "totalSerie",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.puestoSerie <= 6"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "ranking"
+        }
+      ],
+      "groupby": [
+        "__1__"
+      ],
+      "sort": [
+        {
+          "field": "__2__",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "pasoFinal"
+        }
+      ],
+      "groupby": [
+        "__0__"
+      ],
+      "sort": [
+        {
+          "field": "__1__",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "__1__",
+      "type": "temporal",
+      "title": null,
+      "scale": {
+        "type": "utc",
+        "padding": 18
+      },
+      "axis": {
+        "format": "%b %y",
+        "tickCount": {
+          "interval": "month",
+          "step": 3
+        },
+        "labelAngle": 0,
+        "labelPadding": 14,
+        "grid": true,
+        "gridColor": "#F0EEEC",
+        "gridWidth": 1
+      }
+    },
+    "y": {
+      "field": "ranking",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "reverse": true,
+        "nice": false,
+        "zero": false,
+        "padding": 26
+      },
+      "axis": {
+        "tickMinStep": 1,
+        "labelExpr": "datum.value + 'º'",
+        "labelPadding": 14,
+        "labelFontWeight": 600,
+        "labelColor": "#3B3A39"
+      }
+    },
+    "color": {
+      "field": "__0__",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "range": [
+          "#2E5E7E",
+          "#C9724A",
+          "#4C8577",
+          "#A8456B",
+          "#7E6BB0",
+          "#B08A1E"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": [
+        {
+          "test": "datum.__selected__ === 'off'",
+          "value": 0.12
+        },
+        {
+          "param": "serieHover",
+          "value": 1
+        }
+      ],
+      "value": 0.16
+    }
+  },
+  "layer": [
+    {
+      "description": "Cinta invisible y ancha: recibe el cursor Y el clic de cross-filter (una línea de 3 px no se atrapa).",
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 22
+      },
+      "params": [
+        {
+          "name": "serieHover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "__0__"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "encoding": {
+        "opacity": {
+          "value": 0
+        }
+      }
+    },
+    {
+      "description": "La línea visible.",
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeCap": "round",
+        "strokeJoin": "round"
+      },
+      "encoding": {
+        "strokeWidth": {
+          "condition": {
+            "param": "serieHover",
+            "empty": false,
+            "value": 4.5
+          },
+          "value": 3
+        }
+      }
+    },
+    {
+      "description": "Los nodos: cada uno es un punto clicable para el cross-filter de Power BI.",
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "size": {
+          "condition": {
+            "param": "serieHover",
+            "empty": false,
+            "value": 170
+          },
+          "value": 110
+        },
+        "tooltip": [
+          {
+            "field": "__0__",
+            "type": "nominal",
+            "title": "Subcategoría"
+          },
+          {
+            "field": "__1__",
+            "type": "temporal",
+            "title": "Periodo",
+            "format": "%b %Y"
+          },
+          {
+            "field": "ranking",
+            "type": "quantitative",
+            "title": "Puesto"
+          },
+          {
+            "field": "__2__",
+            "type": "quantitative",
+            "title": "Ventas",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Etiqueta al final de cada línea.",
+      "transform": [
+        {
+          "filter": "datum.pasoFinal === 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 14,
+        "fontSize": 13,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "__0__",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}
