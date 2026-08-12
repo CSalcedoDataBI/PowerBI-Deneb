@@ -58,7 +58,7 @@
   "data": {
     "name": "dataset"
   },
-  "description": "Layered Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI. Note: Cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "Layered Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI. Note: Cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "transform": [
     {
       "filter": "datum['__0__'] == '2000' "
