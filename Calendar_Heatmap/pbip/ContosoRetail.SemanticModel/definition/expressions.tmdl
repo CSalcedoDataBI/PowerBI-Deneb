@@ -1,0 +1,11 @@
+/// Base raw URL of the Contoso Retail Parquet files, hosted in the PUBLIC SampleDataSets repo
+/// (github.com/CSalcedoDataBI/SampleDataSets → contoso-retail/). Hosting the data there lets THIS
+/// reference repo stay private while the model still refreshes for ANYONE over raw.githubusercontent
+/// — no auth, no SQL Server, no local paths. A real M PARAMETER (IsParameterQuery) so every partition
+/// stays firewall-safe. To use a fork, branch, tag or a local mirror, change this single value
+/// (a folder URL, without a trailing slash).
+expression DataBaseUrl = "https://raw.githubusercontent.com/CSalcedoDataBI/SampleDataSets/main/contoso-retail" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b0000000-0000-0000-0000-0000000000d0
+
+	annotation PBI_ResultType = Text
+

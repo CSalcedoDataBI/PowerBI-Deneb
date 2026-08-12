@@ -1,0 +1,204 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "usermeta": {
+    "information": {
+      "uuid": "18acb70c-63dc-4420-a900-3509f8e6371c",
+      "generated": "2026-08-12T03:57:31.488Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Mapa de calor de calendario",
+      "description": "Rejilla de 53 semanas × 7 días por año. El calendario se deriva dentro del spec con timeUnit UTC a partir de UNA columna de fecha. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán"
+    },
+    "deneb": {
+      "build": "1.9.1.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "selectionMode": "simple",
+      "highlight": true,
+      "dataPointLimit": 250
+    },
+    "config": "{\n  \"background\": \"transparent\",\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"axis\": {\n    \"grid\": false,\n    \"domain\": false,\n    \"ticks\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 11,\n    \"titleColor\": \"#252423\",\n    \"titleFontWeight\": \"normal\"\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\"\n  }\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Date",
+        "description": "Fecha a grano DÍA. Una fila por día — el spec no agrega",
+        "kind": "column",
+        "type": "dateTime"
+      },
+      {
+        "key": "__1__",
+        "name": "Total Sales",
+        "description": "Medida cuya intensidad pinta cada día",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 11,
+      "titleColor": "#252423",
+      "titleFontWeight": "normal"
+    },
+    "text": {
+      "font": "Segoe UI"
+    }
+  },
+  "title": {
+    "text": "Intensidad de ventas día a día · 2023–2024",
+    "subtitle": [
+      "Cada celda es un día · color = ventas del día",
+      "Contoso Retail · el sábado vende 5× lo del domingo"
+    ],
+    "anchor": "middle",
+    "font": "Segoe UI",
+    "fontSize": 21,
+    "fontWeight": 600,
+    "color": "#1B1A19",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 12,
+    "subtitleFontWeight": "normal",
+    "subtitleColor": "#8A8886",
+    "subtitleLineHeight": 17,
+    "subtitlePadding": 10,
+    "offset": 20
+  },
+  "description": "Mapa de calor de calendario: x = semana del año, y = día de la semana, una faceta por año. El calendario se deriva con timeUnit UTC desde una sola columna de fecha.",
+  "padding": {
+    "left": 4,
+    "top": 4,
+    "bottom": 4,
+    "right": 12
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "spacing": 22,
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2,
+    "stroke": "#FFFFFF",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "row": {
+      "field": "__0__",
+      "timeUnit": "utcyear",
+      "type": "ordinal",
+      "title": null,
+      "header": {
+        "labelExpr": "utcFormat(datum.value, '%Y')",
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelOrient": "top",
+        "labelPadding": 2,
+        "labelFontSize": 13,
+        "labelFontWeight": 600,
+        "labelColor": "#3B3A39"
+      }
+    },
+    "x": {
+      "field": "__0__",
+      "timeUnit": "utcweek",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelExpr": "utcdate(datum.value) <= 7 ? utcFormat(datum.value, '%b') : ''",
+        "labelAngle": 0,
+        "labelPadding": 6,
+        "labelFontSize": 11,
+        "orient": "bottom"
+      }
+    },
+    "y": {
+      "field": "__0__",
+      "timeUnit": "utcday",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelExpr": "['D', 'L', 'M', 'X', 'J', 'V', 'S'][utcday(datum.value)]",
+        "labelPadding": 6,
+        "labelFontSize": 11,
+        "labelFontWeight": 600,
+        "labelColor": "#3B3A39"
+      }
+    },
+    "color": {
+      "condition": {
+        "test": "datum['__1__'] === 0",
+        "value": "#E8E6E3"
+      },
+      "field": "__1__",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "type": "linear",
+        "range": [
+          "#9EF1E0",
+          "#72EBC4",
+          "#68C98F",
+          "#388E84",
+          "#116B62",
+          "#084F49"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "direction": "vertical",
+        "gradientLength": 118,
+        "gradientThickness": 8,
+        "labelFontSize": 10.5,
+        "labelColor": "#605E5C",
+        "format": "~s",
+        "offset": 10
+      }
+    },
+    "opacity": {
+      "condition": [
+        {
+          "test": "datum.__selected__ === 'off'",
+          "value": 0.15
+        }
+      ],
+      "value": 1
+    },
+    "tooltip": [
+      {
+        "field": "diaLargo",
+        "type": "nominal",
+        "title": "Día"
+      },
+      {
+        "field": "__1__",
+        "type": "quantitative",
+        "title": "Ventas",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "width": 1040,
+  "height": 150,
+  "transform": [
+    {
+      "calculate": "['domingo','lunes','martes','miércoles','jueves','viernes','sábado'][utcday(toDate(datum['__0__']))] + ', ' + utcdate(toDate(datum['__0__'])) + ' de ' + ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][utcmonth(toDate(datum['__0__']))] + ' de ' + utcyear(toDate(datum['__0__']))",
+      "as": "diaLargo"
+    }
+  ]
+}

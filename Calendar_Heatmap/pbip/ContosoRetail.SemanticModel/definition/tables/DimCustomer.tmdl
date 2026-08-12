@@ -1,0 +1,162 @@
+/// Customer dimension — one row per customer (~12,000). Demographics + geography (Country, State, City). 100% synthetic (Faker) — no real people.
+table DimCustomer
+	lineageTag: 6a360cc3-1bd4-5d4a-9699-d8fed6ee3309
+
+	/// Surrogate customer key. Joins to FactSales[CustomerKey].
+	column CustomerKey
+		dataType: int64
+		lineageTag: 5f5aff48-26c7-5f08-a365-4f277b81c32e
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	/// Surrogate geography-area key for the customer.
+	column GeoAreaKey
+		dataType: int64
+		lineageTag: 75d74068-6064-59ff-b243-04aa13d051c9
+		summarizeBy: none
+		sourceColumn: GeoAreaKey
+
+	/// Record validity start date (slowly changing dimension), stored as text.
+	column StartDT
+		dataType: string
+		lineageTag: 29107021-9f8e-5fca-8a3a-c932b5ed333d
+		sourceColumn: StartDT
+
+	/// Record validity end date (slowly changing dimension), stored as text.
+	column EndDT
+		dataType: string
+		lineageTag: 7dc70700-0282-5e1a-8aaf-f8ed3eaadac7
+		sourceColumn: EndDT
+
+	/// Customer continent.
+	column Continent
+		dataType: string
+		lineageTag: 2c3f4b52-f4b1-5a13-82d8-aeb4c30584bc
+		sourceColumn: Continent
+
+	/// Customer gender.
+	column Gender
+		dataType: string
+		lineageTag: 973f155a-545f-5580-baa7-ffdc669e9aa7
+		sourceColumn: Gender
+
+	/// Personal title (Mr., Ms., …).
+	column Title
+		dataType: string
+		lineageTag: bfebf225-1a1b-57cb-8347-ec0f2709ac91
+		sourceColumn: Title
+
+	/// Customer first (given) name.
+	column GivenName
+		dataType: string
+		lineageTag: f6cc37e1-ff3d-5d99-bdb1-a6a4f6a96cb6
+		sourceColumn: GivenName
+
+	/// Customer middle initial.
+	column MiddleInitial
+		dataType: string
+		lineageTag: 54d55906-a70f-5bda-9855-b8a96fa47156
+		sourceColumn: MiddleInitial
+
+	/// Customer last name (surname).
+	column Surname
+		dataType: string
+		lineageTag: d466764b-aed6-5fcd-b451-38eb753a3d0b
+		sourceColumn: Surname
+
+	/// Street address.
+	column StreetAddress
+		dataType: string
+		lineageTag: 6b4649dd-c051-534e-ba4f-aea83ab263bc
+		sourceColumn: StreetAddress
+
+	/// Customer city.
+	column City
+		dataType: string
+		lineageTag: 235dcda0-b26f-5232-bab0-b0ee694709af
+		sourceColumn: City
+
+	/// Customer state / province (abbreviation).
+	column State
+		dataType: string
+		lineageTag: f2d87d1c-c816-5db6-b403-6881271b4440
+		sourceColumn: State
+
+	/// Customer state / province (full name).
+	column StateFull
+		dataType: string
+		lineageTag: 0fc1aa16-6086-5c0e-827c-b3ef45719b6a
+		sourceColumn: StateFull
+
+	/// Postal / ZIP code.
+	column ZipCode
+		dataType: string
+		lineageTag: e8231d9b-66ae-512e-956f-bcddc1c21f76
+		sourceColumn: ZipCode
+
+	/// Customer country (short code / name).
+	column Country
+		dataType: string
+		lineageTag: 23ecedfe-7d01-525c-87b3-222c20641f1b
+		sourceColumn: Country
+
+	/// Customer country (full name).
+	column CountryFull
+		dataType: string
+		lineageTag: e60c58a5-9cff-5f23-b0cd-d2b15407ba12
+		sourceColumn: CountryFull
+
+	/// Date of birth, stored as text.
+	column Birthday
+		dataType: string
+		lineageTag: 7c384b76-f0a5-5151-94cc-a260e5773b0b
+		sourceColumn: Birthday
+
+	/// Customer age in years.
+	column Age
+		dataType: int64
+		lineageTag: bfae2b65-419f-56ca-a09d-4c52c164a742
+		summarizeBy: none
+		sourceColumn: Age
+
+	/// Customer occupation.
+	column Occupation
+		dataType: string
+		lineageTag: 90c1c96d-acf8-53df-b8a0-e5717a582e93
+		sourceColumn: Occupation
+
+	/// Customer's company.
+	column Company
+		dataType: string
+		lineageTag: e4b13a1f-c6d2-59ac-b4cc-cdabd6fe09e6
+		sourceColumn: Company
+
+	/// Customer's vehicle (synthetic detail).
+	column Vehicle
+		dataType: string
+		lineageTag: fbef063b-09f5-558c-8044-8a0becc7f465
+		sourceColumn: Vehicle
+
+	/// Customer location latitude.
+	column Latitude
+		dataType: double
+		lineageTag: 65cceaa1-a514-5485-9b77-f4073f44fef0
+		summarizeBy: none
+		sourceColumn: Latitude
+
+	/// Customer location longitude.
+	column Longitude
+		dataType: double
+		lineageTag: 08402f85-a1e1-58ab-9226-6afe2e7cc521
+		summarizeBy: none
+		sourceColumn: Longitude
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimCustomer.parquet"])),
+					Typed = Table.TransformColumnTypes(Source, {{"EndDT", type text}})
+				in
+					Typed
+

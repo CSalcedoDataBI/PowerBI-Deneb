@@ -1,0 +1,105 @@
+/// Measures container — hidden calculated table holding all reusable measures, grouped in display folders. Contains no business data; a tidy, categorised home for metrics.
+table _Measures
+	lineageTag: f1000000-0000-0000-0000-000000000001
+
+	/// Net sales revenue = Σ(Quantity × NetPrice) over order lines. Additive; the primary revenue measure. Report alongside Total Quantity and Orders.
+	measure 'Total Sales' = SUMX(FactSales, FactSales[Quantity] * FactSales[NetPrice])
+		formatString: \$#,0
+		displayFolder: 01 Sales & Revenue
+		lineageTag: b1000000-0000-0000-0000-000000000001
+
+	/// Units sold = Σ Quantity across order lines. Additive volume measure.
+	measure 'Total Quantity' = SUM(FactSales[Quantity])
+		formatString: #,0
+		displayFolder: 01 Sales & Revenue
+		lineageTag: b1000000-0000-0000-0000-000000000002
+
+	/// Number of distinct orders (DISTINCTCOUNT of OrderKey), not order lines. Do not sum across overlapping filters.
+	measure Orders = DISTINCTCOUNT(FactSales[OrderKey])
+		formatString: #,0
+		displayFolder: 01 Sales & Revenue
+		lineageTag: b1000000-0000-0000-0000-000000000003
+
+	/// Total Sales ÷ Orders. Non-additive ratio — never sum; recompute per filter context.
+	measure 'Average Order Value' = DIVIDE([Total Sales], [Orders])
+		formatString: \$#,0.00
+		displayFolder: 01 Sales & Revenue
+		lineageTag: b1000000-0000-0000-0000-000000000004
+
+	/// Cost of goods sold = Σ(Quantity × UnitCost). Additive. Pairs with Total Sales to form Gross Margin.
+	measure 'Total Cost' = SUMX(FactSales, FactSales[Quantity] * FactSales[UnitCost])
+		formatString: \$#,0
+		displayFolder: 02 Profitability
+		lineageTag: b1000000-0000-0000-0000-000000000005
+
+	/// Total Sales − Total Cost, in currency. Additive. Absolute profit before overhead.
+	measure 'Gross Margin' = [Total Sales] - [Total Cost]
+		formatString: \$#,0
+		displayFolder: 02 Profitability
+		lineageTag: b1000000-0000-0000-0000-000000000006
+
+	/// Gross Margin ÷ Total Sales. Non-additive percentage — never sum; higher is better.
+	measure 'Margin %' = DIVIDE([Gross Margin], [Total Sales])
+		formatString: 0.0%
+		displayFolder: 02 Profitability
+		lineageTag: b1000000-0000-0000-0000-000000000007
+
+	/// Distinct customers with sales in context (DISTINCTCOUNT of CustomerKey). Semi-additive — do not sum across periods.
+	measure 'Distinct Customers' = DISTINCTCOUNT(FactSales[CustomerKey])
+		formatString: #,0
+		displayFolder: 03 Customers
+		lineageTag: b1000000-0000-0000-0000-000000000008
+
+	/// Total Sales ÷ Distinct Customers. Non-additive ratio; state the denominator (Distinct Customers = N).
+	measure 'Sales per Customer' = DIVIDE([Total Sales], [Distinct Customers])
+		formatString: \$#,0
+		displayFolder: 03 Customers
+		lineageTag: b1000000-0000-0000-0000-000000000009
+
+	/// Total Sales ÷ Total Quantity — realized price per unit. Non-additive ratio.
+	measure 'Average Selling Price' = DIVIDE([Total Sales], [Total Quantity])
+		formatString: \$#,0.00
+		displayFolder: 04 Pricing & Basket
+		lineageTag: b1000000-0000-0000-0000-00000000000a
+
+	/// Total Quantity ÷ Orders — average basket size in units. Non-additive ratio.
+	measure 'Units per Order' = DIVIDE([Total Quantity], [Orders])
+		formatString: #,0.0
+		displayFolder: 04 Pricing & Basket
+		lineageTag: b1000000-0000-0000-0000-00000000000b
+
+	/// Share of Total Sales versus the all-rows total (REMOVEFILTERS). Non-additive; use for mix / contribution.
+	measure '% of Total Sales' = DIVIDE([Total Sales], CALCULATE([Total Sales], REMOVEFILTERS()))
+		formatString: 0.0%
+		displayFolder: 04 Pricing & Basket
+		lineageTag: b1000000-0000-0000-0000-00000000000c
+
+	/// Total Sales accumulated from Jan 1 of the current year to the context date (over DimDate). Non-additive across years.
+	measure 'Sales YTD' = TOTALYTD([Total Sales], DimDate[Date])
+		formatString: \$#,0
+		displayFolder: 05 Time Intelligence
+		lineageTag: b1000000-0000-0000-0000-00000000000d
+
+	/// Total Sales for the same period one year earlier (SAMEPERIODLASTYEAR). Comparison base for year-over-year.
+	measure 'Sales PY' = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(DimDate[Date]))
+		formatString: \$#,0
+		displayFolder: 05 Time Intelligence
+		lineageTag: b1000000-0000-0000-0000-00000000000e
+
+	/// (Total Sales − Sales PY) ÷ Sales PY. Non-additive percentage; positive = growth versus last year.
+	measure 'Sales YoY %' = DIVIDE([Total Sales] - [Sales PY], [Sales PY])
+		formatString: 0.0%
+		displayFolder: 05 Time Intelligence
+		lineageTag: b1000000-0000-0000-0000-00000000000f
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: f1000000-0000-0000-0000-0000000000c1
+		summarizeBy: none
+		sourceColumn: [Placeholder]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Placeholder", "")
+

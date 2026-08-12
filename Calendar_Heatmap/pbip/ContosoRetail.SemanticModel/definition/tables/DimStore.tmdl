@@ -1,0 +1,90 @@
+/// Store / channel dimension — one row per store. CountryName + Description identify the store; Status marks open vs closed.
+table DimStore
+	lineageTag: 60755083-e2a1-59ab-87a9-7146898bc97f
+
+	/// Surrogate store key. Joins to FactSales[StoreKey].
+	column StoreKey
+		dataType: int64
+		lineageTag: 704150b7-e55f-536a-8dc2-7dc619bdadc0
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+	/// Business store code.
+	column StoreCode
+		dataType: int64
+		lineageTag: db86e6ef-6c99-5b83-ae04-89b18f83ccf1
+		summarizeBy: none
+		sourceColumn: StoreCode
+
+	/// Surrogate geography-area key for the store.
+	column GeoAreaKey
+		dataType: int64
+		lineageTag: 77418e08-2f3f-58c8-9ef3-0230041a0b3d
+		summarizeBy: none
+		sourceColumn: GeoAreaKey
+
+	/// Store country code.
+	column CountryCode
+		dataType: string
+		lineageTag: fbab33ae-5282-5872-b549-d34da8d2ce88
+		sourceColumn: CountryCode
+
+	/// Store country — common geography breakdown.
+	column CountryName
+		dataType: string
+		lineageTag: 1738df57-e3d8-546c-956e-423f06f716b8
+		sourceColumn: CountryName
+
+	/// Store state / province.
+	column State
+		dataType: string
+		lineageTag: e71432e0-3da6-5705-829f-c0982e5c21fc
+		sourceColumn: State
+
+	/// Store opening date, stored as text.
+	column OpenDate
+		dataType: string
+		lineageTag: ae22be4e-d89b-57d9-aa05-2a47496c95b0
+		sourceColumn: OpenDate
+
+	/// Store closing date, stored as text (blank if still open).
+	column CloseDate
+		dataType: string
+		lineageTag: f16977b4-f963-5bd1-8c56-985893be245c
+		sourceColumn: CloseDate
+
+	/// Store name / description — the natural label for a store.
+	column Description
+		dataType: string
+		lineageTag: c659b5e7-9863-5f1c-9c38-ad198662e62c
+		sourceColumn: Description
+
+	/// Store floor area in square meters.
+	column SquareMeters
+		dataType: int64
+		lineageTag: ef99408e-9e64-575d-a8bb-6ff3a8c590a3
+		summarizeBy: none
+		sourceColumn: SquareMeters
+
+	/// Store status (e.g., Open, Closed).
+	column Status
+		dataType: string
+		lineageTag: ebbec8f8-eece-5786-96c2-43b377fb0fa0
+		sourceColumn: Status
+
+	/// Internal weighting factor (synthetic).
+	column Weight
+		dataType: double
+		lineageTag: af37dc47-a3d7-5f97-b3f6-0dd385bc3d77
+		summarizeBy: none
+		sourceColumn: Weight
+
+	partition DimStore = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimStore.parquet"])),
+					Typed = Table.TransformColumnTypes(Source, {{"CloseDate", type text}})
+				in
+					Typed
+
