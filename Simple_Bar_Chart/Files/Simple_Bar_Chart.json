@@ -16,7 +16,7 @@
     },
     "information": {
       "name": "Simple Bar Chart Template",
-      "description": "This simple bar chart template is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+      "description": "This simple bar chart template is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
       "author": "Cristobal Salcedo",
       "uuid": "19669a01-08fc-477c-a357-9a1c6c134a1e",
       "generated": "2024-05-29T03:47:47.358Z"
@@ -52,7 +52,7 @@
       "labelPadding": 10
     }
   },
-  "description": "Simple Bar Chart template based on the official Vega-Lite example adapted for Deneb Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "Simple Bar Chart template based on the official Vega-Lite example adapted for Deneb Power BI with added interactivity (Cross-filtering). Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {
     "name": "dataset"
   },
