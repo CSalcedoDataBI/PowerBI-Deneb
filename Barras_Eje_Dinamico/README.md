@@ -110,7 +110,7 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       "type": "fit"
     }
   },
-  "description": "Visualización que muestra la alineación de etiquetas en un eje dependiendo de una opción seleccionada, Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com, Fuente de inspirirado: post de Carlos Zapata  https://www.linkedin.com/posts/merod_excel-activity-7173334410480574465-TFEV?utm_source=share&utm_medium=member_desktop",
+  "description": "Visualización que muestra la alineación de etiquetas en un eje dependiendo de una opción seleccionada, Author : Cristobal Salcedo Beltran, Email address: contacto@csalcedodatabi.com, Fuente de inspirirado: post de Carlos Zapata  https://www.linkedin.com/posts/merod_excel-activity-7173334410480574465-TFEV?utm_source=share&utm_medium=member_desktop",
   "background": "#f9f9f9",
   "padding": 15,
   "data": [
