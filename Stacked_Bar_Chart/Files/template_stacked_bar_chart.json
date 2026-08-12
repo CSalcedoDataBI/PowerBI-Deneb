@@ -16,7 +16,7 @@
     },
     "information": {
       "name": "Stacked Bar Chart",
-      "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+      "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
       "author": "Cristobal Salcedo Beltran",
       "uuid": "68fcd6b9-6d3f-45a9-b0db-88f453cbc2df",
       "generated": "2024-07-11T02:41:35.472Z"
@@ -54,7 +54,7 @@
       "labelFontSize": 18
     }
   },
-  "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {"name": "dataset"},
   "title": {
     "text": "Weather Distribution by Month",
