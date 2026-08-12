@@ -194,7 +194,7 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
       ]
     }
   },
-  "description": "A simple bar chart with embedded data.Author : Cristobal Salcedo Beltran, Email address: csalcedo90@gmail.com",
+  "description": "A simple bar chart with embedded data.Author : Cristobal Salcedo Beltran, Email address: contacto@csalcedodatabi.com",
   "data": {"name": "dataset"},
   "mark": "bar",
   "encoding": {
