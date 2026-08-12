@@ -258,7 +258,7 @@ Found a bug? Have an improvement? We welcome contributions!
 
 **Have questions?**
 
-- 📧 **Email:** [csalcedo90@gmail.com](mailto:csalcedo90@gmail.com)
+- 📧 **Email:** [contacto@csalcedodatabi.com](mailto:contacto@csalcedodatabi.com)
 - 💼 **LinkedIn:** [Cristobal Salcedo](https://www.linkedin.com/in/cristobal-salcedo)
 - 🐦 **Twitter:** [@CSalcedoDataBI](https://twitter.com/CSalcedoDataBI)
 - 📺 **YouTube:** [PowerBI-Deneb Channel](https://www.youtube.com/@PowerBI-Deneb-CS)
