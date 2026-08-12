@@ -17,7 +17,7 @@
     "information": {
       "name": "Gráfico de Pareto Dinámico",
       "description": "Esta plantilla permite la creación de un gráfico de Pareto dinámico, el cual puede ser personalizado según las necesidades del usuario. Los campos de datos y medidas son ejemplos y pueden ser reemplazados para adaptarse a diferentes categorías y métricas.",
-      "author": "Cristobal Salcedo Beltran, Contacto: csalcedo90@gmail.com.",
+      "author": "Cristobal Salcedo Beltran, Contacto: contacto@csalcedodatabi.com.",
       "uuid": "267e3e24-a51c-4d9c-9474-4fb34725506b",
       "generated": "2024-05-27T21:20:00.612Z"
     },
@@ -80,7 +80,7 @@
       "labels": false
     }
   },
-  "description": "Gráfico de Pareto Dinámico, Autor: Cristóbal Salcedo. Contacto: csalcedo90@gmail.com. Artículos relacionados: https://csalcedodatabi.github.io/posts/diagrama-pareto-parte-1/",
+  "description": "Gráfico de Pareto Dinámico, Autor: Cristóbal Salcedo. Contacto: contacto@csalcedodatabi.com. Artículos relacionados: https://csalcedodatabi.github.io/posts/diagrama-pareto-parte-1/",
   "data": {"name": "dataset"},
   "title": {
     "text": "Ventas por producto (Principio de Pareto)",
