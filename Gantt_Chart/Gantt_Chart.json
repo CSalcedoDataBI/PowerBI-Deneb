@@ -6,7 +6,7 @@
       "generated": "2024-08-16T03:43:41.186Z",
       "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
       "name": "Gantt Chart",
-      "description": "This Gantt chart template, adapted from Vega-Lite and customized for Deneb in Power BI, provides a clear and functional visualization.\nAuthor: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+      "description": "This Gantt chart template, adapted from Vega-Lite and customized for Deneb in Power BI, provides a clear and functional visualization.\nAuthor: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
       "author": "Cristobal Salcedo Beltran"
     },
     "deneb": {
@@ -62,7 +62,7 @@
       }
     ]
   },
-  "description": "This Gantt chart template, adapted from Vega-Lite and customized for Deneb in Power BI, provides a clear and functional visualization. It includes labels within the bars showing the duration of each task and a descriptive title for easy understanding. Tasks are ordered on the Y-axis, with bars styled in dark green and rounded corners for a modern look. Additionally, cross-filtering interactivity is fully operational, making this chart applicable to any process that requires tracking the timing and sequence of activities. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "This Gantt chart template, adapted from Vega-Lite and customized for Deneb in Power BI, provides a clear and functional visualization. It includes labels within the bars showing the duration of each task and a descriptive title for easy understanding. Tasks are ordered on the Y-axis, with bars styled in dark green and rounded corners for a modern look. Additionally, cross-filtering interactivity is fully operational, making this chart applicable to any process that requires tracking the timing and sequence of activities. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {
     "name": "dataset"
   },
