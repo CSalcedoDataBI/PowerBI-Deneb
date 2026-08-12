@@ -16,7 +16,7 @@
     },
     "information": {
       "name": "Grouped Bar Chart (Multiple Measure with Repeat)",
-      "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'repeat'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+      "description": "Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'repeat'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
       "author": "Cristobal Salcedo Beltran",
       "uuid": "3daea56b-488c-467b-9627-5cf0d503e056",
       "generated": "2024-07-04T05:32:15.995Z"
@@ -68,7 +68,7 @@
       "labelFontSize": 18
     }
   },
-  "description": "This Grouped Bar Chart (Multiple Measure with Repeat) visualizes the Worldwide and US Gross Earnings by Major Film Genre. Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'repeat'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "This Grouped Bar Chart (Multiple Measure with Repeat) visualizes the Worldwide and US Gross Earnings by Major Film Genre. Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'repeat'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {"name": "dataset"},
   "title": {
     "text": "Worldwide and US Gross Earnings by Major Film Genre (in billions USD)",

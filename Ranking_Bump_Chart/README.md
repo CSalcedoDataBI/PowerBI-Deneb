@@ -73,3 +73,15 @@ Necesita Power BI Desktop con `compatibilityLevel` 1606 o superior.
 ## Licencia
 
 MIT, como el resto del repositorio. Autor: Cristobal Salcedo Beltrán.
+
+---
+
+## Contacto
+
+- **Correo:** [contacto@csalcedodatabi.com](mailto:contacto@csalcedodatabi.com)
+- **LinkedIn:** [Cristobal Salcedo](https://www.linkedin.com/in/cristobal-salcedo)
+- **Galería completa:** [csalcedodatabi.com/deneb](https://csalcedodatabi.com/deneb)
+
+## Licencia
+
+MIT — puedes usar, copiar y adaptar esta plantilla citando la autoría.

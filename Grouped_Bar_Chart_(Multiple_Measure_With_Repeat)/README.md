@@ -1,0 +1,25 @@
+# Grouped Bar Chart (Multiple Measure with Repeat)
+
+Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'repeat'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.
+
+## El spec
+
+- [`Files/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat).json`](Files/Grouped_Bar_Chart_%28Multiple_Measure_With_Repeat%29.json)
+
+Creado con Deneb `1.6.2.1` sobre `vegaLite` `5.16.3`.
+
+## Cómo usarlo
+
+1. Añade un visual **Deneb** al informe y arrastra los campos que pide el spec.
+2. Abre el editor de Deneb y pega el contenido del JSON de arriba.
+3. Pulsa **Apply** y ajusta el mapeo de campos si tu modelo usa otros nombres.
+
+## Contacto
+
+- **Correo:** [contacto@csalcedodatabi.com](mailto:contacto@csalcedodatabi.com)
+- **LinkedIn:** [Cristobal Salcedo](https://www.linkedin.com/in/cristobal-salcedo)
+- **Galería completa:** [csalcedodatabi.com/deneb](https://csalcedodatabi.com/deneb)
+
+## Licencia
+
+MIT — puedes usar, copiar y adaptar esta plantilla citando la autoría.

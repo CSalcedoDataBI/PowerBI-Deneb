@@ -16,7 +16,7 @@
     },
     "information": {
       "name": "Aggregate Bar Chart With Cross Filtering + Sorted",
-      "description": "Example of Vega-Lite adapted to Deneb in Power BI, with cross-filtering + sorted, labels improved with the pbiFormat function, aligned to the right and left for better visualization, in the bars with white and black color. Author: Cristobal Salcedo Beltran, Email: csalcedo90@gmail.com",
+      "description": "Example of Vega-Lite adapted to Deneb in Power BI, with cross-filtering + sorted, labels improved with the pbiFormat function, aligned to the right and left for better visualization, in the bars with white and black color. Author: Cristobal Salcedo Beltran, Email: contacto@csalcedodatabi.com",
       "author": "Cristobal Salcedo Beltran",
       "uuid": "f3e4ae59-7583-4602-be9f-1597f9dbdc9d",
       "generated": "2024-06-20T04:11:02.703Z"
@@ -63,7 +63,7 @@
       "tickCount": 6
     }
   },
-  "description": "Aggregate Bar Chart With Cross Filtering + Sorted. A bar chart showing the US population distribution by age groups in the year 2000. Example of Vega-Lite adapted to Deneb in Power BI, with cross-filtering, labels improved with the pbiFormat function, aligned to the right and left for better visualization, in the bars with white and black color. Author: Cristobal Salcedo Beltran, Email: csalcedo90@gmail.com",
+  "description": "Aggregate Bar Chart With Cross Filtering + Sorted. A bar chart showing the US population distribution by age groups in the year 2000. Example of Vega-Lite adapted to Deneb in Power BI, with cross-filtering, labels improved with the pbiFormat function, aligned to the right and left for better visualization, in the bars with white and black color. Author: Cristobal Salcedo Beltran, Email: contacto@csalcedodatabi.com",
   "title": {
     "text": "US Population Distribution by Age in 2000",
     "anchor": "middle",

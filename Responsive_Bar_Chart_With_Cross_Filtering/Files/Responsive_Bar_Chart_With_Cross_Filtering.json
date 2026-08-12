@@ -64,7 +64,7 @@
       "fill": { "expr": "pbiColor(0)" }
     }
   },
-  "description": "This responsive bar chart visualizes the quantitative values of '__1__' for each categorical variable '__0__'. It allows users to interact with the data through tooltips, context menus, and selection features, facilitating cross-filtering and detailed analysis. Author: Cristobal Salcedo Beltran, Email: csalcedo90@gmail.com",
+  "description": "This responsive bar chart visualizes the quantitative values of '__1__' for each categorical variable '__0__'. It allows users to interact with the data through tooltips, context menus, and selection features, facilitating cross-filtering and detailed analysis. Author: Cristobal Salcedo Beltran, Email: contacto@csalcedodatabi.com",
   "title": "Responsive Bar Chart With Cross Filtering",
   "data": { "name": "dataset" },
   "mark": "bar",

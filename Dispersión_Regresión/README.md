@@ -426,3 +426,15 @@ Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
 ```
 
 © 2024 Cristobal Salcedo. Todos los derechos reservados. Impulsado por la creatividad y el café. :coffee:👍☕️
+
+---
+
+## Contacto
+
+- **Correo:** [contacto@csalcedodatabi.com](mailto:contacto@csalcedodatabi.com)
+- **LinkedIn:** [Cristobal Salcedo](https://www.linkedin.com/in/cristobal-salcedo)
+- **Galería completa:** [csalcedodatabi.com/deneb](https://csalcedodatabi.com/deneb)
+
+## Licencia
+
+MIT — puedes usar, copiar y adaptar esta plantilla citando la autoría.

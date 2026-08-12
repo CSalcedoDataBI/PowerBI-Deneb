@@ -59,7 +59,7 @@
       "domain": false
     }
   },
-  "description": "This Grouped Bar Chart is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (cross-filtering). Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "This Grouped Bar Chart is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (cross-filtering). Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {"name": "dataset"},
   "title": {
     "text": "Grouped Bar Chart with Cross-filtering",
