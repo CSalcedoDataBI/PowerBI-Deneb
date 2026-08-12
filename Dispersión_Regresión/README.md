@@ -43,7 +43,7 @@ Para cualquier consulta, colaboración o simplemente para saludar, puedes contac
 
 - **Correo Electrónico**: Si prefieres comunicarte directamente, no dudes en enviarme un email y te responderé a la brevedad posible.
 
-  :e-mail: <csalcedo90@email.com>
+  :e-mail: <contacto@csalcedodatabi.com>
 
 Espero tener noticias tuyas pronto. ¡Gracias por tu interés en mi trabajo!
 
