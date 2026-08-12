@@ -1,0 +1,47 @@
+/// Currency dimension — one row per currency (code, name, symbol).
+table DimCurrency
+	lineageTag: c7d4a9af-e676-585e-849d-f7479653fb72
+
+	/// Surrogate currency key.
+	column CurrencyKey
+		dataType: int64
+		lineageTag: 8208a4b3-06d0-553a-adaa-16f7c41878ac
+		summarizeBy: none
+		sourceColumn: CurrencyKey
+
+	/// ISO currency code. Joins to FactSales[CurrencyCode].
+	column CurrencyCode
+		dataType: string
+		lineageTag: 2bd436fc-566f-58b1-83ab-86919a90bf39
+		sourceColumn: CurrencyCode
+
+	/// Currency name.
+	column CurrencyName
+		dataType: string
+		lineageTag: e69f2f62-b26d-51e6-91da-fa058b09f27a
+		sourceColumn: CurrencyName
+
+	/// Currency symbol.
+	column Symbol
+		dataType: string
+		lineageTag: f433ba70-5d8a-5a88-80b6-4774da12aac4
+		sourceColumn: Symbol
+
+	/// Primary language associated with the currency.
+	column Language
+		dataType: string
+		lineageTag: 31a5f03b-0a5e-5a3d-b2f9-100ebc8539f5
+		sourceColumn: Language
+
+	partition DimCurrency = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimCurrency.parquet"]))
+				in
+					Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
