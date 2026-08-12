@@ -16,7 +16,7 @@
     },
     "information": {
       "name": "Horizontal Stacked Bar Chart",
-      "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com",
+      "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com",
       "author": "Cristobal Salcedo Beltran",
       "uuid": "290227de-ebef-42ff-977d-6015324bb0fd",
       "generated": "2024-07-24T04:59:06.947Z"
@@ -62,7 +62,7 @@
       "title": ""
     }
   },
-  "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: csalcedo90@gmail.com.",
+  "description": "Horizontal Stacked Bar Chart: Based on an official Vega-Lite example and adapted for use in Deneb within Power BI, it should be noted that cross-filtering interactivity is limited when using 'aggregate'. Author: Cristobal Salcedo Beltran. Contact: contacto@csalcedodatabi.com.",
   "data": {"name": "dataset"},
   "encoding": {
     "x": {
