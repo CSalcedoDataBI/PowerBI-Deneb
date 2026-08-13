@@ -1,0 +1,272 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.6.2.1",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.16.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": false,
+      "dataPointLimit": 200
+    },
+    "information": {
+      "name": "Barras y línea con doble eje",
+      "description": "Combo de barras y línea con dos escalas Y independientes: la barra lleva el importe y la línea el porcentaje. Autor: Cristobal Salcedo Beltrán."
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "YearMonth",
+        "description": "Periodo del eje X (texto YYYY-MM: ordena igual lexicográfica que cronológicamente)",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Total Sales",
+        "description": "Importe: altura de las barras, eje izquierdo",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__2__",
+        "name": "Margin %",
+        "description": "Porcentaje: altura de la línea, eje derecho",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleColor": "#252423",
+      "titleFontWeight": "normal"
+    },
+    "text": {
+      "font": "Segoe UI"
+    }
+  },
+  "title": {
+    "text": "Ventas y margen, mes a mes · 2024",
+    "subtitle": [
+      "Barras: ventas netas · Línea: margen bruto sobre ventas",
+      "Contoso Retail · haz clic en un mes para filtrar el resto del informe"
+    ],
+    "anchor": "start",
+    "font": "Segoe UI",
+    "fontSize": 19,
+    "fontWeight": 600,
+    "color": "#1B1A19",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 12,
+    "subtitleFontWeight": "normal",
+    "subtitleColor": "#8A8886",
+    "subtitleLineHeight": 17,
+    "subtitlePadding": 10,
+    "offset": 18
+  },
+  "height": 320,
+  "padding": {
+    "left": 4,
+    "top": 4,
+    "bottom": 4,
+    "right": 6
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "ordenMargen"
+        }
+      ],
+      "sort": [
+        {
+          "field": "__2__",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "type": "nominal",
+      "sort": "ascending",
+      "title": null,
+      "scale": {
+        "paddingInner": 0.38,
+        "paddingOuter": 0.24
+      },
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 10,
+        "grid": false,
+        "labelExpr": "['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][+slice(datum.value, -2)]",
+        "labelFontSize": 11
+      }
+    },
+    "tooltip": [
+      {
+        "field": "__0__",
+        "type": "nominal",
+        "title": "Periodo"
+      },
+      {
+        "field": "__1__",
+        "type": "quantitative",
+        "title": "Ventas",
+        "format": "$,.0f"
+      },
+      {
+        "field": "__2__",
+        "type": "quantitative",
+        "title": "Margen",
+        "format": ".1%"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "description": "Barras: el importe del periodo. Su escala Y (eje IZQUIERDO) arranca en cero siempre, porque la longitud de la barra es lo que codifica la magnitud. Es la única capa que lleva el grid horizontal.",
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3,
+        "color": "#9CB8D0"
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "zero": true,
+            "nice": true
+          },
+          "axis": {
+            "grid": true,
+            "gridColor": "#F0EEEC",
+            "gridWidth": 1,
+            "format": "$.3~s",
+            "labelPadding": 8,
+            "tickCount": 4
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.__selected__ === 'off'",
+            "value": 0.25
+          },
+          "value": 1
+        }
+      }
+    },
+    {
+      "description": "Las tres capas del porcentaje viven en un grupo anidado con la escala Y COMPARTIDA entre ellas. Sin este anidamiento, el resolve independent de abajo daría a la capa de etiquetas (filtrada a 2 filas) su propio dominio y las etiquetas caerían fuera de la línea.",
+      "encoding": {
+        "y": {
+          "field": "__2__",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "zero": false,
+            "nice": true,
+            "padding": 14
+          },
+          "axis": {
+            "orient": "right",
+            "grid": false,
+            "format": ".0%",
+            "labelColor": "#A85F1B",
+            "labelPadding": 8,
+            "tickCount": 4
+          }
+        }
+      },
+      "resolve": {
+        "scale": {
+          "y": "shared"
+        }
+      },
+      "layer": [
+        {
+          "description": "La línea del porcentaje. No se atenúa con el cross-filter: una línea recorre todos los periodos, atenuarla por el clic de uno solo no querría decir nada.",
+          "mark": {
+            "type": "line",
+            "interpolate": "monotone",
+            "strokeWidth": 2.5,
+            "strokeCap": "round",
+            "strokeJoin": "round",
+            "color": "#D4762A"
+          }
+        },
+        {
+          "description": "Los nodos, con halo blanco para que se lean sobre la barra. Estos SÍ se atenúan con el cross-filter, porque cada punto pertenece a un periodo.",
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 58,
+            "color": "#D4762A",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 1.6
+          },
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "test": "datum.__selected__ === 'off'",
+                "value": 0.25
+              },
+              "value": 1
+            }
+          }
+        },
+        {
+          "description": "Una sola etiqueta, en el PICO del porcentaje. Nombra la serie (sustituye a la leyenda) y da su valor máximo. Va en el máximo y no en el último punto porque encima de un máximo local el espacio está libre por definición: cualquier otra posición acaba pisando la propia línea.",
+          "transform": [
+            {
+              "filter": "datum.ordenMargen === 1"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dy": -16,
+            "fontSize": 12,
+            "fontWeight": 600,
+            "color": "#A85F1B"
+          },
+          "encoding": {
+            "text": {
+              "value": {
+                "expr": "'Margen ' + format(datum['__2__'], '.1%')"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
+}

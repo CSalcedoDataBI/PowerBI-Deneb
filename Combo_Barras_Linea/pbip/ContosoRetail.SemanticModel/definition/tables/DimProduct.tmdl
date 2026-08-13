@@ -1,0 +1,102 @@
+/// Product dimension — one row per product. Hierarchy: CategoryName > SubCategoryName > ProductName. Use CategoryName / SubCategoryName for breakdowns.
+table DimProduct
+	lineageTag: c5d8b15c-8cdb-5f21-aab8-113ae5280c69
+
+	/// Surrogate product key. Joins to FactSales[ProductKey].
+	column ProductKey
+		dataType: int64
+		lineageTag: 25e37bd1-2de7-5e0e-b56d-ed5883e53f90
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	/// Business product code (SKU).
+	column ProductCode
+		dataType: string
+		lineageTag: bf7102bc-02f2-5ca5-a5ce-7d8ba9c83432
+		sourceColumn: ProductCode
+
+	/// Product display name — the natural label for a product.
+	column ProductName
+		dataType: string
+		lineageTag: f534ddff-3ef7-5977-93ce-0ec5d8ff26cf
+		sourceColumn: ProductName
+
+	/// Company that manufactures the product.
+	column Manufacturer
+		dataType: string
+		lineageTag: de2ff191-9deb-5cff-a321-6282159e3bb7
+		sourceColumn: Manufacturer
+
+	/// Brand of the product.
+	column Brand
+		dataType: string
+		lineageTag: 90c9a67e-f709-51be-9ffe-bd41baa73eff
+		sourceColumn: Brand
+
+	/// Product color.
+	column Color
+		dataType: string
+		lineageTag: 28110bb9-2801-57e6-957c-a47eac985202
+		sourceColumn: Color
+
+	/// Unit of measure for the Weight column (e.g., kg).
+	column WeightUnit
+		dataType: string
+		lineageTag: c5dc66dc-f8cd-5c14-be7a-439a28679b71
+		sourceColumn: WeightUnit
+
+	/// Product weight, expressed in WeightUnit.
+	column Weight
+		dataType: double
+		lineageTag: 6703e9de-ede8-52bc-bc8d-6d020c47a761
+		summarizeBy: none
+		sourceColumn: Weight
+
+	/// Standard unit cost of the product (catalog value).
+	column Cost
+		dataType: double
+		lineageTag: 3fd633d4-9ad4-5679-bbd2-f639a849d48d
+		summarizeBy: none
+		sourceColumn: Cost
+
+	/// Standard unit list price of the product (catalog value).
+	column Price
+		dataType: double
+		lineageTag: 8e5d0b4c-ee47-5386-a087-f5c6f54a74ca
+		summarizeBy: none
+		sourceColumn: Price
+
+	/// Surrogate category key.
+	column CategoryKey
+		dataType: int64
+		lineageTag: 006ca1e7-42d9-5971-91b5-3e8fb5fb3b15
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+	/// Product category — top level of the product hierarchy. Common breakdown dimension.
+	column CategoryName
+		dataType: string
+		lineageTag: ccd09886-b4f4-5a0e-aabb-50892b4f628f
+		sourceColumn: CategoryName
+
+	/// Surrogate subcategory key.
+	column SubCategoryKey
+		dataType: int64
+		lineageTag: 1b14e02b-1510-51bb-b8b7-dfa3a22be8dc
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+	/// Product subcategory — mid level of the product hierarchy.
+	column SubCategoryName
+		dataType: string
+		lineageTag: d1829387-54f1-5897-bfa6-de0279881a8e
+		sourceColumn: SubCategoryName
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimProduct.parquet"]))
+				in
+					Source
+
