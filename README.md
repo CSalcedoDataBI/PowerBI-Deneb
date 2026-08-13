@@ -4,7 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/CSalcedoDataBI/PowerBI-Deneb?style=flat-square)](https://github.com/CSalcedoDataBI/PowerBI-Deneb)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Power BI](https://img.shields.io/badge/Power%20BI-Deneb-F2C811?logo=powerbi)](https://deneb-viz.github.io/)
-[![YouTube](https://img.shields.io/badge/YouTube-Channel-FF0000?logo=youtube)](https://www.youtube.com/@PowerBI-Deneb-CS)
+[![YouTube](https://img.shields.io/badge/YouTube-Channel-FF0000?logo=youtube)](https://www.youtube.com/@CSalcedoDataBI)
 
 > **Premium collection of 9+ production-ready Deneb visualizations** using Vega & Vega-Lite for Power BI. Copy-paste templates, live demos, and complete documentation.
 
@@ -202,11 +202,13 @@ Then use any `.pbix` or `.json` directly.
 
 Learn how to build and customize these visualizations:
 
-- 🎥 **[Dynamic Bar Alignment Tutorial](https://www.youtube.com/@PowerBI-Deneb-CS)** — Parameter control walkthrough
-- 🎥 **[Pareto Analysis Deep Dive](https://www.youtube.com/@PowerBI-Deneb-CS)** — The 80/20 principle explained
-- 🎥 **[Scatter Regression Guide](https://www.youtube.com/@PowerBI-Deneb-CS)** — Correlation analysis with Vega
+- 🎥 **[Deneb Demo 2 — Dynamic Bar Chart](https://youtu.be/Doj-HLJn0Pc)** — Top N, Pareto 80/20 and dynamic parameters
+- 🎥 **[Visual Top N + Pareto 80/20](https://youtu.be/YmIHZZX9S5M)** — Fully interactive, without complex DAX
+- 🎥 **[Advanced Cross-Filtering in Deneb](https://youtu.be/t6uVu9l4hjE)** — Selection and cross-filter from a Vega spec
 
-→ **[Subscribe for more](https://www.youtube.com/@PowerBI-Deneb-CS)**
+> Videos are in Spanish.
+
+→ **[Subscribe for more](https://www.youtube.com/@CSalcedoDataBI)**
 → **[Browse the template gallery](https://csalcedodatabi.com/deneb/)** at csalcedodatabi.com — each template with its Vega-Lite spec ready to copy and a "how to use it in Power BI" walkthrough (in Spanish).
 
 ---
@@ -260,8 +262,8 @@ Found a bug? Have an improvement? We welcome contributions!
 
 - 📧 **Email:** [contacto@csalcedodatabi.com](mailto:contacto@csalcedodatabi.com)
 - 💼 **LinkedIn:** [Cristobal Salcedo](https://www.linkedin.com/in/cristobal-salcedo)
-- 🐦 **Twitter:** [@CSalcedoDataBI](https://twitter.com/CSalcedoDataBI)
-- 📺 **YouTube:** [PowerBI-Deneb Channel](https://www.youtube.com/@PowerBI-Deneb-CS)
+- 📘 **Facebook:** [CSalcedoDataBI](https://www.facebook.com/CSalcedoDataBI)
+- 📺 **YouTube:** [CSalcedoDataBI](https://www.youtube.com/@CSalcedoDataBI)
 
 ---
 
