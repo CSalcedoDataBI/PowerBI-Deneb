@@ -1,44 +1,50 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "usermeta": {
+    "information": {
+      "uuid": "ed9a6ce2-9feb-4331-a7b7-9c04f7a8d615",
+      "generated": "2026-08-14T03:03:36.904Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Barras y línea con doble eje",
+      "description": "Combo de barras y línea con dos escalas Y independientes: la barra lleva el importe y la línea el porcentaje. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo"
+    },
     "deneb": {
-      "build": "1.6.2.1",
+      "build": "1.9.0",
       "metaVersion": 1,
       "provider": "vegaLite",
-      "providerVersion": "5.16.3"
+      "providerVersion": "6.4.1"
     },
     "interactivity": {
       "tooltip": true,
       "contextMenu": true,
       "selection": true,
+      "selectionMode": "simple",
       "highlight": false,
-      "dataPointLimit": 200
+      "dataPointLimit": 50
     },
-    "information": {
-      "name": "Barras y línea con doble eje",
-      "description": "Combo de barras y línea con dos escalas Y independientes: la barra lleva el importe y la línea el porcentaje. Autor: Cristobal Salcedo Beltrán."
-    },
+    "config": "{\n  \"background\": \"transparent\",\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"axis\": {\n    \"grid\": false,\n    \"domain\": false,\n    \"ticks\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 12,\n    \"titleColor\": \"#252423\",\n    \"titleFontWeight\": \"normal\"\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\"\n  }\n}",
     "dataset": [
       {
         "key": "__0__",
         "name": "YearMonth",
         "description": "Periodo del eje X (texto YYYY-MM: ordena igual lexicográfica que cronológicamente)",
-        "type": "text",
-        "kind": "column"
+        "kind": "column",
+        "type": "text"
       },
       {
         "key": "__1__",
         "name": "Total Sales",
         "description": "Importe: altura de las barras, eje izquierdo",
-        "type": "numeric",
-        "kind": "measure"
+        "kind": "measure",
+        "type": "numeric"
       },
       {
         "key": "__2__",
         "name": "Margin %",
         "description": "Porcentaje: altura de la línea, eje derecho",
-        "type": "numeric",
-        "kind": "measure"
+        "kind": "measure",
+        "type": "numeric"
       }
     ]
   },

@@ -44,7 +44,43 @@
     {
       "name": "RegisteredResources",
       "type": "RegisteredResources",
-      "items": []
+      "items": [
+        {
+          "name": "foto8981243419023581.jpg",
+          "path": "foto8981243419023581.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "LinkedIn_Logo_(HC_Blue)6301627523644462.png",
+          "path": "LinkedIn_Logo_(HC_Blue)6301627523644462.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo_cristobal8570194135684805.png",
+          "path": "Logo_cristobal8570194135684805.png",
+          "type": "Image"
+        },
+        {
+          "name": "PAL-NEW-2021-SOFT_(2)9333178659248393.png",
+          "path": "PAL-NEW-2021-SOFT_(2)9333178659248393.png",
+          "type": "Image"
+        },
+        {
+          "name": "Power_BI_(Blue)9114952214621155.png",
+          "path": "Power_BI_(Blue)9114952214621155.png",
+          "type": "Image"
+        },
+        {
+          "name": "Values_&_Beliefs_(Blue)7799394988088633.png",
+          "path": "Values_&_Beliefs_(Blue)7799394988088633.png",
+          "type": "Image"
+        },
+        {
+          "name": "Youtube_Blue_Cropped6418143789085649.png",
+          "path": "Youtube_Blue_Cropped6418143789085649.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {
