@@ -1,5 +1,2 @@
-# Power BI Desktop local editor state / data cache — per-machine, never versioned.
-# Mirrors _reference/pbip/contoso-retail/.gitignore; the copy this folder came
-# from had lost it, so .pbi/cache.abf (≈4 MB of model data) was about to be
-# committed.
+# Estado local del editor de Power BI Desktop — por máquina, nunca se versiona.
 **/.pbi/
