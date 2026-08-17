@@ -1,0 +1,26 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode","CopilotTooling"]
+
+annotation PBI_QueryOrder = ["DimCurrency","DimCurrencyExchange","DimCustomer","DimDate","DimProduct","DimStore","FactSales","DataBaseUrl"]
+
+ref table DimCurrency
+ref table DimCurrencyExchange
+ref table DimCustomer
+ref table DimDate
+ref table DimProduct
+ref table DimStore
+ref table FactSales
+ref table _Measures
+
+ref cultureInfo es-ES
+

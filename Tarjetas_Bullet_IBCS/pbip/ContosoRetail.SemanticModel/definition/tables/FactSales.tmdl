@@ -1,0 +1,117 @@
+/// Fact table — one row per order line (grain: OrderKey + LineNumber). Central table of the star; join to dimensions on their *Key columns. Money columns are in the transaction currency (CurrencyCode).
+table FactSales
+	lineageTag: 4224e16b-1b5f-5ba3-8637-0227ba7cad3f
+
+	/// Order identifier (header). Many order lines can share one OrderKey; [Orders] counts distinct values.
+	column OrderKey
+		dataType: int64
+		lineageTag: 0afd7ab4-aa71-5ddc-afd7-197bcc6f514b
+		summarizeBy: none
+		sourceColumn: OrderKey
+
+	/// Line number within an order. OrderKey + LineNumber identify a single order line (the table grain).
+	column LineNumber
+		dataType: int64
+		lineageTag: 172f8fa7-30c6-513f-90f8-5980588cd1c9
+		summarizeBy: none
+		sourceColumn: LineNumber
+
+	/// Date the order was placed. Primary business date; related to DimDate[Date] for all time analysis.
+	column OrderDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: d9db84fe-a63e-596d-b723-6aa280ef8213
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Date the order was delivered. Logistics only — do not use as the primary date for sales trends.
+	column DeliveryDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 0097fc86-8642-57ff-a969-af069128c012
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Customer of the order. Joins to DimCustomer[CustomerKey].
+	column CustomerKey
+		dataType: int64
+		lineageTag: 804eec7a-421f-57b3-afe3-2d022ba53452
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+	/// Store / channel of the sale. Joins to DimStore[StoreKey].
+	column StoreKey
+		dataType: int64
+		lineageTag: d539fcbb-d1e7-5490-879b-acc1e92fa4dd
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+	/// Product sold. Joins to DimProduct[ProductKey].
+	column ProductKey
+		dataType: int64
+		lineageTag: e1713dc9-5c8e-53ea-bcdb-251ac2c13840
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+	/// Sales channel of the order line (e.g., Store, Online).
+	column Channel
+		dataType: string
+		lineageTag: 36ac4ebe-fea7-5f10-b608-31cd4b5db498
+		summarizeBy: none
+		sourceColumn: Channel
+
+	/// Units sold on the order line. Summed by [Total Quantity].
+	column Quantity
+		dataType: int64
+		lineageTag: f52fd07f-6b26-5188-88fc-828c0a824267
+		summarizeBy: none
+		sourceColumn: Quantity
+
+	/// List price per unit before discounts, in transaction currency.
+	column UnitPrice
+		dataType: double
+		lineageTag: 07543793-9893-58a1-aac6-7945a1cf3078
+		summarizeBy: none
+		sourceColumn: UnitPrice
+
+	/// Actual price per unit after discounts, in transaction currency. Basis of [Total Sales].
+	column NetPrice
+		dataType: double
+		lineageTag: d941a76e-6197-53bb-967d-4ca88bfe8a25
+		summarizeBy: none
+		sourceColumn: NetPrice
+
+	/// Cost per unit, in transaction currency. Basis of [Total Cost].
+	column UnitCost
+		dataType: double
+		lineageTag: a34cd02b-4c2c-55e4-9481-93d1c605b04d
+		summarizeBy: none
+		sourceColumn: UnitCost
+
+	/// ISO currency code of the transaction amounts. Joins to DimCurrency[CurrencyCode].
+	column CurrencyCode
+		dataType: string
+		lineageTag: 4a51408c-127f-51fc-8964-8d72aafe8c45
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+	/// Exchange rate applied to the order line's currency.
+	column ExchangeRate
+		dataType: double
+		lineageTag: 88b524fe-4ddb-5952-b03f-7295c6f8e780
+		summarizeBy: none
+		sourceColumn: ExchangeRate
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="FactSales.parquet"])),
+					Typed = Table.TransformColumnTypes(Source, {{"OrderDate", type date}, {"DeliveryDate", type date}}, "en-US")
+				in
+					Typed
+
