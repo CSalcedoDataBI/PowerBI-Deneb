@@ -338,7 +338,7 @@
             "value": "right"
           },
           "text": {
-            "signal": "datum.tVar == null ? '' : (datum.tVar >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.tVar), '0.0%') + ' vs año anterior'"
+            "signal": "datum.tVar == null ? \"\" : (datum.tVar >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.tVar), '0.0%') + ' vs año anterior'"
           },
           "fontSize": {
             "value": 12
@@ -819,7 +819,7 @@
             "value": "middle"
           },
           "text": {
-            "signal": "datum.varPy == null ? '' : (datum.varPy >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.varPy), '0.0%')"
+            "signal": "datum.varPy == null ? \"\" : (datum.varPy >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.varPy), '0.0%')"
           },
           "fontSize": {
             "value": 11

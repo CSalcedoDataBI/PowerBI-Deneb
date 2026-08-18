@@ -13,13 +13,14 @@ Ficha y vista previa en vivo: <https://csalcedodatabi.com/deneb/tarjetas-bullet-
 
 ## Abre y pinta — sin refrescar nada
 
-El informe trae **datos simulados dentro del propio modelo**: una tabla calculada `Datos` con seis
-filas escritas en DAX (`DATATABLE`). No hay orígenes externos, ni credenciales, ni refresco contra
-internet. Descomprimes, abres `TarjetasBulletIBCS.pbip` en Power BI Desktop y el visual está ahí.
+El informe trae **datos simulados dentro del propio modelo**: una tabla `Datos` con seis filas
+escritas en línea (`#table` de Power Query). No hay orígenes externos, ni credenciales, ni refresco
+contra internet — el modelo se procesa en local al abrir. Descomprimes, abres
+`TarjetasBulletIBCS.pbip` en Power BI Desktop y el visual está en la página **«Tarjeta bullet IBCS»**.
 
 ```
 Tarjetas_Bullet_IBCS/
-├── pbip/                        el informe + su modelo, en texto (13 KB)
+├── pbip/                        el informe + su modelo, en texto
 ├── tarjetas-bullet-ibcs.json    el spec suelto, para copiar y pegar en Deneb
 └── Tarjetas_Bullet_IBCS.zip     todo lo anterior
 ```
