@@ -1,0 +1,392 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "usermeta": {
+    "information": {
+      "uuid": "fc622293-6037-4425-af9b-ffe1e1d0fd3b",
+      "generated": "2026-08-18T00:00:00.000Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Línea elegante, actual vs año anterior",
+      "description": "Línea de ventas mes a mes con área degradada decorativa bajo el año en curso y una línea punteada de comparación contra el mismo mes del año anterior. Eje X con un solo tick por trimestre; el último punto lleva su valor y variación interanual escritos junto a la línea. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán"
+    },
+    "deneb": {
+      "build": "1.9.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "config": "{\n  \"background\": \"transparent\",\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"axis\": {\n    \"grid\": false,\n    \"domain\": false,\n    \"ticks\": false,\n    \"labelColor\": \"#4B5563\",\n    \"labelFontSize\": 12,\n    \"titleColor\": \"#0F172A\",\n    \"titleFontWeight\": \"normal\"\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\"\n  }\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "YearMonth",
+        "description": "Periodo del eje X (texto YYYY-MM: ordena igual lexicográfica que cronológicamente)",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "Total Sales",
+        "description": "Ventas del periodo — línea sólida y área degradada decorativa",
+        "kind": "measure",
+        "type": "numeric"
+      },
+      {
+        "key": "__2__",
+        "name": "Sales PY",
+        "description": "Ventas del mismo mes, año anterior — línea punteada de comparación (SAMEPERIODLASTYEAR; en blanco cuando no hay año anterior, nunca cero)",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "font": "Segoe UI",
+    "view": {
+      "stroke": "transparent"
+    },
+    "axis": {
+      "grid": false,
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#4B5563",
+      "labelFontSize": 12,
+      "titleColor": "#0F172A",
+      "titleFontWeight": "normal"
+    },
+    "text": {
+      "font": "Segoe UI"
+    }
+  },
+  "title": {
+    "text": "Ventas, mes a mes · 2023–2024",
+    "subtitle": [
+      "Línea sólida: año en curso · línea punteada: mismo mes, año anterior",
+      "Contoso Retail · haz clic en un mes para filtrar el resto del informe"
+    ],
+    "anchor": "start",
+    "font": "Segoe UI",
+    "fontSize": 19,
+    "fontWeight": 600,
+    "color": "#0F172A",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 12,
+    "subtitleFontWeight": "normal",
+    "subtitleColor": "#5B6675",
+    "subtitleLineHeight": 17,
+    "subtitlePadding": 10,
+    "offset": 18
+  },
+  "height": 340,
+  "padding": {
+    "left": 4,
+    "top": 4,
+    "bottom": 4,
+    "right": 16
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "transform": [
+    {
+      "calculate": "['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'][+slice(datum['__0__'],-2)-1] + ' ' + slice(datum['__0__'],0,4)",
+      "as": "periodoLabel"
+    },
+    {
+      "calculate": "isValid(datum['__2__']) ? (datum['__1__'] - datum['__2__']) / datum['__2__'] : null",
+      "as": "yoy"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "ordenReciente"
+        }
+      ],
+      "sort": [
+        {
+          "field": "__0__",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "lag",
+          "field": "__0__",
+          "as": "yearMonthPrev"
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "__0__",
+      "type": "nominal",
+      "sort": "ascending",
+      "title": null,
+      "scale": {
+        "paddingInner": 0,
+        "paddingOuter": 0.02
+      },
+      "axis": {
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "labelAngle": 0,
+        "labelPadding": 12,
+        "labelFontSize": 12,
+        "labelColor": "#475569",
+        "labelFontWeight": 500,
+        "labelExpr": "indexof(['01','07'], slice(datum.value,-2)) >= 0 ? (['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][+slice(datum.value,-2)-1] + ' ' + slice(datum.value,0,4)) : ''"
+      }
+    }
+  },
+  "layer": [
+    {
+      "description": "Divisoria sutil en el cambio de año — detectada genéricamente (año de la fila != año de la fila anterior, vía window \"lag\"), no hardcodeada a un año literal.",
+      "transform": [
+        {
+          "filter": "isValid(datum.yearMonthPrev) && slice(datum.yearMonthPrev,0,4) != slice(datum['__0__'],0,4)"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          2,
+          3
+        ],
+        "color": "#CBD5E1",
+        "strokeWidth": 1
+      },
+      "encoding": {}
+    },
+    {
+      "description": "Área degradada bajo la línea del año en curso, puramente decorativa: la magnitud la codifica la LÍNEA, no el área — el eje de abajo no arranca en cero (ver 'scale'). Lleva también el único grid horizontal del gráfico.",
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "line": false,
+        "color": {
+          "gradient": "linear",
+          "x1": 0,
+          "y1": 1,
+          "x2": 0,
+          "y2": 0,
+          "stops": [
+            {
+              "offset": 0,
+              "color": "rgba(46,107,224,0)"
+            },
+            {
+              "offset": 1,
+              "color": "rgba(46,107,224,0.22)"
+            }
+          ]
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "zero": false,
+            "nice": true,
+            "padding": 10
+          },
+          "axis": {
+            "grid": true,
+            "gridColor": "#E2E8F0",
+            "gridDash": [
+              2,
+              2
+            ],
+            "format": "$.3~s",
+            "labelColor": "#4B5563",
+            "labelPadding": 8,
+            "tickCount": 5
+          },
+          "stack": null
+        }
+      }
+    },
+    {
+      "description": "Línea del mismo mes, año anterior (Sales PY). Solo tiene valor a partir del segundo año de historia — igual que SAMEPERIODLASTYEAR en DAX, lo que no tiene comparativo queda en blanco, nunca en cero.",
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 1.75,
+        "strokeDash": [
+          5,
+          3
+        ],
+        "strokeCap": "round",
+        "color": "#9AA5B1"
+      },
+      "encoding": {
+        "y": {
+          "field": "__2__",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Línea del año en curso. No se atenúa con el cross-filter: recorre todos los periodos, y apagarla por el clic de uno solo no diría nada.",
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 3,
+        "strokeCap": "round",
+        "strokeJoin": "round",
+        "color": "#2E6BE0"
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Nodo de cada mes, con halo blanco para leerse sobre la línea y el área. Estos SÍ se atenúan con el cross-filter: cada punto pertenece a un periodo.",
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 42,
+        "color": "#2E6BE0",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.__selected__ === 'off'",
+            "value": 0.25
+          },
+          "value": 1
+        },
+        "tooltip": [
+          {
+            "field": "periodoLabel",
+            "type": "nominal",
+            "title": "Periodo"
+          },
+          {
+            "field": "__1__",
+            "type": "quantitative",
+            "title": "Ventas",
+            "format": "$,.0f"
+          },
+          {
+            "field": "__2__",
+            "type": "quantitative",
+            "title": "Año anterior",
+            "format": "$,.0f"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Realce del último periodo: halo doble, sin filtro de selección (siempre visible aunque otro punto esté seleccionado).",
+      "transform": [
+        {
+          "filter": "datum.ordenReciente === 1"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130,
+        "color": "#2E6BE0",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "Valor del último periodo, escrito junto a la línea — sustituye a la leyenda.",
+      "transform": [
+        {
+          "filter": "datum.ordenReciente === 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": 20,
+        "fontSize": 12.5,
+        "fontWeight": 600,
+        "color": "#0F172A"
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": {
+            "expr": "datum.periodoLabel + ' · ' + format(datum['__1__'], '$,.3~s')"
+          }
+        }
+      }
+    },
+    {
+      "description": "Variación interanual del último periodo. Verde/teal si crece, rojo/rosa si cae — el mismo par semántico que la tarjeta bullet IBCS de la galería.",
+      "transform": [
+        {
+          "filter": "datum.ordenReciente === 1"
+        },
+        {
+          "filter": "isValid(datum.yoy)"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": 36,
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "y": {
+          "field": "__1__",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": {
+            "expr": "(datum.yoy >= 0 ? '+' : '') + format(datum.yoy, '.1%') + ' interanual'"
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.yoy >= 0",
+            "value": "#0F766E"
+          },
+          "value": "#BE123C"
+        }
+      }
+    }
+  ]
+}

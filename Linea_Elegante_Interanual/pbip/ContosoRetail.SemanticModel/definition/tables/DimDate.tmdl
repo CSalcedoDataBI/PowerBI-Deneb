@@ -1,0 +1,147 @@
+/// Date dimension — one row per calendar day. Primary date table; relate to FactSales[OrderDate]. Use Year / Quarter / Month for time analysis.
+table DimDate
+	lineageTag: 202c6da8-3b39-57d7-91ad-55d15a545e68
+
+	/// Integer date key (yyyymmdd).
+	column DateKey
+		dataType: int64
+		lineageTag: dddd20d8-b103-563f-b08e-1271b9f1e46e
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	/// Calendar date. Primary column for time intelligence; related to FactSales[OrderDate].
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 8376b581-3d72-58ca-9ce5-f4c06731ae0c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Calendar year.
+	column Year
+		dataType: int64
+		lineageTag: e4a6ba08-243a-53bb-8d75-c28e5c8e5dc1
+		summarizeBy: none
+		sourceColumn: Year
+
+	/// Calendar quarter number (1–4).
+	column Quarter
+		dataType: int64
+		lineageTag: e8c1f519-5730-564c-9c6a-d553b7a0792f
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	/// Calendar month number (1–12).
+	column Month
+		dataType: int64
+		lineageTag: 5cf25456-f7c3-5d95-9d85-bc7b519292f1
+		summarizeBy: none
+		sourceColumn: Month
+
+	/// Month name (full).
+	column MonthName
+		dataType: string
+		lineageTag: 9ef226bb-74cc-5e3c-93da-cf819eea1189
+		sourceColumn: MonthName
+
+	/// Month name (abbreviated).
+	column MonthNameShort
+		dataType: string
+		lineageTag: 6a8d6856-ef27-5e3c-8d7d-99c13d0c6e52
+		sourceColumn: MonthNameShort
+
+	/// ISO week number.
+	column Week
+		dataType: int64
+		lineageTag: 1ad6c6bb-8989-572a-98ce-cdce2f1fc5b4
+		summarizeBy: none
+		sourceColumn: Week
+
+	/// Day number within the year (1–366).
+	column DayOfYear
+		dataType: int64
+		lineageTag: c785108c-ee17-5759-a8ec-5ceb72e63af3
+		summarizeBy: none
+		sourceColumn: DayOfYear
+
+	/// Day number within the month (1–31).
+	column DayOfMonth
+		dataType: int64
+		lineageTag: 136b8acf-9ed9-5d81-bf3e-5296d6a54696
+		summarizeBy: none
+		sourceColumn: DayOfMonth
+
+	/// Day number within the week.
+	column DayOfWeek
+		dataType: int64
+		lineageTag: ceb70daa-5a7d-5005-831a-9b38853fa8e6
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+	/// Weekday name (full).
+	column DayName
+		dataType: string
+		lineageTag: 29ef3d46-51c0-525c-8387-2338308e84ed
+		sourceColumn: DayName
+
+	/// Weekday name (abbreviated).
+	column DayNameShort
+		dataType: string
+		lineageTag: 109b16c7-563b-5409-895f-6b9f5fb4d1a2
+		sourceColumn: DayNameShort
+
+	/// True if the day is a weekend.
+	column IsWeekend
+		dataType: boolean
+		lineageTag: 92e7297f-391e-536a-b591-b94520b2d4ab
+		sourceColumn: IsWeekend
+
+	/// True if the day is a public holiday.
+	column IsHoliday
+		dataType: boolean
+		lineageTag: ce0a626f-6669-54d5-bf88-9ed13fb5dcc2
+		sourceColumn: IsHoliday
+
+	/// Holiday name, if any.
+	column HolidayName
+		dataType: string
+		lineageTag: c731411a-8bc2-572c-a666-adb186c132d9
+		sourceColumn: HolidayName
+
+	/// True if the day is a working day.
+	column IsWorkingDay
+		dataType: boolean
+		lineageTag: 8f7c3070-636b-590b-809c-31b8969464bc
+		sourceColumn: IsWorkingDay
+
+	/// Working-day ordinal within the month.
+	column WorkingDayOfMonth
+		dataType: int64
+		lineageTag: b7d46a74-2c8f-5aef-898a-2069de7d10cb
+		summarizeBy: none
+		sourceColumn: WorkingDayOfMonth
+
+	/// Year-month label (e.g., 2024-01).
+	column YearMonth
+		dataType: string
+		lineageTag: 19945a80-ad1f-5a05-a4df-32ad2b6ee3d5
+		sourceColumn: YearMonth
+
+	/// Year-quarter label (e.g., 2024-Q1).
+	column YearQuarter
+		dataType: string
+		lineageTag: 6593da63-46bc-5a0d-9e49-2bf6278fb377
+		sourceColumn: YearQuarter
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimDate.parquet"]))
+				in
+					Source
+
