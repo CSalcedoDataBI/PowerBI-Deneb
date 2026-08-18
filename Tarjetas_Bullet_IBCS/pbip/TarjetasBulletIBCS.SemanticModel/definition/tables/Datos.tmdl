@@ -1,0 +1,75 @@
+/// Datos simulados de la plantilla — tabla en linea, SIN origen externo: no pide
+/// credenciales ni red, y Power BI la carga sola al abrir. Las cifras son las
+/// reales de Contoso Retail ([Total Sales] 2024 y 2023 por SubCategoryName,
+/// Top 6), materializadas aqui para que el ejemplo sea autonomo. Sustituye esta
+/// tabla por tu modelo.
+table Datos
+	lineageTag: d1000000-0000-0000-0000-000000000001
+
+	/// La dimension que se lista: una tarjeta por valor.
+	column Categoría
+		dataType: string
+		lineageTag: d1000000-0000-0000-0000-0000000000c1
+		summarizeBy: none
+		sourceColumn: Categoría
+
+	/// Valor real (AC). Oculta: al visual entra por la medida [Real].
+	column RealAC
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000c2
+		summarizeBy: sum
+		sourceColumn: RealAC
+
+	/// Objetivo (PL). PLAN DECLARADO, no una medicion: aqui es el año anterior +10 %.
+	column ObjetivoPL
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000c3
+		summarizeBy: sum
+		sourceColumn: ObjetivoPL
+
+	/// Año anterior (PY).
+	column AnteriorPY
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000c4
+		summarizeBy: sum
+		sourceColumn: AnteriorPY
+
+	/// Valor real del periodo (AC en notacion IBCS). Es la calle gruesa y el numero grande.
+	measure Real = SUM(Datos[RealAC])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d1
+
+	/// Objetivo (PL). Es el tick negro vertical. Cambiala por tu presupuesto real.
+	measure Objetivo = SUM(Datos[ObjetivoPL])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d2
+
+	/// Comparativo del periodo anterior (PY). Es la calle fina y la base de la variacion.
+	measure 'Año anterior' = SUM(Datos[AnteriorPY])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d3
+
+	partition Datos = m
+		mode: import
+		source =
+				let
+					Origen = #table(
+						type table [Categoría = text, RealAC = number, ObjetivoPL = number, AnteriorPY = number],
+						{
+							{"Juguetes e Infantil", 1179650, 1143014, 1039104},
+							{"Consolas de Videojuegos", 1056227, 1054009, 958190},
+							{"Computadoras", 1041818, 1048016, 952742},
+							{"Audio", 917925, 963356, 875778},
+							{"Hogar Inteligente", 852991, 909318, 826653},
+							{"Películas y Series (Físico)", 824943, 854350, 776682}
+						}
+					)
+				in
+					Origen
+

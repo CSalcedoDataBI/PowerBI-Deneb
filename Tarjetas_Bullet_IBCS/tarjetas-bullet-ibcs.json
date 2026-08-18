@@ -1,0 +1,1090 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.9.0",
+      "metaVersion": 1,
+      "provider": "vega",
+      "providerVersion": "5.30.0"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": false,
+      "dataPointLimit": 20
+    },
+    "information": {
+      "uuid": "0a6f5c31-9d24-4f8e-b7a1-5c2e0d83f411",
+      "generated": "2026-08-17T00:00:00.000Z",
+      "name": "Tarjeta bullet IBCS (Real · Objetivo · Año anterior)",
+      "description": "Muro de tarjetas KPI en Vega puro. Cada tarjeta lleva un bullet chart al estilo IBCS: banda del año anterior, barra del valor real y tick del objetivo, con cumplimiento y variación. Clic = cross-filter. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Categoría",
+        "description": "La dimensión que se lista, una tarjeta por valor (subcategoría, región, vendedor…). Mantenla entre 4 y 8 valores.",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "Real",
+        "description": "La medida que se está juzgando (AC en notación IBCS). Es la barra fina y el número grande de la derecha.",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__2__",
+        "name": "Objetivo",
+        "description": "El plan contra el que se compara (PL). Es el tick negro vertical. Si no tienes un objetivo real, borra la marca `objetivo` en vez de inventarlo.",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__3__",
+        "name": "Año anterior",
+        "description": "El comparativo temporal (PY). Es la banda gris de fondo y la base de la variación en %.",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "description": "Muro de tarjetas KPI con bullet chart IBCS y cross-filter por clic.",
+  "width": 860,
+  "height": 470,
+  "padding": 0,
+  "autosize": {
+    "type": "none",
+    "contains": "padding"
+  },
+  "config": {
+    "text": {
+      "font": "Segoe UI, Inter, -apple-system, Helvetica Neue, sans-serif"
+    }
+  },
+  "signals": [
+    {
+      "name": "topN",
+      "value": 6,
+      "bind": {
+        "input": "range",
+        "min": 3,
+        "max": 12,
+        "step": 1,
+        "name": "Top N  "
+      }
+    },
+    {
+      "name": "headerH",
+      "update": "clamp(height * 0.15, 54, 76)"
+    },
+    {
+      "name": "labelW",
+      "update": "clamp(width * 0.34, 170, 320)"
+    },
+    {
+      "name": "rightW",
+      "update": "clamp(width * 0.20, 112, 190)"
+    },
+    {
+      "name": "barX0",
+      "update": "labelW + 14"
+    },
+    {
+      "name": "barX1",
+      "update": "max(barX0 + 60, width - rightW - 16)"
+    },
+    {
+      "name": "footerH",
+      "update": "26"
+    }
+  ],
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "kpi",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum.__0__) && isValid(datum.__1__)"
+        },
+        {
+          "type": "formula",
+          "as": "cumpl",
+          "expr": "isValid(datum.__2__) && datum.__2__ != 0 ? datum.__1__ / datum.__2__ : null"
+        },
+        {
+          "type": "formula",
+          "as": "varPy",
+          "expr": "isValid(datum.__3__) && datum.__3__ != 0 ? datum.__1__ / datum.__3__ - 1 : null"
+        },
+        {
+          "type": "formula",
+          "as": "tono",
+          "expr": "datum.cumpl == null ? '#5B6675' : datum.cumpl >= 1 ? '#0F766E' : datum.cumpl >= 0.97 ? '#B45309' : '#BE123C'"
+        },
+        {
+          "type": "formula",
+          "as": "op",
+          "expr": "datum.__selected__ == 'off' ? 0.32 : 1"
+        },
+        {
+          "type": "formula",
+          "as": "activa",
+          "expr": "datum.__selected__ == 'on'"
+        },
+        {
+          "type": "window",
+          "ops": [
+            "dense_rank"
+          ],
+          "as": [
+            "puesto"
+          ],
+          "sort": {
+            "field": "__1__",
+            "order": "descending"
+          }
+        },
+        {
+          "type": "filter",
+          "expr": "datum.puesto <= topN"
+        }
+      ]
+    },
+    {
+      "name": "resumen",
+      "source": "kpi",
+      "transform": [
+        {
+          "type": "formula",
+          "as": "unoSel",
+          "expr": "datum.__selected__ == 'on' ? 1 : 0"
+        },
+        {
+          "type": "aggregate",
+          "fields": [
+            "__1__",
+            "__3__",
+            "unoSel",
+            "__0__"
+          ],
+          "ops": [
+            "sum",
+            "sum",
+            "sum",
+            "count"
+          ],
+          "as": [
+            "tReal",
+            "tPy",
+            "tSel",
+            "tN"
+          ]
+        },
+        {
+          "type": "formula",
+          "as": "tVar",
+          "expr": "datum.tPy != 0 ? datum.tReal / datum.tPy - 1 : null"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "zero": true,
+      "nice": true,
+      "round": true,
+      "domain": {
+        "fields": [
+          {
+            "data": "kpi",
+            "field": "__1__"
+          },
+          {
+            "data": "kpi",
+            "field": "__2__"
+          },
+          {
+            "data": "kpi",
+            "field": "__3__"
+          }
+        ]
+      },
+      "range": {
+        "signal": "[barX0, barX1]"
+      }
+    },
+    {
+      "name": "y",
+      "type": "band",
+      "round": true,
+      "paddingInner": 0.17,
+      "paddingOuter": 0.04,
+      "domain": {
+        "data": "kpi",
+        "field": "__0__",
+        "sort": {
+          "op": "max",
+          "field": "__1__",
+          "order": "descending"
+        }
+      },
+      "range": {
+        "signal": "[headerH, height - footerH]"
+      }
+    }
+  ],
+  "marks": [
+    {
+      "name": "cabeceraEtiqueta",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 2
+          },
+          "y": {
+            "value": 6
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "align": {
+            "value": "left"
+          },
+          "text": {
+            "signal": "'TOTAL · ' + datum.tN + ' CATEGORÍAS'"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#5B6675"
+          }
+        }
+      }
+    },
+    {
+      "name": "cabeceraValor",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 2
+          },
+          "y": {
+            "signal": "headerH - 16"
+          },
+          "baseline": {
+            "value": "alphabetic"
+          },
+          "align": {
+            "value": "left"
+          },
+          "text": {
+            "signal": "pbiFormat(datum.tReal, '#,0,,.00M')"
+          },
+          "fontSize": {
+            "signal": "clamp(headerH * 0.42, 20, 30)"
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#0F172A"
+          }
+        }
+      }
+    },
+    {
+      "name": "cabeceraVariacion",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 2"
+          },
+          "y": {
+            "signal": "headerH - 18"
+          },
+          "baseline": {
+            "value": "alphabetic"
+          },
+          "align": {
+            "value": "right"
+          },
+          "text": {
+            "signal": "datum.tVar == null ? \"\" : (datum.tVar >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.tVar), '0.0%') + ' vs año anterior'"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "signal": "datum.tVar == null ? '#4B5563' : datum.tVar >= 0 ? '#0F766E' : '#BE123C'"
+          }
+        }
+      }
+    },
+    {
+      "name": "cabeceraPista",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 2"
+          },
+          "y": {
+            "value": 6
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "align": {
+            "value": "right"
+          },
+          "text": {
+            "signal": "datum.tSel > 0 ? datum.tSel + ' de ' + datum.tN + ' seleccionada · clic de nuevo para limpiar' : 'Clic en una tarjeta para filtrar el informe'"
+          },
+          "fontSize": {
+            "value": 10.5
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#5B6675"
+          }
+        }
+      }
+    },
+    {
+      "name": "cabeceraLinea",
+      "type": "rule",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 0
+          },
+          "x2": {
+            "signal": "width"
+          },
+          "y": {
+            "signal": "headerH - 9"
+          },
+          "stroke": {
+            "value": "#E2E8F0"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "tarjeta",
+      "type": "rect",
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 1
+          },
+          "x2": {
+            "signal": "width - 1"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__"
+          },
+          "height": {
+            "scale": "y",
+            "band": 1
+          },
+          "cornerRadius": {
+            "value": 14
+          },
+          "fill": {
+            "signal": "datum.activa ? '#F2F7FF' : '#FFFFFF'"
+          },
+          "stroke": {
+            "signal": "datum.activa ? '#8FB2E6' : '#E8EDF5'"
+          },
+          "strokeWidth": {
+            "signal": "datum.activa ? 1.6 : 1"
+          },
+          "opacity": {
+            "field": "op"
+          },
+          "cursor": {
+            "value": "pointer"
+          },
+          "tooltip": {
+            "signal": "{'title': datum.__0__, '__1__': pbiFormat(datum.__1__, '#,0'), '__2__': pbiFormat(datum.__2__, '#,0'), '__3__': pbiFormat(datum.__3__, '#,0'), 'Cumplimiento del objetivo': datum.cumpl == null ? '—' : pbiFormat(datum.cumpl, '0.0%'), 'Variación vs año anterior': datum.varPy == null ? '—' : pbiFormat(datum.varPy, '0.0%')}"
+          }
+        }
+      }
+    },
+    {
+      "name": "franja",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 1
+          },
+          "width": {
+            "value": 4
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__"
+          },
+          "height": {
+            "scale": "y",
+            "band": 1
+          },
+          "cornerRadius": {
+            "value": 2
+          },
+          "fill": {
+            "field": "tono"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "etiqueta",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 20
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": -8
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "field": "__0__"
+          },
+          "limit": {
+            "signal": "labelW - 26"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "value": "#1E293B"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "cumplimiento",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 20
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": 11
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "signal": "datum.cumpl == null ? 'sin objetivo' : pbiFormat(datum.cumpl, '0.0%') + ' del objetivo'"
+          },
+          "limit": {
+            "signal": "labelW - 26"
+          },
+          "fontSize": {
+            "value": 10.5
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "field": "tono"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "pista",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "barX0"
+          },
+          "x2": {
+            "signal": "barX1"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": -14
+          },
+          "height": {
+            "value": 27
+          },
+          "cornerRadius": {
+            "value": 13.5
+          },
+          "fill": {
+            "value": "#F3F6FA"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "bandaAnioAnterior",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "barX0"
+          },
+          "x2": {
+            "scale": "x",
+            "field": "__3__"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": 3
+          },
+          "height": {
+            "value": 7
+          },
+          "cornerRadius": {
+            "value": 3.5
+          },
+          "fill": {
+            "value": "#7E8DA0"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "barraReal",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "barX0"
+          },
+          "x2": {
+            "scale": "x",
+            "field": "__1__"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": -11
+          },
+          "height": {
+            "value": 11
+          },
+          "cornerRadius": {
+            "value": 5.5
+          },
+          "fill": {
+            "value": {
+              "gradient": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 1,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#2E6BE0"
+                },
+                {
+                  "offset": 1,
+                  "color": "#16307A"
+                }
+              ]
+            }
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "objetivo",
+      "type": "rule",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "x",
+            "field": "__2__"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": -17
+          },
+          "y2": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": 17
+          },
+          "stroke": {
+            "value": "#0F172A"
+          },
+          "strokeWidth": {
+            "value": 2.5
+          },
+          "strokeCap": {
+            "value": "round"
+          },
+          "opacity": {
+            "signal": "isValid(datum.__2__) ? datum.op : 0"
+          }
+        }
+      }
+    },
+    {
+      "name": "valor",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 18"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": -8
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "signal": "pbiFormat(datum.__1__, '#,0,,.00M')"
+          },
+          "fontSize": {
+            "value": 16
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#0F172A"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "variacion",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "kpi"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 18"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__0__",
+            "band": 0.5,
+            "offset": 11
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "signal": "datum.varPy == null ? \"\" : (datum.varPy >= 0 ? '▲ +' : '▼ −') + pbiFormat(abs(datum.varPy), '0.0%')"
+          },
+          "fontSize": {
+            "value": 11
+          },
+          "fontWeight": {
+            "value": 600
+          },
+          "fill": {
+            "signal": "datum.varPy == null ? '#4B5563' : datum.varPy >= 0 ? '#0F766E' : '#BE123C'"
+          },
+          "opacity": {
+            "field": "op"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaBandaSwatch",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 2
+          },
+          "width": {
+            "value": 18
+          },
+          "y": {
+            "signal": "height - footerH + 15 - 5"
+          },
+          "height": {
+            "value": 7
+          },
+          "cornerRadius": {
+            "value": 3.5
+          },
+          "fill": {
+            "value": "#7E8DA0"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaBandaTexto",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "24"
+          },
+          "y": {
+            "signal": "height - footerH + 15"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "value": "Año anterior"
+          },
+          "fontSize": {
+            "value": 10.5
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#4B5563"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaBarraSwatch",
+      "type": "rect",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 100
+          },
+          "width": {
+            "value": 18
+          },
+          "y": {
+            "signal": "height - footerH + 15 - 3.5"
+          },
+          "height": {
+            "value": 9
+          },
+          "cornerRadius": {
+            "value": 4.5
+          },
+          "fill": {
+            "value": {
+              "gradient": "linear",
+              "x1": 0,
+              "y1": 0,
+              "x2": 1,
+              "y2": 0,
+              "stops": [
+                {
+                  "offset": 0,
+                  "color": "#2E6BE0"
+                },
+                {
+                  "offset": 1,
+                  "color": "#16307A"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaBarraTexto",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "122"
+          },
+          "y": {
+            "signal": "height - footerH + 15"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "value": "Real"
+          },
+          "fontSize": {
+            "value": 10.5
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#4B5563"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaObjetivoSwatch",
+      "type": "rule",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 160
+          },
+          "y": {
+            "signal": "height - footerH + 15 - 7"
+          },
+          "y2": {
+            "signal": "height - footerH + 15 + 7"
+          },
+          "stroke": {
+            "value": "#0F172A"
+          },
+          "strokeWidth": {
+            "value": 2.5
+          },
+          "strokeCap": {
+            "value": "round"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaObjetivoTexto",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "170"
+          },
+          "y": {
+            "signal": "height - footerH + 15"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "value": "Objetivo"
+          },
+          "fontSize": {
+            "value": 10.5
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#4B5563"
+          }
+        }
+      }
+    },
+    {
+      "name": "leyendaNota",
+      "type": "text",
+      "interactive": false,
+      "from": {
+        "data": "resumen"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "width - 2"
+          },
+          "y": {
+            "signal": "height - footerH + 15"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "text": {
+            "value": "Escala común a todas las tarjetas · eje desde cero"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fontWeight": {
+            "value": 500
+          },
+          "fill": {
+            "value": "#5F6B7A"
+          }
+        }
+      }
+    }
+  ]
+}
