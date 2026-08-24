@@ -1,0 +1,207 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "566df089b3f32798c2d4",
+  "position": {
+    "x": 40,
+    "y": 40,
+    "z": 0,
+    "height": 640,
+    "width": 1200,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimProduct"
+                    }
+                  },
+                  "Property": "SubCategoryName"
+                }
+              },
+              "queryRef": "DimProduct.SubCategoryName",
+              "nativeQueryRef": "SubCategoryName"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "_Measures.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Target"
+                }
+              },
+              "queryRef": "_Measures.Sales Target",
+              "nativeQueryRef": "Sales Target"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales PY"
+                }
+              },
+              "queryRef": "_Measures.Sales PY",
+              "nativeQueryRef": "Sales PY"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega/v5.json\",\n  \"description\": \"Grilla de tiles KPI con termómetro vertical IBCS y cross-filter por clic.\",\n  \"width\": 860,\n  \"height\": 470,\n  \"padding\": 0,\n  \"autosize\": {\n    \"type\": \"none\",\n    \"contains\": \"padding\"\n  },\n  \"config\": {\n    \"text\": {\n      \"font\": \"Segoe UI, Inter, -apple-system, Helvetica Neue, sans-serif\"\n    }\n  },\n  \"signals\": [\n    {\n      \"name\": \"topN\",\n      \"value\": 6,\n      \"bind\": {\n        \"input\": \"range\",\n        \"min\": 3,\n        \"max\": 12,\n        \"step\": 1,\n        \"name\": \"Top N  \"\n      }\n    },\n    {\n      \"name\": \"cols\",\n      \"value\": 3\n    },\n    {\n      \"name\": \"rows\",\n      \"update\": \"ceil(topN / cols)\"\n    },\n    {\n      \"name\": \"headerH\",\n      \"update\": \"clamp(height * 0.15, 54, 76)\"\n    },\n    {\n      \"name\": \"footerH\",\n      \"value\": 26\n    },\n    {\n      \"name\": \"gridPad\",\n      \"value\": 10\n    },\n    {\n      \"name\": \"gridX0\",\n      \"update\": \"gridPad\"\n    },\n    {\n      \"name\": \"gridX1\",\n      \"update\": \"width - gridPad\"\n    },\n    {\n      \"name\": \"gridY0\",\n      \"update\": \"headerH + 8\"\n    },\n    {\n      \"name\": \"gridY1\",\n      \"update\": \"height - footerH - 4\"\n    },\n    {\n      \"name\": \"tileW\",\n      \"update\": \"bandwidth(''col'')\"\n    },\n    {\n      \"name\": \"tileH\",\n      \"update\": \"bandwidth(''row'')\"\n    },\n    {\n      \"name\": \"topReserve\",\n      \"value\": 46\n    },\n    {\n      \"name\": \"bottomReserve\",\n      \"value\": 22\n    },\n    {\n      \"name\": \"chartH\",\n      \"update\": \"max(tileH - topReserve - bottomReserve, 20)\"\n    },\n    {\n      \"name\": \"acW\",\n      \"update\": \"clamp(tileW * 0.22, 20, 40)\"\n    },\n    {\n      \"name\": \"pyW\",\n      \"update\": \"clamp(tileW * 0.12, 10, 20)\"\n    },\n    {\n      \"name\": \"barGap\",\n      \"value\": 8\n    }\n  ],\n  \"data\": [\n    {\n      \"name\": \"dataset\"\n    },\n    {\n      \"name\": \"kpi\",\n      \"source\": \"dataset\",\n      \"transform\": [\n        {\n          \"type\": \"filter\",\n          \"expr\": \"isValid(datum[''Categoría'']) && isValid(datum.Real)\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"cumpl\",\n          \"expr\": \"isValid(datum.Objetivo) && datum.Objetivo != 0 ? datum.Real / datum.Objetivo : null\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"varPy\",\n          \"expr\": \"isValid(datum[''Año anterior'']) && datum[''Año anterior''] != 0 ? datum.Real / datum[''Año anterior''] - 1 : null\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"tono\",\n          \"expr\": \"datum.cumpl == null ? ''#5B6675'' : datum.cumpl >= 1 ? ''#0F766E'' : datum.cumpl >= 0.97 ? ''#B45309'' : ''#BE123C''\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"op\",\n          \"expr\": \"datum.__selected__ == ''off'' ? 0.32 : 1\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"activa\",\n          \"expr\": \"datum.__selected__ == ''on''\"\n        },\n        {\n          \"type\": \"window\",\n          \"ops\": [\n            \"dense_rank\"\n          ],\n          \"as\": [\n            \"puesto\"\n          ],\n          \"sort\": {\n            \"field\": \"Real\",\n            \"order\": \"descending\"\n          }\n        },\n        {\n          \"type\": \"filter\",\n          \"expr\": \"datum.puesto <= topN\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"col\",\n          \"expr\": \"(datum.puesto - 1) % cols\"\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"row\",\n          \"expr\": \"floor((datum.puesto - 1) / cols)\"\n        }\n      ]\n    },\n    {\n      \"name\": \"resumen\",\n      \"source\": \"kpi\",\n      \"transform\": [\n        {\n          \"type\": \"formula\",\n          \"as\": \"unoSel\",\n          \"expr\": \"datum.__selected__ == ''on'' ? 1 : 0\"\n        },\n        {\n          \"type\": \"aggregate\",\n          \"fields\": [\n            \"Real\",\n            \"Año anterior\",\n            \"unoSel\",\n            \"Categoría\"\n          ],\n          \"ops\": [\n            \"sum\",\n            \"sum\",\n            \"sum\",\n            \"count\"\n          ],\n          \"as\": [\n            \"tReal\",\n            \"tPy\",\n            \"tSel\",\n            \"tN\"\n          ]\n        },\n        {\n          \"type\": \"formula\",\n          \"as\": \"tVar\",\n          \"expr\": \"datum.tPy != 0 ? datum.tReal / datum.tPy - 1 : null\"\n        }\n      ]\n    }\n  ],\n  \"scales\": [\n    {\n      \"name\": \"col\",\n      \"type\": \"band\",\n      \"round\": true,\n      \"paddingInner\": 0.14,\n      \"paddingOuter\": 0.04,\n      \"domain\": {\n        \"data\": \"kpi\",\n        \"field\": \"col\",\n        \"sort\": true\n      },\n      \"range\": {\n        \"signal\": \"[gridX0, gridX1]\"\n      }\n    },\n    {\n      \"name\": \"row\",\n      \"type\": \"band\",\n      \"round\": true,\n      \"paddingInner\": 0.16,\n      \"paddingOuter\": 0.02,\n      \"domain\": {\n        \"data\": \"kpi\",\n        \"field\": \"row\",\n        \"sort\": true\n      },\n      \"range\": {\n        \"signal\": \"[gridY0, gridY1]\"\n      }\n    },\n    {\n      \"name\": \"v\",\n      \"type\": \"linear\",\n      \"zero\": true,\n      \"nice\": true,\n      \"round\": true,\n      \"domain\": {\n        \"fields\": [\n          {\n            \"data\": \"kpi\",\n            \"field\": \"Real\"\n          },\n          {\n            \"data\": \"kpi\",\n            \"field\": \"Objetivo\"\n          },\n          {\n            \"data\": \"kpi\",\n            \"field\": \"Año anterior\"\n          }\n        ]\n      },\n      \"range\": {\n        \"signal\": \"[0, chartH]\"\n      }\n    }\n  ],\n  \"marks\": [\n    {\n      \"name\": \"cabeceraEtiqueta\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 2\n          },\n          \"y\": {\n            \"value\": 6\n          },\n          \"baseline\": {\n            \"value\": \"top\"\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"text\": {\n            \"signal\": \"''TOTAL · '' + datum.tN + '' CATEGORÍAS''\"\n          },\n          \"fontSize\": {\n            \"value\": 10\n          },\n          \"fontWeight\": {\n            \"value\": 700\n          },\n          \"fill\": {\n            \"value\": \"#5B6675\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"cabeceraValor\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 2\n          },\n          \"y\": {\n            \"signal\": \"headerH - 16\"\n          },\n          \"baseline\": {\n            \"value\": \"alphabetic\"\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"text\": {\n            \"signal\": \"pbiFormat(datum.tReal, ''#,0,,.00M'')\"\n          },\n          \"fontSize\": {\n            \"signal\": \"clamp(headerH * 0.42, 20, 30)\"\n          },\n          \"fontWeight\": {\n            \"value\": 700\n          },\n          \"fill\": {\n            \"value\": \"#0F172A\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"cabeceraVariacion\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"width - 2\"\n          },\n          \"y\": {\n            \"signal\": \"headerH - 18\"\n          },\n          \"baseline\": {\n            \"value\": \"alphabetic\"\n          },\n          \"align\": {\n            \"value\": \"right\"\n          },\n          \"text\": {\n            \"signal\": \"datum.tVar == null ? \\\"\\\" : (datum.tVar >= 0 ? ''▲ +'' : ''▼ −'') + pbiFormat(abs(datum.tVar), ''0.0%'') + '' vs año anterior''\"\n          },\n          \"fontSize\": {\n            \"value\": 12\n          },\n          \"fontWeight\": {\n            \"value\": 600\n          },\n          \"fill\": {\n            \"signal\": \"datum.tVar == null ? ''#4B5563'' : datum.tVar >= 0 ? ''#0F766E'' : ''#BE123C''\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"cabeceraPista\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"width - 2\"\n          },\n          \"y\": {\n            \"value\": 6\n          },\n          \"baseline\": {\n            \"value\": \"top\"\n          },\n          \"align\": {\n            \"value\": \"right\"\n          },\n          \"text\": {\n            \"signal\": \"datum.tSel > 0 ? datum.tSel + '' de '' + datum.tN + '' seleccionada · clic de nuevo para limpiar'' : ''Clic en un tile para filtrar el informe''\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 500\n          },\n          \"fill\": {\n            \"value\": \"#5B6675\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"cabeceraLinea\",\n      \"type\": \"rule\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 0\n          },\n          \"x2\": {\n            \"signal\": \"width\"\n          },\n          \"y\": {\n            \"signal\": \"headerH - 9\"\n          },\n          \"stroke\": {\n            \"value\": \"#E2E8F0\"\n          },\n          \"strokeWidth\": {\n            \"value\": 1\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"tile\",\n      \"type\": \"rect\",\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\"\n          },\n          \"width\": {\n            \"signal\": \"tileW\"\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\"\n          },\n          \"height\": {\n            \"signal\": \"tileH\"\n          },\n          \"cornerRadius\": {\n            \"value\": 14\n          },\n          \"fill\": {\n            \"signal\": \"datum.activa ? ''#F2F7FF'' : ''#FFFFFF''\"\n          },\n          \"stroke\": {\n            \"signal\": \"datum.activa ? ''#8FB2E6'' : ''#E8EDF5''\"\n          },\n          \"strokeWidth\": {\n            \"signal\": \"datum.activa ? 1.6 : 1\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          },\n          \"cursor\": {\n            \"value\": \"pointer\"\n          },\n          \"tooltip\": {\n            \"signal\": \"{''title'': datum[''Categoría''], ''Real'': pbiFormat(datum.Real, ''#,0''), ''Objetivo'': pbiFormat(datum.Objetivo, ''#,0''), ''Año anterior'': pbiFormat(datum[''Año anterior''], ''#,0''), ''Cumplimiento del objetivo'': datum.cumpl == null ? ''—'' : pbiFormat(datum.cumpl, ''0.0%''), ''Variación vs año anterior'': datum.varPy == null ? ''—'' : pbiFormat(datum.varPy, ''0.0%'')}\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"tonoFranja\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": 14\n          },\n          \"x2\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": {\n              \"signal\": \"tileW - 14\"\n            }\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\",\n            \"offset\": 8\n          },\n          \"height\": {\n            \"value\": 4\n          },\n          \"cornerRadius\": {\n            \"value\": 2\n          },\n          \"fill\": {\n            \"field\": \"tono\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"etiqueta\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": 14\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\",\n            \"offset\": 26\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"top\"\n          },\n          \"text\": {\n            \"field\": \"Categoría\"\n          },\n          \"limit\": {\n            \"signal\": \"tileW - 28\"\n          },\n          \"fontSize\": {\n            \"value\": 12.5\n          },\n          \"fontWeight\": {\n            \"value\": 700\n          },\n          \"fill\": {\n            \"value\": \"#1E293B\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"valorTexto\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": 14\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\",\n            \"offset\": 44\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"top\"\n          },\n          \"text\": {\n            \"signal\": \"pbiFormat(datum.Real, ''#,0,,.00M'')\"\n          },\n          \"fontSize\": {\n            \"value\": 15\n          },\n          \"fontWeight\": {\n            \"value\": 700\n          },\n          \"fill\": {\n            \"value\": \"#0F172A\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"variacionTexto\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": {\n              \"signal\": \"tileW - 14\"\n            }\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\",\n            \"offset\": 46\n          },\n          \"align\": {\n            \"value\": \"right\"\n          },\n          \"baseline\": {\n            \"value\": \"top\"\n          },\n          \"text\": {\n            \"signal\": \"datum.varPy == null ? \\\"\\\" : (datum.varPy >= 0 ? ''▲ +'' : ''▼ −'') + pbiFormat(abs(datum.varPy), ''0.0%'')\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 600\n          },\n          \"fill\": {\n            \"signal\": \"datum.varPy == null ? ''#4B5563'' : datum.varPy >= 0 ? ''#0F766E'' : ''#BE123C''\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"pistaColumna\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"scale(''col'', datum.col) + tileW / 2 - barGap / 2 - acW - 4\"\n          },\n          \"width\": {\n            \"signal\": \"acW + barGap + pyW + 8\"\n          },\n          \"y2\": {\n            \"signal\": \"scale(''row'', datum.row) + tileH - bottomReserve\"\n          },\n          \"y\": {\n            \"signal\": \"scale(''row'', datum.row) + tileH - bottomReserve - chartH\"\n          },\n          \"cornerRadius\": {\n            \"value\": 10\n          },\n          \"fill\": {\n            \"value\": \"#F3F6FA\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"barraPY\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"scale(''col'', datum.col) + tileW / 2 + barGap / 2\"\n          },\n          \"width\": {\n            \"signal\": \"pyW\"\n          },\n          \"y2\": {\n            \"signal\": \"scale(''row'', datum.row) + tileH - bottomReserve\"\n          },\n          \"height\": {\n            \"signal\": \"scale(''v'', datum[''Año anterior''])\"\n          },\n          \"cornerRadiusTopLeft\": {\n            \"value\": 3\n          },\n          \"cornerRadiusTopRight\": {\n            \"value\": 3\n          },\n          \"fill\": {\n            \"value\": \"#7E8DA0\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"barraAC\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"scale(''col'', datum.col) + tileW / 2 - barGap / 2 - acW\"\n          },\n          \"width\": {\n            \"signal\": \"acW\"\n          },\n          \"y2\": {\n            \"signal\": \"scale(''row'', datum.row) + tileH - bottomReserve\"\n          },\n          \"height\": {\n            \"signal\": \"scale(''v'', datum.Real)\"\n          },\n          \"cornerRadiusTopLeft\": {\n            \"value\": 6\n          },\n          \"cornerRadiusTopRight\": {\n            \"value\": 6\n          },\n          \"fill\": {\n            \"value\": {\n              \"gradient\": \"linear\",\n              \"x1\": 0,\n              \"y1\": 1,\n              \"x2\": 0,\n              \"y2\": 0,\n              \"stops\": [\n                {\n                  \"offset\": 0,\n                  \"color\": \"#2E6BE0\"\n                },\n                {\n                  \"offset\": 1,\n                  \"color\": \"#16307A\"\n                }\n              ]\n            }\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"objetivoTick\",\n      \"type\": \"rule\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"scale(''col'', datum.col) + tileW / 2 - barGap / 2 - acW - 3\"\n          },\n          \"x2\": {\n            \"signal\": \"scale(''col'', datum.col) + tileW / 2 + barGap / 2 + pyW + 3\"\n          },\n          \"y\": {\n            \"signal\": \"scale(''row'', datum.row) + tileH - bottomReserve - scale(''v'', datum.Objetivo)\"\n          },\n          \"stroke\": {\n            \"value\": \"#0F172A\"\n          },\n          \"strokeWidth\": {\n            \"value\": 2.5\n          },\n          \"strokeCap\": {\n            \"value\": \"round\"\n          },\n          \"opacity\": {\n            \"signal\": \"isValid(datum.Objetivo) ? datum.op : 0\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"cumplimientoBadge\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"kpi\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"scale\": \"col\",\n            \"field\": \"col\",\n            \"offset\": 14\n          },\n          \"y\": {\n            \"scale\": \"row\",\n            \"field\": \"row\",\n            \"offset\": {\n              \"signal\": \"tileH - 10\"\n            }\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"middle\"\n          },\n          \"text\": {\n            \"signal\": \"datum.cumpl == null ? ''sin objetivo'' : pbiFormat(datum.cumpl, ''0.0%'') + '' del objetivo''\"\n          },\n          \"limit\": {\n            \"signal\": \"tileW - 28\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 600\n          },\n          \"fill\": {\n            \"field\": \"tono\"\n          },\n          \"opacity\": {\n            \"field\": \"op\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaBandaSwatch\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 2\n          },\n          \"width\": {\n            \"value\": 18\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15 - 5\"\n          },\n          \"height\": {\n            \"value\": 7\n          },\n          \"cornerRadius\": {\n            \"value\": 3.5\n          },\n          \"fill\": {\n            \"value\": \"#7E8DA0\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaBandaTexto\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"24\"\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15\"\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"middle\"\n          },\n          \"text\": {\n            \"value\": \"Año anterior\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 500\n          },\n          \"fill\": {\n            \"value\": \"#4B5563\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaBarraSwatch\",\n      \"type\": \"rect\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 100\n          },\n          \"width\": {\n            \"value\": 18\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15 - 3.5\"\n          },\n          \"height\": {\n            \"value\": 9\n          },\n          \"cornerRadius\": {\n            \"value\": 4.5\n          },\n          \"fill\": {\n            \"value\": {\n              \"gradient\": \"linear\",\n              \"x1\": 0,\n              \"y1\": 0,\n              \"x2\": 1,\n              \"y2\": 0,\n              \"stops\": [\n                {\n                  \"offset\": 0,\n                  \"color\": \"#2E6BE0\"\n                },\n                {\n                  \"offset\": 1,\n                  \"color\": \"#16307A\"\n                }\n              ]\n            }\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaBarraTexto\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"122\"\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15\"\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"middle\"\n          },\n          \"text\": {\n            \"value\": \"Real\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 500\n          },\n          \"fill\": {\n            \"value\": \"#4B5563\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaObjetivoSwatch\",\n      \"type\": \"rule\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"value\": 160\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15 - 7\"\n          },\n          \"y2\": {\n            \"signal\": \"height - footerH + 15 + 7\"\n          },\n          \"stroke\": {\n            \"value\": \"#0F172A\"\n          },\n          \"strokeWidth\": {\n            \"value\": 2.5\n          },\n          \"strokeCap\": {\n            \"value\": \"round\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaObjetivoTexto\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"170\"\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15\"\n          },\n          \"align\": {\n            \"value\": \"left\"\n          },\n          \"baseline\": {\n            \"value\": \"middle\"\n          },\n          \"text\": {\n            \"value\": \"Objetivo\"\n          },\n          \"fontSize\": {\n            \"value\": 10.5\n          },\n          \"fontWeight\": {\n            \"value\": 500\n          },\n          \"fill\": {\n            \"value\": \"#4B5563\"\n          }\n        }\n      }\n    },\n    {\n      \"name\": \"leyendaNota\",\n      \"type\": \"text\",\n      \"interactive\": false,\n      \"from\": {\n        \"data\": \"resumen\"\n      },\n      \"encode\": {\n        \"update\": {\n          \"x\": {\n            \"signal\": \"width - 2\"\n          },\n          \"y\": {\n            \"signal\": \"height - footerH + 15\"\n          },\n          \"align\": {\n            \"value\": \"right\"\n          },\n          \"baseline\": {\n            \"value\": \"middle\"\n          },\n          \"text\": {\n            \"value\": \"Escala común a todas las tarjetas · eje vertical desde cero\"\n          },\n          \"fontSize\": {\n            \"value\": 10\n          },\n          \"fontWeight\": {\n            \"value\": 500\n          },\n          \"fill\": {\n            \"value\": \"#5F6B7A\"\n          }\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\n    \"stroke\": \"transparent\"\n  }\n}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.2.0'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterd94e14d0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimDate"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "DimDate",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Year"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "2024L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
