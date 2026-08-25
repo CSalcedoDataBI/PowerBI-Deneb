@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_ProTooling = ["DevMode","CopilotTooling"]
+annotation PBI_ProTooling = ["DevMode","CopilotTooling","MCP-PBIModeling"]
 
 annotation PBI_QueryOrder = ["DimCurrency","DimCurrencyExchange","DimCustomer","DimDate","DimProduct","DimStore","FactSales","DataBaseUrl"]
 

@@ -92,6 +92,12 @@ table _Measures
 		displayFolder: 05 Time Intelligence
 		lineageTag: b1000000-0000-0000-0000-00000000000f
 
+	/// Plan DECLARADO para el ejemplo de la galería: Año anterior + 10%. No es un presupuesto real del modelo Contoso — se documenta así en la ficha para no simular un origen que no existe.
+	measure 'Sales Target' = [Sales PY] * 1.1
+		formatString: "$"#,0
+		displayFolder: 05 Time Intelligence
+		lineageTag: 6842419b-414e-4b31-9e30-3d8627a8b56d
+
 	column Placeholder
 		dataType: string
 		isHidden

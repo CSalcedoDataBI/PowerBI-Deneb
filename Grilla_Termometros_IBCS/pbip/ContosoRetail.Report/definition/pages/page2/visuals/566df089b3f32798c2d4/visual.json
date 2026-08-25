@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "566df089b3f32798c2d4",
   "position": {
     "x": 40,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "DimProduct.SubCategoryName",
-              "nativeQueryRef": "SubCategoryName"
+              "nativeQueryRef": "Categoría",
+              "displayName": "Categoría"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "_Measures.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "nativeQueryRef": "Real",
+              "displayName": "Real"
             },
             {
               "field": {
@@ -55,7 +57,8 @@
                 }
               },
               "queryRef": "_Measures.Sales Target",
-              "nativeQueryRef": "Sales Target"
+              "nativeQueryRef": "Objetivo",
+              "displayName": "Objetivo"
             },
             {
               "field": {
@@ -69,7 +72,8 @@
                 }
               },
               "queryRef": "_Measures.Sales PY",
-              "nativeQueryRef": "Sales PY"
+              "nativeQueryRef": "Año anterior",
+              "displayName": "Año anterior"
             }
           ]
         }
@@ -144,6 +148,39 @@
             }
           }
         }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "630D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1190D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1.9.1.0'"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   },
@@ -200,7 +237,64 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "bd96bd6ef78100f2b627",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimProduct"
+              }
+            },
+            "Property": "SubCategoryName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c2a0d26b28bc753fdcbd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f0780ecbb805df63c870",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Sales PY"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fe96a5a5c3ec01d3416a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Sales Target"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }
