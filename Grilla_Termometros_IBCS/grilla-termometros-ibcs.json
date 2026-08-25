@@ -156,17 +156,17 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "isValid(datum.__0__) && isValid(datum.__1__)"
+          "expr": "isValid(datum['__0__']) && isValid(datum['__1__'])"
         },
         {
           "type": "formula",
           "as": "cumpl",
-          "expr": "isValid(datum.__2__) && datum.__2__ != 0 ? datum.__1__ / datum.__2__ : null"
+          "expr": "isValid(datum['__2__']) && datum['__2__'] != 0 ? datum['__1__'] / datum['__2__'] : null"
         },
         {
           "type": "formula",
           "as": "varPy",
-          "expr": "isValid(datum.__3__) && datum.__3__ != 0 ? datum.__1__ / datum.__3__ - 1 : null"
+          "expr": "isValid(datum['__3__']) && datum['__3__'] != 0 ? datum['__1__'] / datum['__3__'] - 1 : null"
         },
         {
           "type": "formula",
@@ -521,7 +521,7 @@
             "value": "pointer"
           },
           "tooltip": {
-            "signal": "{'title': datum.__0__, '__1__': pbiFormat(datum.__1__, '#,0'), '__2__': pbiFormat(datum.__2__, '#,0'), '__3__': pbiFormat(datum.__3__, '#,0'), 'Cumplimiento del objetivo': datum.cumpl == null ? '—' : pbiFormat(datum.cumpl, '0.0%'), 'Variación vs año anterior': datum.varPy == null ? '—' : pbiFormat(datum.varPy, '0.0%')}"
+            "signal": "{'title': datum['__0__'], '__1__': pbiFormat(datum['__1__'], '#,0'), '__2__': pbiFormat(datum['__2__'], '#,0'), '__3__': pbiFormat(datum['__3__'], '#,0'), 'Cumplimiento del objetivo': datum.cumpl == null ? '—' : pbiFormat(datum.cumpl, '0.0%'), 'Variación vs año anterior': datum.varPy == null ? '—' : pbiFormat(datum.varPy, '0.0%')}"
           }
         }
       }
@@ -639,7 +639,7 @@
             "value": "top"
           },
           "text": {
-            "signal": "pbiFormat(datum.__1__, '#,0,,.00M')"
+            "signal": "pbiFormat(datum['__1__'], '#,0,,.00M')"
           },
           "fontSize": {
             "value": 15
@@ -753,7 +753,7 @@
             "signal": "scale('row', datum.row) + tileH - bottomReserve"
           },
           "height": {
-            "signal": "scale('v', datum.__3__)"
+            "signal": "scale('v', datum['__3__'])"
           },
           "cornerRadiusTopLeft": {
             "value": 3
@@ -789,7 +789,7 @@
             "signal": "scale('row', datum.row) + tileH - bottomReserve"
           },
           "height": {
-            "signal": "scale('v', datum.__1__)"
+            "signal": "scale('v', datum['__1__'])"
           },
           "cornerRadiusTopLeft": {
             "value": 6
@@ -838,7 +838,7 @@
             "signal": "scale('col', datum.col) + tileW / 2 + barGap / 2 + pyW + 3"
           },
           "y": {
-            "signal": "scale('row', datum.row) + tileH - bottomReserve - scale('v', datum.__2__)"
+            "signal": "scale('row', datum.row) + tileH - bottomReserve - scale('v', datum['__2__'])"
           },
           "stroke": {
             "value": "#0F172A"
@@ -850,7 +850,7 @@
             "value": "round"
           },
           "opacity": {
-            "signal": "isValid(datum.__2__) ? datum.op : 0"
+            "signal": "isValid(datum['__2__']) ? datum.op : 0"
           }
         }
       }
