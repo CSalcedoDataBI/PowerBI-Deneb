@@ -1,0 +1,20 @@
+relationship c0000001-0000-0000-0000-000000000001
+	fromColumn: FactSales.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship c0000002-0000-0000-0000-000000000002
+	fromColumn: FactSales.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship c0000003-0000-0000-0000-000000000003
+	fromColumn: FactSales.StoreKey
+	toColumn: DimStore.StoreKey
+
+relationship c0000004-0000-0000-0000-000000000004
+	fromColumn: FactSales.OrderDate
+	toColumn: DimDate.Date
+
+relationship c0000005-0000-0000-0000-000000000005
+	fromColumn: FactSales.CurrencyCode
+	toColumn: DimCurrency.CurrencyCode
+

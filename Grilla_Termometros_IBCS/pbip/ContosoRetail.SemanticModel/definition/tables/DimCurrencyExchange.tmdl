@@ -1,0 +1,37 @@
+/// Exchange-rate table — one row per currency pair per day. Use Exchange to convert amounts across currencies.
+table DimCurrencyExchange
+	lineageTag: 7a6bebb3-c97f-542a-b4a7-0777072b3648
+
+	/// Rate date, stored as text.
+	column Date
+		dataType: string
+		lineageTag: a076c088-ab7d-516b-be6a-82339f141041
+		sourceColumn: Date
+
+	/// Source currency code (convert from).
+	column FromCurrency
+		dataType: string
+		lineageTag: be913dc3-3fc3-5fe0-80df-d884ad6190a2
+		sourceColumn: FromCurrency
+
+	/// Target currency code (convert to).
+	column ToCurrency
+		dataType: string
+		lineageTag: 5d8ad4ed-688d-55ca-8924-b17404ed03d4
+		sourceColumn: ToCurrency
+
+	/// Conversion rate from FromCurrency to ToCurrency.
+	column Exchange
+		dataType: double
+		lineageTag: 18c027c1-384f-5baf-92b8-ee22afcf24fd
+		summarizeBy: none
+		sourceColumn: Exchange
+
+	partition DimCurrencyExchange = m
+		mode: import
+		source =
+				let
+					Source = Parquet.Document(Web.Contents(DataBaseUrl, [RelativePath="DimCurrencyExchange.parquet"]))
+				in
+					Source
+
