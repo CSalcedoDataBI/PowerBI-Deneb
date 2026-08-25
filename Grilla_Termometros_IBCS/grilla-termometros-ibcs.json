@@ -18,8 +18,8 @@
       "uuid": "7c9a1e42-3b6d-4f18-9e2a-8d5f0c6b7a93",
       "generated": "2026-08-24T00:00:00.000Z",
       "name": "Grilla de termómetros IBCS (Real · Objetivo · Año anterior)",
-      "description": "Muro de tiles KPI en grilla, Vega puro. Cada tile lleva un termómetro vertical al estilo IBCS: barra real (degradado), barra año anterior (fina), tick de objetivo, y semáforo de cumplimiento. Clic = cross-filter. Autor: Cristobal Salcedo Beltrán.",
-      "author": "Cristobal Salcedo Beltrán"
+      "description": "Muro de tiles KPI en grilla, Vega puro. Cada tile lleva un termómetro vertical al estilo IBCS: barra real (degradado), barra año anterior (fina), tick de objetivo, y semáforo de cumplimiento. Clic = cross-filter. Autor: Cristobal Salcedo Beltrán. Ficha y vista previa en vivo: https://csalcedodatabi.com/deneb/grilla-termometros-ibcs",
+      "author": "Cristobal Salcedo Beltrán — https://csalcedodatabi.com"
     },
     "dataset": [
       {
@@ -52,7 +52,7 @@
       }
     ]
   },
-  "description": "Grilla de tiles KPI con termómetro vertical IBCS y cross-filter por clic.",
+  "description": "Grilla de tiles KPI con termómetro vertical IBCS y cross-filter por clic. Cristobal Salcedo Beltrán — https://csalcedodatabi.com/deneb/grilla-termometros-ibcs",
   "width": 860,
   "height": 470,
   "padding": 0,
