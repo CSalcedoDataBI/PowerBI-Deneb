@@ -6,6 +6,21 @@
 table Datos
 	lineageTag: d1000000-0000-0000-0000-000000000001
 
+	/// Valor real del periodo (AC en notacion IBCS). Es la calle gruesa y el numero grande.
+	measure Real = SUM(Datos[RealAC])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d1
+
+	/// Objetivo (PL). Es el tick negro vertical. Cambiala por tu presupuesto real.
+	measure Objetivo = SUM(Datos[ObjetivoPL])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d2
+
+	/// Comparativo del periodo anterior (PY). Es la calle fina y la base de la variacion.
+	measure 'Año anterior' = SUM(Datos[AnteriorPY])
+		formatString: \$#,0
+		lineageTag: d1000000-0000-0000-0000-0000000000d3
+
 	/// La dimension que se lista: una tarjeta por valor.
 	column Categoría
 		dataType: string
@@ -39,21 +54,6 @@ table Datos
 		lineageTag: d1000000-0000-0000-0000-0000000000c4
 		summarizeBy: sum
 		sourceColumn: AnteriorPY
-
-	/// Valor real del periodo (AC en notacion IBCS). Es la calle gruesa y el numero grande.
-	measure Real = SUM(Datos[RealAC])
-		formatString: \$#,0
-		lineageTag: d1000000-0000-0000-0000-0000000000d1
-
-	/// Objetivo (PL). Es el tick negro vertical. Cambiala por tu presupuesto real.
-	measure Objetivo = SUM(Datos[ObjetivoPL])
-		formatString: \$#,0
-		lineageTag: d1000000-0000-0000-0000-0000000000d2
-
-	/// Comparativo del periodo anterior (PY). Es la calle fina y la base de la variacion.
-	measure 'Año anterior' = SUM(Datos[AnteriorPY])
-		formatString: \$#,0
-		lineageTag: d1000000-0000-0000-0000-0000000000d3
 
 	partition Datos = m
 		mode: import
