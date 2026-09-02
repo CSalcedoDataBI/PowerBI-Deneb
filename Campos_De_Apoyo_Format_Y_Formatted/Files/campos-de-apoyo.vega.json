@@ -1,0 +1,541 @@
+{
+  "description": "Campos de apoyo __format y __formatted. Tabla que muestra, fila a fila, el valor que envía el modelo junto a las dos columnas de apoyo que Deneb genera solo. Técnica: cuando una medida tiene formato dinámico, Deneb expone __format con la cadena de formato de cada fila y __formatted con el valor ya compuesto, así que el spec lee el formato resuelto en vez de recalcularlo. Autor: Cristóbal Salcedo Beltrán. https://csalcedodatabi.com/blog/formato-medidas-format-deneb/",
+  "width": 1280,
+  "height": 720,
+  "padding": 0,
+  "autosize": {
+    "type": "none"
+  },
+  "background": "#F4F9F8",
+  "data": [
+    {
+      "name": "dataset"
+    },
+    {
+      "name": "tabla",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "collect",
+          "sort": {
+            "field": "Ventas (formato dinamico)",
+            "order": "descending"
+          }
+        },
+        {
+          "type": "window",
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "rn"
+          ]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.rn <= 6 || datum.rn >= 10"
+        },
+        {
+          "type": "window",
+          "ops": [
+            "row_number"
+          ],
+          "as": [
+            "pos"
+          ]
+        },
+        {
+          "type": "formula",
+          "as": "i",
+          "expr": "datum.pos - 1"
+        },
+        {
+          "type": "formula",
+          "as": "valorTxt",
+          "expr": "format(datum['Ventas (formato dinamico)'], ',.2f')"
+        },
+        {
+          "type": "formula",
+          "as": "fmt",
+          "expr": "datum['Ventas (formato dinamico)__format']"
+        },
+        {
+          "type": "formula",
+          "as": "fmtd",
+          "expr": "datum['Ventas (formato dinamico)__formatted']"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 0
+          },
+          "width": {
+            "value": 1280
+          },
+          "height": {
+            "value": 720
+          },
+          "fill": {
+            "value": "#F4F9F8"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 60
+          },
+          "y": {
+            "value": 56
+          },
+          "text": {
+            "value": "Lo que el modelo le entrega a Deneb"
+          },
+          "fontSize": {
+            "value": 26
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#0B1A17"
+          },
+          "font": {
+            "value": "Segoe UI"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 60
+          },
+          "y": {
+            "value": 86
+          },
+          "text": {
+            "value": "Dos columnas de apoyo que aparecen solas cuando la medida tiene formato dinámico."
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fill": {
+            "value": "#44544F"
+          },
+          "font": {
+            "value": "Segoe UI"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 60
+          },
+          "y": {
+            "value": 120
+          },
+          "width": {
+            "value": 1160
+          },
+          "height": {
+            "value": 40
+          },
+          "fill": {
+            "value": "#116B62"
+          },
+          "cornerRadius": {
+            "value": 6
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 70
+          },
+          "y": {
+            "value": 140
+          },
+          "text": {
+            "value": "Categoría"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Segoe UI"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 560
+          },
+          "y": {
+            "value": 140
+          },
+          "text": {
+            "value": "Valor que envía el modelo"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Segoe UI"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 600
+          },
+          "y": {
+            "value": 140
+          },
+          "text": {
+            "value": "__format"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Segoe UI"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 1180
+          },
+          "y": {
+            "value": 140
+          },
+          "text": {
+            "value": "__formatted"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Segoe UI"
+          }
+        }
+      }
+    },
+    {
+      "type": "group",
+      "from": {
+        "data": "tabla"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "signal": "172 + datum.i * 44"
+          }
+        }
+      },
+      "marks": [
+        {
+          "type": "rect",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 60
+              },
+              "y": {
+                "value": 0
+              },
+              "width": {
+                "value": 1160
+              },
+              "height": {
+                "value": 40
+              },
+              "cornerRadius": {
+                "value": 4
+              },
+              "fill": [
+                {
+                  "test": "parent.i % 2 == 0",
+                  "value": "#FFFFFF"
+                },
+                {
+                  "value": "#F4F9F8"
+                }
+              ],
+              "stroke": {
+                "value": "#CFE3DD"
+              },
+              "strokeWidth": {
+                "value": 1
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 70
+              },
+              "y": {
+                "value": 20
+              },
+              "text": {
+                "field": {
+                  "parent": "SubCategoryName"
+                }
+              },
+              "fontSize": {
+                "value": 13
+              },
+              "fill": {
+                "value": "#0B1A17"
+              },
+              "align": {
+                "value": "left"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "Segoe UI"
+              },
+              "fontWeight": {
+                "value": "normal"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 560
+              },
+              "y": {
+                "value": 20
+              },
+              "text": {
+                "field": {
+                  "parent": "valorTxt"
+                }
+              },
+              "fontSize": {
+                "value": 12
+              },
+              "fill": {
+                "value": "#44544F"
+              },
+              "align": {
+                "value": "right"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "Consolas"
+              },
+              "fontWeight": {
+                "value": "normal"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 600
+              },
+              "y": {
+                "value": 20
+              },
+              "text": {
+                "field": {
+                  "parent": "fmt"
+                }
+              },
+              "fontSize": {
+                "value": 12
+              },
+              "fill": {
+                "value": "#116B62"
+              },
+              "align": {
+                "value": "left"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "Consolas"
+              },
+              "fontWeight": {
+                "value": "normal"
+              }
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "x": {
+                "value": 1180
+              },
+              "y": {
+                "value": 20
+              },
+              "text": {
+                "field": {
+                  "parent": "fmtd"
+                }
+              },
+              "fontSize": {
+                "value": 13
+              },
+              "fill": {
+                "value": "#0B1A17"
+              },
+              "align": {
+                "value": "right"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "font": {
+                "value": "Consolas"
+              },
+              "fontWeight": {
+                "value": "bold"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 60
+          },
+          "y": {
+            "value": 700
+          },
+          "text": {
+            "value": "__format cambia de fila a fila: el modelo decide K o M según la magnitud."
+          },
+          "fontSize": {
+            "value": 12.5
+          },
+          "fill": {
+            "value": "#116B62"
+          },
+          "font": {
+            "value": "Segoe UI"
+          },
+          "baseline": {
+            "value": "middle"
+          }
+        }
+      }
+    }
+  ]
+}
