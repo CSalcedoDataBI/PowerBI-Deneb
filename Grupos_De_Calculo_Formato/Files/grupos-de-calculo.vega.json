@@ -1,0 +1,252 @@
+{
+  "description": "Grupos de calculo: un formato por elemento. Muestra la MISMA medida bajo cada elemento de calculo con su valor crudo, el valor ya formateado y la cadena de formato que trae esa fila; demuestra que el formato del elemento sustituye al formato fijo de la medida. Tecnica: campos de apoyo __format y __formatted de Deneb sobre un grupo de calculo con formatStringDefinition. Autor: Cristobal Salcedo Beltran. https://csalcedodatabi.com/blog/grupos-calculo-formato-deneb/",
+  "background": "#FFFFFF",
+  "title": {
+    "text": "El elemento de cálculo manda sobre el formato de la medida",
+    "subtitle": "Misma medida (Total Sales) bajo cada elemento del grupo Formato",
+    "anchor": "start",
+    "offset": 18,
+    "font": "Segoe UI",
+    "fontSize": 20,
+    "fontWeight": 600,
+    "color": "#1B1A19",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#605E5C",
+    "subtitlePadding": 8
+  },
+  "padding": {
+    "top": 14,
+    "left": 14,
+    "right": 26,
+    "bottom": 16
+  },
+  "spacing": 26,
+  "vconcat": [
+    {
+      "data": {
+        "name": "dataset"
+      },
+      "transform": [
+        {
+          "calculate": "isValid(datum['Formato']) ? datum['Formato'] : 'AUSENTE'",
+          "as": "fila"
+        },
+        {
+          "calculate": "datum['Formato'] === 'Valor original' ? 0 : datum['Formato'] === 'En miles' ? 1 : datum['Formato'] === 'Porcentaje del total' ? 2 : 99",
+          "as": "orden"
+        },
+        {
+          "calculate": "datum.orden % 2",
+          "as": "par"
+        },
+        {
+          "calculate": "isValid(datum['Total Sales']) ? format(datum['Total Sales'], ',.2f') : 'AUSENTE'",
+          "as": "c_crudo"
+        },
+        {
+          "calculate": "isValid(datum['Total Sales__formatted']) ? datum['Total Sales__formatted'] : 'AUSENTE'",
+          "as": "c_fmtd"
+        },
+        {
+          "calculate": "isValid(datum['Total Sales__format']) ? datum['Total Sales__format'] : 'AUSENTE'",
+          "as": "c_fmt"
+        },
+        {
+          "calculate": "datum.fila",
+          "as": "c_fila"
+        },
+        {
+          "fold": [
+            "c_fila",
+            "c_crudo",
+            "c_fmtd",
+            "c_fmt"
+          ],
+          "as": [
+            "clave",
+            "valor"
+          ]
+        },
+        {
+          "calculate": "datum.clave === 'c_fila' ? 'Elemento' : datum.clave === 'c_crudo' ? 'Valor crudo' : datum.clave === 'c_fmtd' ? 'Ya formateado' : 'Cadena de formato'",
+          "as": "columna"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "columna",
+          "type": "nominal",
+          "sort": [
+            "Elemento",
+            "Valor crudo",
+            "Ya formateado",
+            "Cadena de formato"
+          ],
+          "axis": {
+            "orient": "top",
+            "title": null,
+            "labelAngle": 0,
+            "labelFont": "Segoe UI",
+            "labelFontSize": 13,
+            "labelFontWeight": 600,
+            "labelColor": "#605E5C",
+            "labelPadding": 14,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "fila",
+          "type": "nominal",
+          "sort": [
+            "Valor original",
+            "En miles",
+            "Porcentaje del total"
+          ],
+          "axis": null
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "fill": "#F3F7F6"
+          },
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "test": "datum.par === 1",
+                "value": 1
+              },
+              "value": 0
+            },
+            "x": null
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 16,
+            "font": "Consolas",
+            "fontWeight": 600
+          },
+          "encoding": {
+            "text": {
+              "field": "valor",
+              "type": "nominal"
+            },
+            "color": {
+              "condition": [
+                {
+                  "test": "datum.columna === 'Elemento'",
+                  "value": "#1B1A19"
+                },
+                {
+                  "test": "datum.columna === 'Cadena de formato'",
+                  "value": "#0E7C6B"
+                }
+              ],
+              "value": "#1B1A19"
+            },
+            "fontWeight": {
+              "condition": {
+                "test": "datum.columna === 'Elemento'",
+                "value": 700
+              },
+              "value": 600
+            }
+          }
+        }
+      ],
+      "width": {
+        "step": 295
+      },
+      "height": {
+        "step": 54
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0
+          }
+        ]
+      },
+      "width": 1180,
+      "height": 96,
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "x": 0,
+            "x2": 1180,
+            "y": 0,
+            "y2": 96,
+            "fill": "#F0F7F5",
+            "cornerRadius": 8
+          }
+        },
+        {
+          "mark": {
+            "type": "rect",
+            "x": 0,
+            "x2": 5,
+            "y": 0,
+            "y2": 96,
+            "fill": "#0E7C6B",
+            "cornerRadiusTopLeft": 8,
+            "cornerRadiusBottomLeft": 8
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "x": 24,
+            "y": 22,
+            "align": "left",
+            "baseline": "middle",
+            "text": "QUÉ MIRAR",
+            "font": "Segoe UI",
+            "fontSize": 11,
+            "fontWeight": 700,
+            "color": "#0E7C6B"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "x": 24,
+            "y": 46,
+            "align": "left",
+            "baseline": "top",
+            "text": [
+              "La medida trae un formato fijo de moneda y, aun así, dos de las tres filas no lo usan: cada elemento",
+              "de cálculo impone el suyo. Deneb lo recibe ya resuelto en las columnas __format y __formatted.",
+              "Requisito del modelo: las medidas deben ser explícitas, o el grupo de cálculo no llega a aplicarse."
+            ],
+            "font": "Segoe UI",
+            "fontSize": 13,
+            "lineHeight": 19,
+            "color": "#1B1A19"
+          }
+        }
+      ],
+      "view": {
+        "stroke": null
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    },
+    "concat": {
+      "spacing": 26
+    }
+  }
+}
