@@ -1,0 +1,129 @@
+{
+  "description": "Formato dinámico con SWITCH. Gráfico de barras facetado que compara la misma medida sin y con el campo de apoyo. Técnica: el formato lo resuelve el modelo con un formatStringDefinition escrito en SWITCH, y el spec pinta __formatted sin repetir la lógica en d3. Autor: Cristóbal Salcedo Beltrán. https://csalcedodatabi.com/blog/formato-dinamico-switch-deneb/",
+  "data": {
+    "name": "dataset"
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Segoe UI",
+    "axis": {
+      "labelColor": "#605E5C",
+      "domainColor": "#E1DFDD",
+      "tickColor": "#E1DFDD",
+      "grid": false
+    },
+    "header": {
+      "labelFontSize": 13,
+      "labelFontWeight": "bold",
+      "labelColor": "#201F1E",
+      "labelAnchor": "start",
+      "labelPadding": 10,
+      "title": null
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum['Ventas (formato dinamico)']",
+      "as": "valor"
+    },
+    {
+      "calculate": "datum['Ventas (formato dinamico)__formatted']",
+      "as": "conApoyo"
+    },
+    {
+      "fold": [
+        "valor",
+        "conApoyo"
+      ],
+      "as": [
+        "variante",
+        "_x"
+      ]
+    },
+    {
+      "calculate": "datum.variante == 'valor' ? 'Sin el campo de apoyo (d3 por defecto)' : 'Con __formatted, resuelto por el modelo'",
+      "as": "panel"
+    },
+    {
+      "calculate": "datum.variante == 'valor' ? format(datum.valor, ',.2f') : datum.conApoyo",
+      "as": "texto"
+    }
+  ],
+  "spacing": 48,
+  "facet": {
+    "column": {
+      "field": "panel",
+      "type": "nominal",
+      "sort": [
+        "Sin el campo de apoyo (d3 por defecto)",
+        "Con __formatted, resuelto por el modelo"
+      ]
+    }
+  },
+  "spec": {
+    "height": {
+      "step": 26
+    },
+    "width": 280,
+    "layer": [
+      {
+        "mark": {
+          "type": "bar",
+          "height": 16,
+          "cornerRadiusEnd": 3,
+          "color": "#118DFF"
+        },
+        "encoding": {
+          "y": {
+            "field": "SubCategoryName",
+            "type": "nominal",
+            "sort": {
+              "field": "valor",
+              "order": "descending"
+            },
+            "axis": {
+              "title": null,
+              "labelLimit": 150,
+              "labelFontSize": 11
+            }
+          },
+          "x": {
+            "field": "valor",
+            "type": "quantitative",
+            "axis": null
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 6,
+          "fontSize": 11,
+          "font": "Consolas",
+          "color": "#201F1E"
+        },
+        "encoding": {
+          "y": {
+            "field": "SubCategoryName",
+            "type": "nominal",
+            "sort": {
+              "field": "valor",
+              "order": "descending"
+            }
+          },
+          "x": {
+            "field": "valor",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "texto",
+            "type": "nominal"
+          }
+        }
+      }
+    ]
+  }
+}
