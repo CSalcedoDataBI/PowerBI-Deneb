@@ -1,0 +1,298 @@
+{
+  "description": "Herencia del formato de la medida. Compara el MISMO dato bajo dos elementos de calculo que solo se diferencian en su formatStringDefinition: uno fijo y otro heredado con SELECTEDMEASUREFORMATSTRING(). El foco esta en Ventas: con formato fijo el importe pierde el simbolo de moneda; con formato heredado lo conserva. Tecnica: campos de apoyo __format y __formatted de Deneb sobre un grupo de calculo. Autor: Cristobal Salcedo Beltran. https://csalcedodatabi.com/blog/heredar-formato-medida-deneb/",
+  "background": "#FFFFFF",
+  "title": {
+    "text": "El mismo dato, dos maneras de formatearlo",
+    "subtitle": "En cada celda: el valor arriba y, debajo en verde, la cadena de formato que lo produjo.",
+    "anchor": "start",
+    "offset": 18,
+    "font": "Segoe UI",
+    "fontSize": 20,
+    "fontWeight": 600,
+    "color": "#1B1A19",
+    "subtitleFont": "Segoe UI",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#605E5C",
+    "subtitlePadding": 8
+  },
+  "padding": {
+    "top": 14,
+    "left": 14,
+    "right": 26,
+    "bottom": 16
+  },
+  "spacing": 26,
+  "vconcat": [
+    {
+      "data": {
+        "name": "dataset"
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum['Herencia']) && datum['Herencia'] !== 'Original'"
+        },
+        {
+          "calculate": "datum['Herencia'] === 'Miles (formato fijo)' ? 'Con formato FIJO' : 'Con formato HEREDADO'",
+          "as": "tratamiento"
+        },
+        {
+          "fold": [
+            "Total Sales__formatted",
+            "Total Quantity__formatted",
+            "Margin %__formatted"
+          ],
+          "as": [
+            "clave",
+            "valor"
+          ]
+        },
+        {
+          "calculate": "datum.clave === 'Total Sales__formatted' ? 'Ventas' : datum.clave === 'Total Quantity__formatted' ? 'Unidades' : 'Margen %  *'",
+          "as": "medida"
+        },
+        {
+          "calculate": "datum.clave === 'Total Sales__formatted' ? datum['Total Sales__format'] : datum.clave === 'Total Quantity__formatted' ? datum['Total Quantity__format'] : datum['Margin %__format']",
+          "as": "cadena"
+        },
+        {
+          "calculate": "datum.clave === 'Total Sales__formatted' && datum.tratamiento === 'Con formato FIJO'",
+          "as": "roto"
+        },
+        {
+          "calculate": "datum.clave === 'Total Sales__formatted' && datum.tratamiento === 'Con formato HEREDADO'",
+          "as": "bien"
+        },
+        {
+          "calculate": "datum.clave === 'Margin %__formatted'",
+          "as": "aparte"
+        },
+        {
+          "calculate": "datum.valor + (datum.roto ? '   — perdió el $' : datum.bien ? '   — lo conserva' : '')",
+          "as": "valorConNota"
+        }
+      ],
+      "width": {
+        "step": 420
+      },
+      "height": {
+        "step": 92
+      },
+      "encoding": {
+        "x": {
+          "field": "tratamiento",
+          "type": "nominal",
+          "sort": [
+            "Con formato FIJO",
+            "Con formato HEREDADO"
+          ],
+          "axis": {
+            "orient": "top",
+            "title": null,
+            "labelAngle": 0,
+            "labelFont": "Segoe UI",
+            "labelFontSize": 14,
+            "labelFontWeight": 700,
+            "labelColor": "#605E5C",
+            "labelPadding": 16,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "medida",
+          "type": "nominal",
+          "sort": [
+            "Ventas",
+            "Unidades",
+            "Margen %  *"
+          ],
+          "axis": {
+            "title": null,
+            "labelFont": "Segoe UI",
+            "labelFontSize": 14,
+            "labelFontWeight": 600,
+            "labelColor": "#1B1A19",
+            "labelPadding": 18,
+            "domain": false,
+            "ticks": false
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "fill": "#FDF3F4",
+            "cornerRadius": 6
+          },
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "test": "datum.roto",
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "rect",
+            "fill": "#F1F8F5",
+            "cornerRadius": 6
+          },
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "test": "datum.bien",
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 26,
+            "font": "Consolas",
+            "fontWeight": 700,
+            "dy": -10
+          },
+          "encoding": {
+            "text": {
+              "field": "valorConNota",
+              "type": "nominal"
+            },
+            "color": {
+              "condition": [
+                {
+                  "test": "datum.roto",
+                  "value": "#A4262C"
+                },
+                {
+                  "test": "datum.bien",
+                  "value": "#0E7C6B"
+                },
+                {
+                  "test": "datum.aparte",
+                  "value": "#9A9896"
+                }
+              ],
+              "value": "#1B1A19"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "font": "Consolas",
+            "dy": 18
+          },
+          "encoding": {
+            "text": {
+              "field": "cadena",
+              "type": "nominal"
+            },
+            "color": {
+              "condition": [
+                {
+                  "test": "datum.roto",
+                  "value": "#A4262C"
+                },
+                {
+                  "test": "datum.aparte",
+                  "value": "#9A9896"
+                }
+              ],
+              "value": "#0E7C6B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 0
+          }
+        ]
+      },
+      "width": 980,
+      "height": 96,
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "x": 0,
+            "x2": 850,
+            "y": 0,
+            "y2": 110,
+            "fill": "#d0e9e2",
+            "cornerRadius": 8
+          }
+        },
+        {
+          "mark": {
+            "type": "rect",
+            "x": 0,
+            "x2": 5,
+            "y": 0,
+            "y2": 110,
+            "fill": "#0E7C6B",
+            "cornerRadiusTopLeft": 8,
+            "cornerRadiusBottomLeft": 8
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "x": 22,
+            "y": 20,
+            "align": "left",
+            "baseline": "middle",
+            "text": "QUÉ MIRAR",
+            "font": "Segoe UI",
+            "fontSize": 11,
+            "fontWeight": 700,
+            "color": "#0E7C6B"
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "x": 22,
+            "y": 42,
+            "align": "left",
+            "baseline": "top",
+            "text": [
+              "Ventas. Con el formato fijo el importe pierde el símbolo de moneda: deja de leerse como dinero.",
+              "Con el heredado lo conserva, porque parte del formato que la medida ya tenía.",
+              "*  Margen % es otro asunto: dividir un porcentaje entre mil no tiene sentido, se formatee como se formatee."
+            ],
+            "font": "Segoe UI",
+            "fontSize": 12.5,
+            "lineHeight": 18,
+            "color": "#1B1A19"
+          }
+        }
+      ],
+      "view": {
+        "stroke": null
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "grid": false
+    },
+    "concat": {
+      "spacing": 26
+    }
+  }
+}
