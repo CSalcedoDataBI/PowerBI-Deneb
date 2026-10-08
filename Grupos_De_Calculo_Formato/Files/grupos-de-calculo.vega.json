@@ -129,7 +129,9 @@
             "type": "text",
             "fontSize": 16,
             "font": "Consolas",
-            "fontWeight": 600
+            "fontWeight": {
+              "expr": "datum.columna === 'Elemento' ? 700 : 600"
+            }
           },
           "encoding": {
             "text": {
@@ -148,13 +150,6 @@
                 }
               ],
               "value": "#1B1A19"
-            },
-            "fontWeight": {
-              "condition": {
-                "test": "datum.columna === 'Elemento'",
-                "value": 700
-              },
-              "value": 600
             }
           }
         }
