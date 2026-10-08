@@ -17,17 +17,15 @@ Deneb](https://csalcedodatabi.com/blog/grupos-calculo-formato-deneb/).
 ## Los cuatro escenarios del archivo
 
 Este es el más completo de la serie: trae **tres grupos de cálculo** en el modelo y una página por
-caso.
+caso. Al abrirlo, la página **Índice** presenta los cuatro escenarios y lleva a cada uno; cada
+escenario tiene botones para volver al índice o pasar al siguiente (en Power BI Desktop, Ctrl + clic).
 
 | Página | Grupo | Qué demuestra |
 |---|---|---|
 | 1 · Un formato por elemento | `Formato` | El elemento impone su formato sobre el de la medida |
 | 2 · Herencia del formato | `Herencia` | `SELECTEDMEASUREFORMATSTRING()` respeta el formato de cada medida |
 | 3 · Cruzado con fechas | `Formato` | El formato se resuelve por celda, no por columna |
-| 4 · Comparativa interanual | `TimeIntel` | Cuatro elementos y **solo** `Diferencia %` cambia el formato |
-
-El cuarto replica el caso de [deneb-viz/deneb#522](https://github.com/deneb-viz/deneb/issues/522)
-sobre Contoso.
+| 4 · Comparativa interanual | `TimeIntel` | Cuatro elementos de comparación con el año anterior y **solo** `Diferencia %` cambia el formato |
 
 ## Dos cosas que cuestan tiempo si no se saben
 
