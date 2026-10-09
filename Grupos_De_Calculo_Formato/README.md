@@ -24,16 +24,16 @@ escenario tiene botones para volver al índice o pasar al siguiente (en Power BI
 |---|---|---|
 | 1 · Un formato por elemento | `Formato` | El elemento impone su formato sobre el de la medida |
 | 2 · Herencia del formato | `Herencia` | `SELECTEDMEASUREFORMATSTRING()` respeta el formato de cada medida |
-| 3 · Cruzado con fechas | `Formato` | El formato se resuelve por celda, no por columna |
-| 4 · Comparativa interanual | `TimeIntel` | Cuatro elementos de comparación con el año anterior y **solo** `Diferencia %` cambia el formato |
+| 3 · Cruzado con fechas | `Formato` | El formato se resuelve por celda, no por columna. Dos matrices nativas, sin y con fechas, muestran el 100 % que da el porcentaje del total sin fechas y cómo se reparte con ellas; dos segmentadores (elemento y año) acompañan al visual de Deneb |
+| 4 · Comparativa interanual | `TimeIntel` | Cuatro elementos de comparación con el año anterior y **solo** `Diferencia %` cambia el formato. Una matriz nativa encima del visual de Deneb muestra los mismos formatos |
 
 ## Dos cosas que cuestan tiempo si no se saben
 
 1. **El modelo debe exigir medidas explícitas.** Los grupos de cálculo no se aplican nunca a una
    medida implícita, así que sin esa propiedad no pasa nada y parece que falla Deneb. En este
    archivo ya viene puesta.
-2. **Al abrirlo, Power BI pedirá procesar los grupos de cálculo.** Es esperable: la caché del
-   modelo es anterior a ellos. Se resuelve con *Actualizar ahora*.
+2. **Si Power BI avisa de que los grupos de cálculo necesitan actualizarse**, pulsa
+   *Actualizar ahora*: recalcula los grupos sin recargar datos.
 
 ## Cómo abrir el proyecto
 
