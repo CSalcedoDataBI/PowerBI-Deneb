@@ -24,7 +24,7 @@ escenario tiene botones para volver al índice o pasar al siguiente (en Power BI
 |---|---|---|
 | 1 · Un formato por elemento | `Formato` | El elemento impone su formato sobre el de la medida |
 | 2 · Herencia del formato | `Herencia` | `SELECTEDMEASUREFORMATSTRING()` respeta el formato de cada medida |
-| 3 · Cruzado con fechas | `Formato` | El formato se resuelve por celda, no por columna. Una matriz nativa y dos segmentadores (elemento y año) acompañan al visual de Deneb |
+| 3 · Cruzado con fechas | `Formato` | El formato se resuelve por celda, no por columna. Dos matrices nativas, sin y con fechas, muestran el 100 % que da el porcentaje del total sin fechas y cómo se reparte con ellas; dos segmentadores (elemento y año) acompañan al visual de Deneb |
 | 4 · Comparativa interanual | `TimeIntel` | Cuatro elementos de comparación con el año anterior y **solo** `Diferencia %` cambia el formato |
 
 ## Dos cosas que cuestan tiempo si no se saben
