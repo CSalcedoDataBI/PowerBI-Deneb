@@ -1,5 +1,14 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "companionBar",
+  "position": {
+    "x": 24,
+    "y": 496,
+    "z": 0,
+    "height": 184,
+    "width": 1216,
+    "tabOrder": 0
+  },
   "visual": {
     "visualType": "clusteredBarChart",
     "query": {
@@ -7,7 +16,6 @@
         "Category": {
           "projections": [
             {
-              "queryRef": "DimProduct.SubCategoryName",
               "field": {
                 "Column": {
                   "Expression": {
@@ -18,14 +26,15 @@
                   "Property": "SubCategoryName"
                 }
               },
-              "nativeQueryRef": "SubCategoryName"
+              "queryRef": "DimProduct.SubCategoryName",
+              "nativeQueryRef": "SubCategoryName",
+              "active": true
             }
           ]
         },
         "Y": {
           "projections": [
             {
-              "queryRef": "_Measures.Total Sales",
               "field": {
                 "Measure": {
                   "Expression": {
@@ -36,6 +45,7 @@
                   "Property": "Total Sales"
                 }
               },
+              "queryRef": "_Measures.Total Sales",
               "nativeQueryRef": "Total Sales"
             }
           ]
@@ -60,8 +70,6 @@
         "isDefaultSort": true
       }
     },
-    "objects": {},
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
@@ -96,15 +104,39 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   },
-  "position": {
-    "x": 40,
-    "y": 500,
-    "z": 0,
-    "width": 1200,
-    "height": 180,
-    "tabOrder": 0
-  },
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json"
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c6f664f62d56edcd93b9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimProduct"
+              }
+            },
+            "Property": "SubCategoryName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "10c40db2001ea00abed3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
 }

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "991dfde92e5259931aa5",
+  "position": {
+    "x": 5.2490886998784934,
+    "y": 20.121506682867558,
+    "z": 13,
+    "height": 114.60510328068044,
+    "width": 149.59902794653706,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "PAL-NEW-2021-SOFT_(2)9333178659248393.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
