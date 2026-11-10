@@ -1,0 +1,65 @@
+/// Datos de muestra de la plantilla «Tendencia IBCS: ventas frente al año anterior» — tabla en línea, SIN origen
+/// externo: no pide credenciales ni red, y Power BI la carga sola al abrir. Son
+/// las mismas filas que la vista previa de csalcedodatabi.com/deneb/ibcs-tendencia-ano-anterior.
+/// Sustituye esta tabla por tu modelo.
+table Ventas
+	lineageTag: edaabecc-8bda-8be3-616a-62ca86b35d5b
+
+	/// Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'Sales Amount' = SUM(Ventas[Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: aa2099e5-e3b7-c257-0502-e34d4e49d14f
+
+	/// PY Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'PY Sales Amount' = SUM(Ventas[PY Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: 4c0b932a-fd46-9689-57d8-6d295db3753d
+
+	column 'Month Date'
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: d2565693-628a-9522-2d84-e65774a83a94
+		summarizeBy: none
+		sourceColumn: Month Date
+
+	column 'Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: 5e796740-549d-7a5b-5501-5812f07c2b04
+		summarizeBy: sum
+		sourceColumn: Sales Amount valor
+
+	column 'PY Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: fa944368-13f4-fe1c-1991-95524a164ba4
+		summarizeBy: sum
+		sourceColumn: PY Sales Amount valor
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+					Origen = #table(
+						type table [#"Month Date" = date, #"Sales Amount valor" = number, #"PY Sales Amount valor" = number],
+						{
+							{#date(2019, 1, 1), 19635204.81, 18240512.37},
+							{#date(2019, 2, 1), 18093377.45, 17516908.12},
+							{#date(2019, 3, 1), 19241918.27, 19847330.64},
+							{#date(2019, 4, 1), 22306541.13, 20413276.9},
+							{#date(2019, 5, 1), 24802717.66, 21906154.28},
+							{#date(2019, 6, 1), 25134996.02, 22618447.51},
+							{#date(2019, 7, 1), 20652413.58, 21337802.09},
+							{#date(2019, 8, 1), 25947283.91, 22841265.73},
+							{#date(2019, 9, 1), 27418760.35, 24109931.46},
+							{#date(2019, 10, 1), 29837402.19, 25627118.82},
+							{#date(2019, 11, 1), 33642118.74, 28934570.15},
+							{#date(2019, 12, 1), 39728506.23, 33412689.4}
+						}
+					)
+				in
+					Origen
+
+	annotation PBI_ResultType = Table

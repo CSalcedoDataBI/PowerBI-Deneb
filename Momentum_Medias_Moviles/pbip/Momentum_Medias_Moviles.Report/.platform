@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Momentum_Medias_Moviles"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0046e7b7-d49c-b016-f7fe-3b19d8bbb201"
+  }
+}

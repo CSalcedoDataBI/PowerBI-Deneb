@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "2bbd306789ddb8b8fbf1",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "height": 680,
+    "width": 1240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "Month Date"
+                }
+              },
+              "queryRef": "Ventas.Month Date",
+              "nativeQueryRef": "Month Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "Country"
+                }
+              },
+              "queryRef": "Ventas.Country",
+              "nativeQueryRef": "Country"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "Sales Amount"
+                }
+              },
+              "queryRef": "Ventas.Sales Amount",
+              "nativeQueryRef": "Sales Amount"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\n  \"description\": \"¿Cómo va cada país frente a las referencias? Todas las líneas van en gris y dos se ven siempre: Online (azul) y Estados Unidos (naranja). Por CSalcedoDataBI · https://csalcedodatabi.com/deneb/benchmark-ventas-por-pais\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": \"container\",\n  \"height\": \"container\",\n  \"autosize\": {\n    \"type\": \"fit\",\n    \"contains\": \"padding\"\n  },\n  \"padding\": {\n    \"top\": 4,\n    \"right\": 88,\n    \"bottom\": 0,\n    \"left\": 4\n  },\n  \"title\": {\n    \"text\": \"Ventas — comparativa por país\",\n    \"subtitle\": \"Online y Estados Unidos resaltados · haz clic en un punto para resaltar su país\",\n    \"anchor\": \"start\",\n    \"fontSize\": 10,\n    \"subtitleFontSize\": 9,\n    \"color\": \"#8A8F98\",\n    \"subtitleColor\": \"#6B7280\",\n    \"offset\": 6\n  },\n  \"transform\": [\n    {\n      \"filter\": \"isValid(datum[''Sales Amount''])\"\n    },\n    {\n      \"window\": [\n        {\n          \"op\": \"dense_rank\",\n          \"as\": \"rk\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"field\": \"Month Date\",\n          \"order\": \"descending\"\n        }\n      ]\n    },\n    {\n      \"filter\": \"datum.rk <= 24\"\n    },\n    {\n      \"calculate\": \"timeFormat(datum[''Month Date''], \\\"%b ''%y\\\")\",\n      \"as\": \"label\"\n    },\n    {\n      \"calculate\": \"pbiFormat(datum[''Sales Amount''], (isValid(datum[''Sales Amount__format'']) ? datum[''Sales Amount__format''] : ''$ #,0''), {value: (abs(datum[''Sales Amount''])>=1e9?1e9:abs(datum[''Sales Amount''])>=1e6?1e6:abs(datum[''Sales Amount''])>=1e3?1e3:1), precision: (abs(datum[''Sales Amount''])/(abs(datum[''Sales Amount''])>=1e9?1e9:abs(datum[''Sales Amount''])>=1e6?1e6:abs(datum[''Sales Amount''])>=1e3?1e3:1) >= 100 || abs(datum[''Sales Amount''])/(abs(datum[''Sales Amount''])>=1e9?1e9:abs(datum[''Sales Amount''])>=1e6?1e6:abs(datum[''Sales Amount''])>=1e3?1e3:1) == round(abs(datum[''Sales Amount''])/(abs(datum[''Sales Amount''])>=1e9?1e9:abs(datum[''Sales Amount''])>=1e6?1e6:abs(datum[''Sales Amount''])>=1e3?1e3:1))) ? 0 : 1})\",\n      \"as\": \"valueLabel\"\n    },\n    {\n      \"calculate\": \"datum.__selected__ === ''on'' ? 1 : 0\",\n      \"as\": \"sel\"\n    },\n    {\n      \"joinaggregate\": [\n        {\n          \"op\": \"max\",\n          \"field\": \"sel\",\n          \"as\": \"countrySel\"\n        }\n      ],\n      \"groupby\": [\n        \"Country\"\n      ]\n    },\n    {\n      \"calculate\": \"datum[''Country''] === ''Online'' || datum[''Country''] === ''United States'' || datum.countrySel === 1\",\n      \"as\": \"hi\"\n    },\n    {\n      \"as\": \"hiColor\",\n      \"calculate\": \"datum[''Country''] === ''Online'' ? ''#1F4E79'' : datum[''Country''] === ''United States'' ? ''#E07A1F'' : ''#2E8B57''\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"label\",\n      \"type\": \"ordinal\",\n      \"sort\": {\n        \"field\": \"Month Date\",\n        \"op\": \"min\"\n      },\n      \"axis\": {\n        \"title\": null,\n        \"labelAngle\": 0,\n        \"labelOverlap\": true,\n        \"domainColor\": \"#8A8F98\",\n        \"ticks\": false\n      }\n    },\n    \"y\": {\n      \"field\": \"Sales Amount\",\n      \"type\": \"quantitative\",\n      \"axis\": {\n        \"title\": null,\n        \"domain\": false,\n        \"ticks\": false,\n        \"gridColor\": \"#EEEEEE\",\n        \"tickCount\": 5,\n        \"labelExpr\": \"pbiFormat(datum.value, ''$ #,0'', {value: (abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1), precision: (abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) >= 100 || abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) == round(abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1))) ? 0 : 1})\",\n        \"labelFlush\": true\n      }\n    }\n  },\n  \"layer\": [\n    {\n      \"name\": \"BenchLineGray\",\n      \"transform\": [\n        {\n          \"filter\": \"!datum.hi\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"line\",\n        \"strokeWidth\": 1.25,\n        \"color\": \"#D5D8DC\",\n        \"interpolate\": \"linear\"\n      },\n      \"encoding\": {\n        \"detail\": {\n          \"field\": \"Country\"\n        }\n      }\n    },\n    {\n      \"name\": \"BenchLine\",\n      \"transform\": [\n        {\n          \"filter\": \"datum.hi\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"line\",\n        \"strokeWidth\": 2.5,\n        \"interpolate\": \"linear\"\n      },\n      \"encoding\": {\n        \"color\": {\n          \"scale\": null,\n          \"field\": \"hiColor\",\n          \"type\": \"nominal\",\n          \"legend\": null\n        }\n      }\n    },\n    {\n      \"name\": \"BenchPointGray\",\n      \"transform\": [\n        {\n          \"filter\": \"!datum.hi\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"point\",\n        \"filled\": true,\n        \"size\": 30,\n        \"color\": \"#C4C9CE\",\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"tooltip\": [\n          {\n            \"field\": \"label\",\n            \"title\": \"Mes\"\n          },\n          {\n            \"field\": \"Country\",\n            \"title\": \"País\"\n          },\n          {\n            \"field\": \"valueLabel\",\n            \"title\": \"Ventas\"\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"BenchPoint\",\n      \"transform\": [\n        {\n          \"filter\": \"datum.hi\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"point\",\n        \"filled\": true,\n        \"size\": 40,\n        \"tooltip\": true\n      },\n      \"encoding\": {\n        \"color\": {\n          \"scale\": null,\n          \"field\": \"hiColor\",\n          \"type\": \"nominal\",\n          \"legend\": null\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"label\",\n            \"title\": \"Mes\"\n          },\n          {\n            \"field\": \"Country\",\n            \"title\": \"País\"\n          },\n          {\n            \"field\": \"valueLabel\",\n            \"title\": \"Ventas\"\n          }\n        ]\n      }\n    },\n    {\n      \"name\": \"BenchEndLabel\",\n      \"transform\": [\n        {\n          \"filter\": \"datum.hi && datum.rk === 1\"\n        },\n        {\n          \"calculate\": \"[datum[''Country''], datum.valueLabel]\",\n          \"as\": \"endLabel\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 6,\n        \"fontSize\": 10,\n        \"fontWeight\": \"bold\"\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"endLabel\"\n        },\n        \"color\": {\n          \"scale\": null,\n          \"field\": \"hiColor\",\n          \"type\": \"nominal\",\n          \"legend\": null\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\n    \"stroke\": null\n  },\n  \"axis\": {\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#555555\"\n  }\n}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "250D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

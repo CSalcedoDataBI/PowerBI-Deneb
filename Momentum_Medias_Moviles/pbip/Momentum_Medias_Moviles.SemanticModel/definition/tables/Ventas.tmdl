@@ -1,0 +1,52 @@
+/// Datos de muestra de la plantilla «Momentum: ventas con medias móviles de 3 y 6 meses» — tabla en línea, SIN origen
+/// externo: no pide credenciales ni red, y Power BI la carga sola al abrir. Son
+/// las mismas filas que la vista previa de csalcedodatabi.com/deneb/momentum-medias-moviles.
+/// Sustituye esta tabla por tu modelo.
+table Ventas
+	lineageTag: 7d6519d4-e342-db94-def7-dbf0956cd815
+
+	/// Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'Sales Amount' = SUM(Ventas[Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: bc27c827-309f-7212-f242-9b4acefb8afd
+
+	column 'Month Date'
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 9ccb7c0a-0fed-cc03-78c4-b6914151a0b8
+		summarizeBy: none
+		sourceColumn: Month Date
+
+	column 'Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: 02c768e9-5596-16f9-6b73-8363143932d4
+		summarizeBy: sum
+		sourceColumn: Sales Amount valor
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+					Origen = #table(
+						type table [#"Month Date" = date, #"Sales Amount valor" = number],
+						{
+							{#date(2019, 1, 1), 34278690.04},
+							{#date(2019, 2, 1), 35395165.2},
+							{#date(2019, 3, 1), 13170457.32},
+							{#date(2019, 4, 1), 2638005.44},
+							{#date(2019, 5, 1), 25343645.56},
+							{#date(2019, 6, 1), 23165491.85},
+							{#date(2019, 7, 1), 20178655.25},
+							{#date(2019, 8, 1), 22025258.72},
+							{#date(2019, 9, 1), 22772940.65},
+							{#date(2019, 10, 1), 23260911.17},
+							{#date(2019, 11, 1), 23316515.71},
+							{#date(2019, 12, 1), 35531583.11}
+						}
+					)
+				in
+					Origen
+
+	annotation PBI_ResultType = Table

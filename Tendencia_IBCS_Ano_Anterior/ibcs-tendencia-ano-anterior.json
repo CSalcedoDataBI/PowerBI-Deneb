@@ -1,0 +1,735 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "¿Vamos mejor o peor que el año pasado, y en qué meses? Tres bandas cuentan la misma historia: arriba la variación en %, en medio la variación en dinero (verde o rojo) y abajo el real (azul) sobre el año anterior (gris). Por CSalcedoDataBI · https://csalcedodatabi.com/deneb/ibcs-tendencia-ano-anterior",
+  "usermeta": {
+    "deneb": {
+      "build": "2.0.0.0",
+      "metaVersion": 2,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 250
+    },
+    "information": {
+      "name": "IBCS Trend",
+      "description": "IBCS-style trend: monthly actual vs prior year with absolute and percentage variance bands. Up to 24 months. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán",
+      "uuid": "66b99380-a15d-4fd8-a4bd-243f1c72a412",
+      "generated": "2026-10-17T02:36:46.496Z",
+      "previewImageBase64PNG": ""
+    },
+    "config": "{\n  \"view\": {\n    \"stroke\": null\n  }\n}",
+    "datasets": {
+      "dataset": [
+        {
+          "key": "__dataset.0__",
+          "name": "Month Date",
+          "description": "",
+          "type": "dateTime",
+          "kind": "column",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": false,
+            "formatted": false,
+            "names": false
+          }
+        },
+        {
+          "key": "__dataset.1__",
+          "name": "Sales Amount",
+          "description": "",
+          "type": "numeric",
+          "kind": "measure",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": true,
+            "formatted": false,
+            "names": false
+          }
+        },
+        {
+          "key": "__dataset.2__",
+          "name": "PY Sales Amount",
+          "description": "",
+          "type": "numeric",
+          "kind": "measure",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": false,
+            "formatted": false,
+            "names": false
+          }
+        }
+      ]
+    }
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum['__dataset.1__'])"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rk"
+        }
+      ],
+      "sort": [
+        {
+          "field": "__dataset.0__",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rk <= 24"
+    },
+    {
+      "calculate": "datum['__dataset.1__']",
+      "as": "actual"
+    },
+    {
+      "calculate": "isValid(datum['__dataset.2__']) ? datum['__dataset.2__'] : null",
+      "as": "py"
+    },
+    {
+      "calculate": "datum.py != null ? datum.actual - datum.py : null",
+      "as": "deltaAbs"
+    },
+    {
+      "calculate": "datum.py != null && datum.py != 0 ? (datum.actual - datum.py) / datum.py : null",
+      "as": "deltaPct"
+    },
+    {
+      "calculate": "'AC'",
+      "as": "kind"
+    },
+    {
+      "calculate": "timeFormat(datum['__dataset.0__'], \"%b '%y\")",
+      "as": "label"
+    },
+    {
+      "calculate": "pbiFormat(abs(datum.actual), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1), precision: (abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) >= 100 || abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) == round(abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1))) ? 0 : 1})",
+      "as": "actualLabel"
+    },
+    {
+      "calculate": "datum.py != null ? pbiFormat(abs(datum.py), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1), precision: (abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) >= 100 || abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) == round(abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1))) ? 0 : 1}) : '—'",
+      "as": "pyLabel"
+    },
+    {
+      "calculate": "datum.deltaAbs != null ? (datum.deltaAbs >= 0 ? '+' : '−') + pbiFormat(abs(datum.deltaAbs), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1), precision: (abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) >= 100 || abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) == round(abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1))) ? 0 : 1}) : '—'",
+      "as": "deltaLabel"
+    },
+    {
+      "calculate": "datum.deltaPct != null ? pbiFormat(datum.deltaPct, '+0.0%;−0.0%;0.0%') : '—'",
+      "as": "deltaPctLabel"
+    }
+  ],
+  "padding": {
+    "right": 0,
+    "left": 0,
+    "bottom": 0,
+    "top": 4
+  },
+  "spacing": 10,
+  "vconcat": [
+    {
+      "height": 90,
+      "width": "container",
+      "title": {
+        "text": "Δ año anterior %",
+        "anchor": "start",
+        "fontSize": 10,
+        "color": "#8A8F98"
+      },
+      "transform": [
+        {
+          "filter": "datum.deltaPct != null"
+        },
+        {
+          "calculate": "datum.deltaPct",
+          "as": "v"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "strokeWidth": 1.5
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative",
+              "axis": null,
+              "scale": {
+                "nice": false
+              }
+            },
+            "y2": {
+              "datum": 0
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            },
+            "opacity": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 0.45
+              },
+              "value": 1
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "shape": "square",
+            "size": 45,
+            "tooltip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            },
+            "opacity": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 0.45
+              },
+              "value": 1
+            },
+            "tooltip": [
+              {
+                "field": "label",
+                "title": "Mes"
+              },
+              {
+                "field": "kind",
+                "title": "Tipo"
+              },
+              {
+                "field": "actualLabel",
+                "title": "Ventas"
+              },
+              {
+                "field": "pyLabel",
+                "title": "Año anterior"
+              },
+              {
+                "field": "deltaLabel",
+                "title": "Δ AA"
+              },
+              {
+                "field": "deltaPctLabel",
+                "title": "Δ AA %"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.v >= 0"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "baseline": "bottom",
+            "dy": -5
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "deltaPctLabel"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.v < 0"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "baseline": "top",
+            "dy": 5
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "deltaPctLabel"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "height": 110,
+      "width": "container",
+      "title": {
+        "text": "Δ año anterior",
+        "anchor": "start",
+        "fontSize": 10,
+        "color": "#8A8F98"
+      },
+      "transform": [
+        {
+          "filter": "datum.deltaAbs != null"
+        },
+        {
+          "calculate": "datum.deltaAbs",
+          "as": "v"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "tooltip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative",
+              "axis": null
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            },
+            "fillOpacity": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 0.45
+              },
+              "value": 1
+            },
+            "stroke": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": "#8A8F98"
+              },
+              "value": null
+            },
+            "strokeWidth": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 1
+              },
+              "value": 0
+            },
+            "tooltip": [
+              {
+                "field": "label",
+                "title": "Mes"
+              },
+              {
+                "field": "kind",
+                "title": "Tipo"
+              },
+              {
+                "field": "actualLabel",
+                "title": "Ventas"
+              },
+              {
+                "field": "pyLabel",
+                "title": "Año anterior"
+              },
+              {
+                "field": "deltaLabel",
+                "title": "Δ AA"
+              },
+              {
+                "field": "deltaPctLabel",
+                "title": "Δ AA %"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.v >= 0"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "baseline": "bottom",
+            "dy": -4
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "deltaLabel"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.v < 0"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "baseline": "top",
+            "dy": 4
+          },
+          "encoding": {
+            "x": {
+              "field": "label",
+              "type": "ordinal",
+              "sort": {
+                "field": "__dataset.0__",
+                "op": "min"
+              },
+              "axis": {
+                "title": null,
+                "labels": false,
+                "ticks": false,
+                "domain": true
+              }
+            },
+            "y": {
+              "field": "v",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "deltaLabel"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.v < 0",
+                "value": "#C0392B"
+              },
+              "value": "#2E8B57"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "height": 300,
+      "width": "container",
+      "title": {
+        "text": "Ventas — real frente a año anterior",
+        "anchor": "start",
+        "fontSize": 10,
+        "color": "#8A8F98"
+      },
+      "encoding": {
+        "x": {
+          "field": "label",
+          "type": "ordinal",
+          "sort": {
+            "field": "__dataset.0__",
+            "op": "min"
+          },
+          "axis": {
+            "title": null,
+            "labelAngle": 0,
+            "labelFontSize": 10,
+            "labelOverlap": true
+          }
+        },
+        "y": {
+          "field": "actual",
+          "type": "quantitative",
+          "scale": {
+            "zero": true
+          },
+          "axis": null
+        }
+      },
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": "datum.py != null"
+            }
+          ],
+          "mark": {
+            "type": "bar",
+            "size": 17,
+            "color": "#B8BEC6",
+            "opacity": 0.55,
+            "tooltip": true
+          },
+          "encoding": {
+            "y": {
+              "field": "py",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {
+                "field": "label",
+                "title": "Mes"
+              },
+              {
+                "field": "kind",
+                "title": "Tipo"
+              },
+              {
+                "field": "actualLabel",
+                "title": "Ventas"
+              },
+              {
+                "field": "pyLabel",
+                "title": "Año anterior"
+              },
+              {
+                "field": "deltaLabel",
+                "title": "Δ AA"
+              },
+              {
+                "field": "deltaPctLabel",
+                "title": "Δ AA %"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "bar",
+            "size": 9,
+            "tooltip": true
+          },
+          "encoding": {
+            "y": {
+              "field": "actual",
+              "type": "quantitative"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": "#8A8F98"
+              },
+              "value": "#1F4E79"
+            },
+            "fillOpacity": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 0.5
+              },
+              "value": 1
+            },
+            "stroke": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": "#8A8F98"
+              },
+              "value": null
+            },
+            "strokeWidth": {
+              "condition": {
+                "test": "datum.kind == 'FC'",
+                "value": 1
+              },
+              "value": 0
+            },
+            "tooltip": [
+              {
+                "field": "label",
+                "title": "Mes"
+              },
+              {
+                "field": "kind",
+                "title": "Tipo"
+              },
+              {
+                "field": "actualLabel",
+                "title": "Ventas"
+              },
+              {
+                "field": "pyLabel",
+                "title": "Año anterior"
+              },
+              {
+                "field": "deltaLabel",
+                "title": "Δ AA"
+              },
+              {
+                "field": "deltaPctLabel",
+                "title": "Δ AA %"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "baseline": "bottom",
+            "dy": -4,
+            "color": "#333333"
+          },
+          "encoding": {
+            "y": {
+              "field": "actual",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "actualLabel"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
+}
