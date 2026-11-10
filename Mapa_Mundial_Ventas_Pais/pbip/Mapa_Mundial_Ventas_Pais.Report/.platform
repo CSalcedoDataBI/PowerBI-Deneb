@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Mapa_Mundial_Ventas_Pais"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d465d36a-14a6-5040-f5f6-af191991afd0"
+  }
+}

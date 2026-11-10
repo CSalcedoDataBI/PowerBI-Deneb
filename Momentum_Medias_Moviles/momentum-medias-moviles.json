@@ -1,0 +1,366 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "¿Tus ventas aceleran o frenan? Sobre la línea de ventas de cada mes van dos medias móviles: la de 3 meses (naranja) reacciona rápido y la de 6 meses (gris, discontinua) marca el fondo. Por CSalcedoDataBI · https://csalcedodatabi.com/deneb/momentum-medias-moviles",
+  "usermeta": {
+    "deneb": {
+      "build": "2.0.0.0",
+      "metaVersion": 2,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 250
+    },
+    "information": {
+      "name": "Momentum",
+      "description": "Monthly sales with 3- and 6-month moving averages computed in the spec (window transform). Up to 24 months. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán",
+      "uuid": "7e69cf61-558c-4feb-a738-466048eb1e65",
+      "generated": "2026-10-17T02:36:44.472Z",
+      "previewImageBase64PNG": ""
+    },
+    "config": "{\n  \"view\": {\n    \"stroke\": null\n  },\n  \"axis\": {\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#555555\"\n  },\n  \"legend\": {\n    \"labelFontSize\": 10,\n    \"symbolSize\": 80\n  }\n}",
+    "datasets": {
+      "dataset": [
+        {
+          "key": "__dataset.0__",
+          "name": "Month Date",
+          "description": "",
+          "type": "dateTime",
+          "kind": "column",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": false,
+            "formatted": false,
+            "names": false
+          }
+        },
+        {
+          "key": "__dataset.1__",
+          "name": "Sales Amount",
+          "description": "",
+          "type": "numeric",
+          "kind": "measure",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": true,
+            "formatted": false,
+            "names": false
+          }
+        }
+      ]
+    }
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "width": "container",
+  "height": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "top": 4,
+    "right": 64,
+    "bottom": 0,
+    "left": 4
+  },
+  "title": {
+    "text": "Ventas — Momentum (media de 3 y 6 meses)",
+    "anchor": "start",
+    "fontSize": 10,
+    "color": "#8A8F98",
+    "offset": 6
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum['__dataset.1__'])"
+    },
+    {
+      "sort": [
+        {
+          "field": "__dataset.0__"
+        }
+      ],
+      "window": [
+        {
+          "op": "mean",
+          "field": "__dataset.1__",
+          "as": "avg3"
+        }
+      ],
+      "frame": [
+        -2,
+        0
+      ]
+    },
+    {
+      "sort": [
+        {
+          "field": "__dataset.0__"
+        }
+      ],
+      "window": [
+        {
+          "op": "mean",
+          "field": "__dataset.1__",
+          "as": "avg6"
+        }
+      ],
+      "frame": [
+        -5,
+        0
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rk"
+        }
+      ],
+      "sort": [
+        {
+          "field": "__dataset.0__",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rk <= 24"
+    },
+    {
+      "calculate": "timeFormat(datum['__dataset.0__'], \"%b '%y\")",
+      "as": "label"
+    },
+    {
+      "fold": [
+        "__dataset.1__",
+        "avg3",
+        "avg6"
+      ],
+      "as": [
+        "key",
+        "value"
+      ]
+    },
+    {
+      "calculate": "datum.key === '__dataset.1__' ? 'Real' : datum.key === 'avg3' ? 'Media 3 m' : 'Media 6 m'",
+      "as": "series"
+    },
+    {
+      "calculate": "pbiFormat(datum.value, (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1), precision: (abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) >= 100 || abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) == round(abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1))) ? 0 : 1})",
+      "as": "valueLabel"
+    },
+    {
+      "as": "actualVal",
+      "calculate": "datum.series === 'Real' ? datum.value : null"
+    },
+    {
+      "as": "avg3Val",
+      "calculate": "datum.series === 'Media 3 m' ? datum.value : null"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "label",
+      "type": "ordinal",
+      "sort": {
+        "field": "__dataset.0__",
+        "op": "min"
+      },
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "labelOverlap": true,
+        "domainColor": "#8A8F98",
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "scale": {
+        "zero": false
+      },
+      "axis": {
+        "title": null,
+        "domain": false,
+        "ticks": false,
+        "gridColor": "#EEEEEE",
+        "tickCount": 5,
+        "labelExpr": "pbiFormat(datum.value, '$ #,0', {value: (abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1), precision: (abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) >= 100 || abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) == round(abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1))) ? 0 : 1})",
+        "labelFlush": true
+      }
+    },
+    "color": {
+      "field": "series",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Real",
+          "Media 3 m",
+          "Media 6 m"
+        ],
+        "range": [
+          "#1F4E79",
+          "#E07A1F",
+          "#8A8F98"
+        ]
+      },
+      "legend": {
+        "title": null,
+        "orient": "top",
+        "direction": "horizontal"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "linear"
+      },
+      "encoding": {
+        "strokeDash": {
+          "field": "series",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Real",
+              "Media 3 m",
+              "Media 6 m"
+            ],
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                4,
+                3
+              ]
+            ]
+          },
+          "legend": null
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.series === 'Real'",
+            "value": 2.5
+          },
+          "value": 1.75
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 40,
+        "tooltip": true
+      },
+      "transform": [
+        {
+          "filter": "datum.series === 'Real'"
+        }
+      ],
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Mes"
+          },
+          {
+            "field": "series",
+            "title": "Serie"
+          },
+          {
+            "field": "valueLabel",
+            "title": "Ventas"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 0,
+        "tooltip": true
+      },
+      "transform": [
+        {
+          "filter": "datum.series !== 'Real'"
+        }
+      ],
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Mes"
+          },
+          {
+            "field": "series",
+            "title": "Serie"
+          },
+          {
+            "field": "valueLabel",
+            "title": "Ventas"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 10,
+        "fontWeight": "bold"
+      },
+      "transform": [
+        {
+          "filter": "datum.rk === 1"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "actualVal",
+              "as": "a"
+            },
+            {
+              "op": "max",
+              "field": "avg3Val",
+              "as": "m3"
+            }
+          ]
+        },
+        {
+          "filter": "datum.series === 'Real' || (abs(datum.value - datum.a) / datum.a > 0.05 && (datum.series === 'Media 3 m' || abs(datum.value - datum.m3) / datum.a > 0.05))"
+        }
+      ],
+      "encoding": {
+        "text": {
+          "field": "valueLabel"
+        }
+      }
+    }
+  ]
+}

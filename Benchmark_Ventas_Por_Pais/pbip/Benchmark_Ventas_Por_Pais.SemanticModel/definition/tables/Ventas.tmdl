@@ -1,0 +1,154 @@
+/// Datos de muestra de la plantilla «Benchmark: ventas por país frente a Online y Estados Unidos» — tabla en línea, SIN origen
+/// externo: no pide credenciales ni red, y Power BI la carga sola al abrir. Son
+/// las mismas filas que la vista previa de csalcedodatabi.com/deneb/benchmark-ventas-por-pais.
+/// Sustituye esta tabla por tu modelo.
+table Ventas
+	lineageTag: 74f5ab85-d450-c995-e302-6e84a4ad1ded
+
+	/// Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'Sales Amount' = SUM(Ventas[Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: e016c62f-7ae2-e3ae-66cc-e98b7e7b3fb9
+
+	column 'Month Date'
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 79d7a5c0-2b61-54d8-7d39-84ec8bfe1d56
+		summarizeBy: none
+		sourceColumn: Month Date
+
+	column Country
+		dataType: string
+		lineageTag: 2a263a17-fdf2-9518-c43d-737200555a3d
+		summarizeBy: none
+		sourceColumn: Country
+
+	column 'Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: 4e261b07-26cc-8a96-2837-52dc8bb333e9
+		summarizeBy: sum
+		sourceColumn: Sales Amount valor
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+					Origen = #table(
+						type table [#"Month Date" = date, Country = text, #"Sales Amount valor" = number],
+						{
+							{#date(2019, 1, 1), "Australia", 915799.31},
+							{#date(2019, 2, 1), "Australia", 1165653.03},
+							{#date(2019, 3, 1), "Australia", 343483.88},
+							{#date(2019, 4, 1), "Australia", 58199.54},
+							{#date(2019, 5, 1), "Australia", 705657.36},
+							{#date(2019, 6, 1), "Australia", 660202.3},
+							{#date(2019, 7, 1), "Australia", 632784.63},
+							{#date(2019, 8, 1), "Australia", 662772.75},
+							{#date(2019, 9, 1), "Australia", 589104.91},
+							{#date(2019, 10, 1), "Australia", 593199.19},
+							{#date(2019, 11, 1), "Australia", 763196.92},
+							{#date(2019, 12, 1), "Australia", 1146499.6},
+							{#date(2019, 1, 1), "Canada", 1401977.19},
+							{#date(2019, 2, 1), "Canada", 1630578},
+							{#date(2019, 3, 1), "Canada", 535229.04},
+							{#date(2019, 4, 1), "Canada", 114783.93},
+							{#date(2019, 5, 1), "Canada", 1139365.07},
+							{#date(2019, 6, 1), "Canada", 1130805.49},
+							{#date(2019, 7, 1), "Canada", 1035737.34},
+							{#date(2019, 8, 1), "Canada", 1021896.21},
+							{#date(2019, 9, 1), "Canada", 1111079.42},
+							{#date(2019, 10, 1), "Canada", 1133029.9},
+							{#date(2019, 11, 1), "Canada", 1152888.55},
+							{#date(2019, 12, 1), "Canada", 1737169.71},
+							{#date(2019, 1, 1), "France", 506847.04},
+							{#date(2019, 2, 1), "France", 585638.9},
+							{#date(2019, 3, 1), "France", 130312.6},
+							{#date(2019, 4, 1), "France", 30819.31},
+							{#date(2019, 5, 1), "France", 374753.06},
+							{#date(2019, 6, 1), "France", 299044.8},
+							{#date(2019, 7, 1), "France", 300014.59},
+							{#date(2019, 8, 1), "France", 316523.11},
+							{#date(2019, 9, 1), "France", 289494.34},
+							{#date(2019, 10, 1), "France", 336578.73},
+							{#date(2019, 11, 1), "France", 354835.11},
+							{#date(2019, 12, 1), "France", 518111.64},
+							{#date(2019, 1, 1), "Germany", 1664484.66},
+							{#date(2019, 2, 1), "Germany", 1857095.63},
+							{#date(2019, 3, 1), "Germany", 610835.86},
+							{#date(2019, 4, 1), "Germany", 147238.59},
+							{#date(2019, 5, 1), "Germany", 1340927.5},
+							{#date(2019, 6, 1), "Germany", 1168129.4},
+							{#date(2019, 7, 1), "Germany", 1056766.04},
+							{#date(2019, 8, 1), "Germany", 1097342.17},
+							{#date(2019, 9, 1), "Germany", 1203817.11},
+							{#date(2019, 10, 1), "Germany", 1260016.18},
+							{#date(2019, 11, 1), "Germany", 1245819.31},
+							{#date(2019, 12, 1), "Germany", 1958201.52},
+							{#date(2019, 1, 1), "Italy", 272756.71},
+							{#date(2019, 2, 1), "Italy", 196101.85},
+							{#date(2019, 3, 1), "Italy", 92688.43},
+							{#date(2019, 4, 1), "Italy", 13441.23},
+							{#date(2019, 5, 1), "Italy", 155034.47},
+							{#date(2019, 6, 1), "Italy", 167211.65},
+							{#date(2019, 7, 1), "Italy", 177829.79},
+							{#date(2019, 8, 1), "Italy", 199132.9},
+							{#date(2019, 9, 1), "Italy", 204713.4},
+							{#date(2019, 10, 1), "Italy", 223454.98},
+							{#date(2019, 11, 1), "Italy", 143422.43},
+							{#date(2019, 12, 1), "Italy", 305024.01},
+							{#date(2019, 1, 1), "Netherlands", 751694.32},
+							{#date(2019, 2, 1), "Netherlands", 645640.95},
+							{#date(2019, 3, 1), "Netherlands", 274582.6},
+							{#date(2019, 4, 1), "Netherlands", 84594.9},
+							{#date(2019, 5, 1), "Netherlands", 595409.57},
+							{#date(2019, 6, 1), "Netherlands", 537067.86},
+							{#date(2019, 7, 1), "Netherlands", 475812.46},
+							{#date(2019, 8, 1), "Netherlands", 474659.96},
+							{#date(2019, 9, 1), "Netherlands", 449541.92},
+							{#date(2019, 10, 1), "Netherlands", 523242.83},
+							{#date(2019, 11, 1), "Netherlands", 518364.16},
+							{#date(2019, 12, 1), "Netherlands", 758409.7},
+							{#date(2019, 1, 1), "Online", 20883559.46},
+							{#date(2019, 2, 1), "Online", 21398139.35},
+							{#date(2019, 3, 1), "Online", 8094136.44},
+							{#date(2019, 4, 1), "Online", 1629862.06},
+							{#date(2019, 5, 1), "Online", 15374978.03},
+							{#date(2019, 6, 1), "Online", 14157365.45},
+							{#date(2019, 7, 1), "Online", 12135991.72},
+							{#date(2019, 8, 1), "Online", 13600547.13},
+							{#date(2019, 9, 1), "Online", 14064472.81},
+							{#date(2019, 10, 1), "Online", 14044965.68},
+							{#date(2019, 11, 1), "Online", 13875314.35},
+							{#date(2019, 12, 1), "Online", 21325864.26},
+							{#date(2019, 1, 1), "United Kingdom", 1113188.04},
+							{#date(2019, 2, 1), "United Kingdom", 1205172.39},
+							{#date(2019, 3, 1), "United Kingdom", 471230.72},
+							{#date(2019, 4, 1), "United Kingdom", 92949.4},
+							{#date(2019, 5, 1), "United Kingdom", 739618.05},
+							{#date(2019, 6, 1), "United Kingdom", 722524.85},
+							{#date(2019, 7, 1), "United Kingdom", 631732.38},
+							{#date(2019, 8, 1), "United Kingdom", 728323.51},
+							{#date(2019, 9, 1), "United Kingdom", 707983.03},
+							{#date(2019, 10, 1), "United Kingdom", 882455.22},
+							{#date(2019, 11, 1), "United Kingdom", 722364.98},
+							{#date(2019, 12, 1), "United Kingdom", 1170181.83},
+							{#date(2019, 1, 1), "United States", 6768383.3},
+							{#date(2019, 2, 1), "United States", 6711145.1},
+							{#date(2019, 3, 1), "United States", 2617957.75},
+							{#date(2019, 4, 1), "United States", 466116.46},
+							{#date(2019, 5, 1), "United States", 4917902.45},
+							{#date(2019, 6, 1), "United States", 4323140.05},
+							{#date(2019, 7, 1), "United States", 3731986.29},
+							{#date(2019, 8, 1), "United States", 3924060.97},
+							{#date(2019, 9, 1), "United States", 4152733.7},
+							{#date(2019, 10, 1), "United States", 4263968.45},
+							{#date(2019, 11, 1), "United States", 4540309.89},
+							{#date(2019, 12, 1), "United States", 6612120.85}
+						}
+					)
+				in
+					Origen
+
+	annotation PBI_ResultType = Table

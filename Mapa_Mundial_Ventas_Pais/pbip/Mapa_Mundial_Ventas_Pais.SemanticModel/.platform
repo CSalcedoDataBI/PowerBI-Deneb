@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Mapa_Mundial_Ventas_Pais"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "347c25ae-bac9-b4a7-3e68-239d049d76f0"
+  }
+}

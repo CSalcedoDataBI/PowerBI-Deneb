@@ -1,0 +1,326 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "¿Cómo va cada país frente a las referencias? Todas las líneas van en gris y dos se ven siempre: Online (azul) y Estados Unidos (naranja). Por CSalcedoDataBI · https://csalcedodatabi.com/deneb/benchmark-ventas-por-pais",
+  "usermeta": {
+    "deneb": {
+      "build": "2.0.0.0",
+      "metaVersion": 2,
+      "provider": "vegaLite",
+      "providerVersion": "6.4.3"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 250
+    },
+    "information": {
+      "name": "Benchmark",
+      "description": "Monthly sales by country in grey, with Online and United States always highlighted; clicking a point highlights its country. Up to 24 months. Autor: Cristobal Salcedo Beltrán.",
+      "author": "Cristobal Salcedo Beltrán",
+      "uuid": "21b84223-889c-4c61-a4cb-918ea95c2180",
+      "generated": "2026-10-17T02:36:45.470Z",
+      "previewImageBase64PNG": ""
+    },
+    "config": "{\n  \"view\": {\n    \"stroke\": null\n  },\n  \"axis\": {\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#555555\"\n  }\n}",
+    "datasets": {
+      "dataset": [
+        {
+          "key": "__dataset.0__",
+          "name": "Month Date",
+          "description": "",
+          "type": "dateTime",
+          "kind": "column",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": false,
+            "formatted": false,
+            "names": false
+          }
+        },
+        {
+          "key": "__dataset.1__",
+          "name": "Country",
+          "description": "",
+          "type": "text",
+          "kind": "column",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": false,
+            "formatted": false,
+            "names": false
+          }
+        },
+        {
+          "key": "__dataset.2__",
+          "name": "Sales Amount",
+          "description": "",
+          "type": "numeric",
+          "kind": "measure",
+          "supportFieldConfiguration": {
+            "highlight": false,
+            "highlightStatus": false,
+            "highlightComparator": false,
+            "format": true,
+            "formatted": false,
+            "names": false
+          }
+        }
+      ]
+    }
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "width": "container",
+  "height": "container",
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "top": 4,
+    "right": 88,
+    "bottom": 0,
+    "left": 4
+  },
+  "title": {
+    "text": "Ventas — comparativa por país",
+    "subtitle": "Online y Estados Unidos resaltados · haz clic en un punto para resaltar su país",
+    "anchor": "start",
+    "fontSize": 10,
+    "subtitleFontSize": 9,
+    "color": "#8A8F98",
+    "subtitleColor": "#6B7280",
+    "offset": 6
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum['__dataset.2__'])"
+    },
+    {
+      "window": [
+        {
+          "op": "dense_rank",
+          "as": "rk"
+        }
+      ],
+      "sort": [
+        {
+          "field": "__dataset.0__",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rk <= 24"
+    },
+    {
+      "calculate": "timeFormat(datum['__dataset.0__'], \"%b '%y\")",
+      "as": "label"
+    },
+    {
+      "calculate": "pbiFormat(datum['__dataset.2__'], (isValid(datum['__dataset.2____format']) ? datum['__dataset.2____format'] : '$ #,0'), {value: (abs(datum['__dataset.2__'])>=1e9?1e9:abs(datum['__dataset.2__'])>=1e6?1e6:abs(datum['__dataset.2__'])>=1e3?1e3:1), precision: (abs(datum['__dataset.2__'])/(abs(datum['__dataset.2__'])>=1e9?1e9:abs(datum['__dataset.2__'])>=1e6?1e6:abs(datum['__dataset.2__'])>=1e3?1e3:1) >= 100 || abs(datum['__dataset.2__'])/(abs(datum['__dataset.2__'])>=1e9?1e9:abs(datum['__dataset.2__'])>=1e6?1e6:abs(datum['__dataset.2__'])>=1e3?1e3:1) == round(abs(datum['__dataset.2__'])/(abs(datum['__dataset.2__'])>=1e9?1e9:abs(datum['__dataset.2__'])>=1e6?1e6:abs(datum['__dataset.2__'])>=1e3?1e3:1))) ? 0 : 1})",
+      "as": "valueLabel"
+    },
+    {
+      "calculate": "datum.__selected__ === 'on' ? 1 : 0",
+      "as": "sel"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "sel",
+          "as": "countrySel"
+        }
+      ],
+      "groupby": [
+        "__dataset.1__"
+      ]
+    },
+    {
+      "calculate": "datum['__dataset.1__'] === 'Online' || datum['__dataset.1__'] === 'United States' || datum.countrySel === 1",
+      "as": "hi"
+    },
+    {
+      "as": "hiColor",
+      "calculate": "datum['__dataset.1__'] === 'Online' ? '#1F4E79' : datum['__dataset.1__'] === 'United States' ? '#E07A1F' : '#2E8B57'"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "label",
+      "type": "ordinal",
+      "sort": {
+        "field": "__dataset.0__",
+        "op": "min"
+      },
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "labelOverlap": true,
+        "domainColor": "#8A8F98",
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "__dataset.2__",
+      "type": "quantitative",
+      "axis": {
+        "title": null,
+        "domain": false,
+        "ticks": false,
+        "gridColor": "#EEEEEE",
+        "tickCount": 5,
+        "labelExpr": "pbiFormat(datum.value, '$ #,0', {value: (abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1), precision: (abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) >= 100 || abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1) == round(abs(datum.value)/(abs(datum.value)>=1e9?1e9:abs(datum.value)>=1e6?1e6:abs(datum.value)>=1e3?1e3:1))) ? 0 : 1})",
+        "labelFlush": true
+      }
+    }
+  },
+  "layer": [
+    {
+      "name": "BenchLineGray",
+      "transform": [
+        {
+          "filter": "!datum.hi"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.25,
+        "color": "#D5D8DC",
+        "interpolate": "linear"
+      },
+      "encoding": {
+        "detail": {
+          "field": "__dataset.1__"
+        }
+      }
+    },
+    {
+      "name": "BenchLine",
+      "transform": [
+        {
+          "filter": "datum.hi"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "linear"
+      },
+      "encoding": {
+        "color": {
+          "scale": null,
+          "field": "hiColor",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "name": "BenchPointGray",
+      "transform": [
+        {
+          "filter": "!datum.hi"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 30,
+        "color": "#C4C9CE",
+        "tooltip": true
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Mes"
+          },
+          {
+            "field": "__dataset.1__",
+            "title": "País"
+          },
+          {
+            "field": "valueLabel",
+            "title": "Ventas"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BenchPoint",
+      "transform": [
+        {
+          "filter": "datum.hi"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 40,
+        "tooltip": true
+      },
+      "encoding": {
+        "color": {
+          "scale": null,
+          "field": "hiColor",
+          "type": "nominal",
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "title": "Mes"
+          },
+          {
+            "field": "__dataset.1__",
+            "title": "País"
+          },
+          {
+            "field": "valueLabel",
+            "title": "Ventas"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BenchEndLabel",
+      "transform": [
+        {
+          "filter": "datum.hi && datum.rk === 1"
+        },
+        {
+          "calculate": "[datum['__dataset.1__'], datum.valueLabel]",
+          "as": "endLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 10,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "endLabel"
+        },
+        "color": {
+          "scale": null,
+          "field": "hiColor",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    }
+  ]
+}

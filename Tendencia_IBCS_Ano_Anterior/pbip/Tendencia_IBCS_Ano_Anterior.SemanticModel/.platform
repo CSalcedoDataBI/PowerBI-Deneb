@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Tendencia_IBCS_Ano_Anterior"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d42a541f-de8c-741e-4be3-d6e18ce8c68e"
+  }
+}

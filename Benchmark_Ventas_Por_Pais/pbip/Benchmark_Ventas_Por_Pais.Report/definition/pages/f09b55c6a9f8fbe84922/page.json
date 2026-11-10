@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "f09b55c6a9f8fbe84922",
+  "displayName": "Benchmark: ventas por país frente a Online y Es…",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

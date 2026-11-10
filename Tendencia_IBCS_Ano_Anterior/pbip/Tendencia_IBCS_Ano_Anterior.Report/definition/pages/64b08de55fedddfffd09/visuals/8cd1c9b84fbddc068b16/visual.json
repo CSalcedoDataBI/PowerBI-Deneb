@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8cd1c9b84fbddc068b16",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "height": 680,
+    "width": 1240,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "Month Date"
+                }
+              },
+              "queryRef": "Ventas.Month Date",
+              "nativeQueryRef": "Month Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "Sales Amount"
+                }
+              },
+              "queryRef": "Ventas.Sales Amount",
+              "nativeQueryRef": "Sales Amount"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ventas"
+                    }
+                  },
+                  "Property": "PY Sales Amount"
+                }
+              },
+              "queryRef": "Ventas.PY Sales Amount",
+              "nativeQueryRef": "PY Sales Amount"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\n  \"description\": \"¿Vamos mejor o peor que el año pasado, y en qué meses? Tres bandas cuentan la misma historia: arriba la variación en %, en medio la variación en dinero (verde o rojo) y abajo el real (azul) sobre el año anterior (gris). Por CSalcedoDataBI · https://csalcedodatabi.com/deneb/ibcs-tendencia-ano-anterior\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"transform\": [\n    {\n      \"filter\": \"isValid(datum[''Sales Amount''])\"\n    },\n    {\n      \"window\": [\n        {\n          \"op\": \"rank\",\n          \"as\": \"rk\"\n        }\n      ],\n      \"sort\": [\n        {\n          \"field\": \"Month Date\",\n          \"order\": \"descending\"\n        }\n      ]\n    },\n    {\n      \"filter\": \"datum.rk <= 24\"\n    },\n    {\n      \"calculate\": \"datum[''Sales Amount'']\",\n      \"as\": \"actual\"\n    },\n    {\n      \"calculate\": \"isValid(datum[''PY Sales Amount'']) ? datum[''PY Sales Amount''] : null\",\n      \"as\": \"py\"\n    },\n    {\n      \"calculate\": \"datum.py != null ? datum.actual - datum.py : null\",\n      \"as\": \"deltaAbs\"\n    },\n    {\n      \"calculate\": \"datum.py != null && datum.py != 0 ? (datum.actual - datum.py) / datum.py : null\",\n      \"as\": \"deltaPct\"\n    },\n    {\n      \"calculate\": \"''AC''\",\n      \"as\": \"kind\"\n    },\n    {\n      \"calculate\": \"timeFormat(datum[''Month Date''], \\\"%b ''%y\\\")\",\n      \"as\": \"label\"\n    },\n    {\n      \"calculate\": \"pbiFormat(abs(datum.actual), (isValid(datum[''Sales Amount__format'']) ? datum[''Sales Amount__format''] : ''$ #,0''), {value: (abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1), precision: (abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) >= 100 || abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) == round(abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1))) ? 0 : 1})\",\n      \"as\": \"actualLabel\"\n    },\n    {\n      \"calculate\": \"datum.py != null ? pbiFormat(abs(datum.py), (isValid(datum[''Sales Amount__format'']) ? datum[''Sales Amount__format''] : ''$ #,0''), {value: (abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1), precision: (abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) >= 100 || abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) == round(abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1))) ? 0 : 1}) : ''—''\",\n      \"as\": \"pyLabel\"\n    },\n    {\n      \"calculate\": \"datum.deltaAbs != null ? (datum.deltaAbs >= 0 ? ''+'' : ''−'') + pbiFormat(abs(datum.deltaAbs), (isValid(datum[''Sales Amount__format'']) ? datum[''Sales Amount__format''] : ''$ #,0''), {value: (abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1), precision: (abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) >= 100 || abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) == round(abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1))) ? 0 : 1}) : ''—''\",\n      \"as\": \"deltaLabel\"\n    },\n    {\n      \"calculate\": \"datum.deltaPct != null ? pbiFormat(datum.deltaPct, ''+0.0%;−0.0%;0.0%'') : ''—''\",\n      \"as\": \"deltaPctLabel\"\n    }\n  ],\n  \"padding\": {\n    \"right\": 0,\n    \"left\": 0,\n    \"bottom\": 0,\n    \"top\": 4\n  },\n  \"spacing\": 10,\n  \"vconcat\": [\n    {\n      \"height\": 90,\n      \"width\": \"container\",\n      \"title\": {\n        \"text\": \"Δ año anterior %\",\n        \"anchor\": \"start\",\n        \"fontSize\": 10,\n        \"color\": \"#8A8F98\"\n      },\n      \"transform\": [\n        {\n          \"filter\": \"datum.deltaPct != null\"\n        },\n        {\n          \"calculate\": \"datum.deltaPct\",\n          \"as\": \"v\"\n        }\n      ],\n      \"layer\": [\n        {\n          \"mark\": {\n            \"type\": \"rule\",\n            \"strokeWidth\": 1.5\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\",\n              \"axis\": null,\n              \"scale\": {\n                \"nice\": false\n              }\n            },\n            \"y2\": {\n              \"datum\": 0\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            },\n            \"opacity\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 0.45\n              },\n              \"value\": 1\n            }\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"point\",\n            \"filled\": true,\n            \"shape\": \"square\",\n            \"size\": 45,\n            \"tooltip\": true\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            },\n            \"opacity\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 0.45\n              },\n              \"value\": 1\n            },\n            \"tooltip\": [\n              {\n                \"field\": \"label\",\n                \"title\": \"Mes\"\n              },\n              {\n                \"field\": \"kind\",\n                \"title\": \"Tipo\"\n              },\n              {\n                \"field\": \"actualLabel\",\n                \"title\": \"Ventas\"\n              },\n              {\n                \"field\": \"pyLabel\",\n                \"title\": \"Año anterior\"\n              },\n              {\n                \"field\": \"deltaLabel\",\n                \"title\": \"Δ AA\"\n              },\n              {\n                \"field\": \"deltaPctLabel\",\n                \"title\": \"Δ AA %\"\n              }\n            ]\n          }\n        },\n        {\n          \"transform\": [\n            {\n              \"filter\": \"datum.v >= 0\"\n            }\n          ],\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 10,\n            \"baseline\": \"bottom\",\n            \"dy\": -5\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\"\n            },\n            \"text\": {\n              \"field\": \"deltaPctLabel\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            }\n          }\n        },\n        {\n          \"transform\": [\n            {\n              \"filter\": \"datum.v < 0\"\n            }\n          ],\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 10,\n            \"baseline\": \"top\",\n            \"dy\": 5\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\"\n            },\n            \"text\": {\n              \"field\": \"deltaPctLabel\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"height\": 110,\n      \"width\": \"container\",\n      \"title\": {\n        \"text\": \"Δ año anterior\",\n        \"anchor\": \"start\",\n        \"fontSize\": 10,\n        \"color\": \"#8A8F98\"\n      },\n      \"transform\": [\n        {\n          \"filter\": \"datum.deltaAbs != null\"\n        },\n        {\n          \"calculate\": \"datum.deltaAbs\",\n          \"as\": \"v\"\n        }\n      ],\n      \"layer\": [\n        {\n          \"mark\": {\n            \"type\": \"bar\",\n            \"tooltip\": true\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\",\n              \"axis\": null\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            },\n            \"fillOpacity\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 0.45\n              },\n              \"value\": 1\n            },\n            \"stroke\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": \"#8A8F98\"\n              },\n              \"value\": null\n            },\n            \"strokeWidth\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 1\n              },\n              \"value\": 0\n            },\n            \"tooltip\": [\n              {\n                \"field\": \"label\",\n                \"title\": \"Mes\"\n              },\n              {\n                \"field\": \"kind\",\n                \"title\": \"Tipo\"\n              },\n              {\n                \"field\": \"actualLabel\",\n                \"title\": \"Ventas\"\n              },\n              {\n                \"field\": \"pyLabel\",\n                \"title\": \"Año anterior\"\n              },\n              {\n                \"field\": \"deltaLabel\",\n                \"title\": \"Δ AA\"\n              },\n              {\n                \"field\": \"deltaPctLabel\",\n                \"title\": \"Δ AA %\"\n              }\n            ]\n          }\n        },\n        {\n          \"transform\": [\n            {\n              \"filter\": \"datum.v >= 0\"\n            }\n          ],\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 10,\n            \"baseline\": \"bottom\",\n            \"dy\": -4\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\"\n            },\n            \"text\": {\n              \"field\": \"deltaLabel\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            }\n          }\n        },\n        {\n          \"transform\": [\n            {\n              \"filter\": \"datum.v < 0\"\n            }\n          ],\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 10,\n            \"baseline\": \"top\",\n            \"dy\": 4\n          },\n          \"encoding\": {\n            \"x\": {\n              \"field\": \"label\",\n              \"type\": \"ordinal\",\n              \"sort\": {\n                \"field\": \"Month Date\",\n                \"op\": \"min\"\n              },\n              \"axis\": {\n                \"title\": null,\n                \"labels\": false,\n                \"ticks\": false,\n                \"domain\": true\n              }\n            },\n            \"y\": {\n              \"field\": \"v\",\n              \"type\": \"quantitative\"\n            },\n            \"text\": {\n              \"field\": \"deltaLabel\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.v < 0\",\n                \"value\": \"#C0392B\"\n              },\n              \"value\": \"#2E8B57\"\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"height\": 300,\n      \"width\": \"container\",\n      \"title\": {\n        \"text\": \"Ventas — real frente a año anterior\",\n        \"anchor\": \"start\",\n        \"fontSize\": 10,\n        \"color\": \"#8A8F98\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"label\",\n          \"type\": \"ordinal\",\n          \"sort\": {\n            \"field\": \"Month Date\",\n            \"op\": \"min\"\n          },\n          \"axis\": {\n            \"title\": null,\n            \"labelAngle\": 0,\n            \"labelFontSize\": 10,\n            \"labelOverlap\": true\n          }\n        },\n        \"y\": {\n          \"field\": \"actual\",\n          \"type\": \"quantitative\",\n          \"scale\": {\n            \"zero\": true\n          },\n          \"axis\": null\n        }\n      },\n      \"layer\": [\n        {\n          \"transform\": [\n            {\n              \"filter\": \"datum.py != null\"\n            }\n          ],\n          \"mark\": {\n            \"type\": \"bar\",\n            \"size\": 17,\n            \"color\": \"#B8BEC6\",\n            \"opacity\": 0.55,\n            \"tooltip\": true\n          },\n          \"encoding\": {\n            \"y\": {\n              \"field\": \"py\",\n              \"type\": \"quantitative\"\n            },\n            \"tooltip\": [\n              {\n                \"field\": \"label\",\n                \"title\": \"Mes\"\n              },\n              {\n                \"field\": \"kind\",\n                \"title\": \"Tipo\"\n              },\n              {\n                \"field\": \"actualLabel\",\n                \"title\": \"Ventas\"\n              },\n              {\n                \"field\": \"pyLabel\",\n                \"title\": \"Año anterior\"\n              },\n              {\n                \"field\": \"deltaLabel\",\n                \"title\": \"Δ AA\"\n              },\n              {\n                \"field\": \"deltaPctLabel\",\n                \"title\": \"Δ AA %\"\n              }\n            ]\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"bar\",\n            \"size\": 9,\n            \"tooltip\": true\n          },\n          \"encoding\": {\n            \"y\": {\n              \"field\": \"actual\",\n              \"type\": \"quantitative\"\n            },\n            \"color\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": \"#8A8F98\"\n              },\n              \"value\": \"#1F4E79\"\n            },\n            \"fillOpacity\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 0.5\n              },\n              \"value\": 1\n            },\n            \"stroke\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": \"#8A8F98\"\n              },\n              \"value\": null\n            },\n            \"strokeWidth\": {\n              \"condition\": {\n                \"test\": \"datum.kind == ''FC''\",\n                \"value\": 1\n              },\n              \"value\": 0\n            },\n            \"tooltip\": [\n              {\n                \"field\": \"label\",\n                \"title\": \"Mes\"\n              },\n              {\n                \"field\": \"kind\",\n                \"title\": \"Tipo\"\n              },\n              {\n                \"field\": \"actualLabel\",\n                \"title\": \"Ventas\"\n              },\n              {\n                \"field\": \"pyLabel\",\n                \"title\": \"Año anterior\"\n              },\n              {\n                \"field\": \"deltaLabel\",\n                \"title\": \"Δ AA\"\n              },\n              {\n                \"field\": \"deltaPctLabel\",\n                \"title\": \"Δ AA %\"\n              }\n            ]\n          }\n        },\n        {\n          \"mark\": {\n            \"type\": \"text\",\n            \"fontSize\": 10,\n            \"baseline\": \"bottom\",\n            \"dy\": -4,\n            \"color\": \"#333333\"\n          },\n          \"encoding\": {\n            \"y\": {\n              \"field\": \"actual\",\n              \"type\": \"quantitative\"\n            },\n            \"text\": {\n              \"field\": \"actualLabel\"\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"resolve\": {\n    \"scale\": {\n      \"y\": \"independent\"\n    }\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"view\": {\n    \"stroke\": null\n  }\n}'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "250D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

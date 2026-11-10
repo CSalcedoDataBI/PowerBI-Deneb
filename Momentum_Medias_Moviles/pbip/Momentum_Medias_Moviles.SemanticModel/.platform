@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Momentum_Medias_Moviles"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3f08d36c-16bf-3bb4-6478-b9f99f90aeb4"
+  }
+}

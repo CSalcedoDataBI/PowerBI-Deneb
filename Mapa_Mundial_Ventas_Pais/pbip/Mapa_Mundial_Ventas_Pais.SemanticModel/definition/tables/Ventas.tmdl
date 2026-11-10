@@ -1,0 +1,161 @@
+/// Datos de muestra de la plantilla «Mapa mundial de ventas por país» — tabla en línea, SIN origen
+/// externo: no pide credenciales ni red, y Power BI la carga sola al abrir. Son
+/// las mismas filas que la vista previa de csalcedodatabi.com/deneb/mapa-mundial-ventas-pais
+/// (ventas SIMULADAS: inventadas para enseñar el mapa del mundo completo).
+/// Sustituye esta tabla por tu modelo.
+table Ventas
+	lineageTag: e3127e56-a7c1-00ae-ea63-43bfffee136f
+
+	/// Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'Sales Amount' = SUM(Ventas[Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: 8eaa0f46-2262-b0b5-cd29-32d06fb61b07
+
+	/// PY Sales Amount: suma de la columna de muestra. Sustitúyela por tu medida.
+	measure 'PY Sales Amount' = SUM(Ventas[PY Sales Amount valor])
+		formatString: \$#,0
+		lineageTag: e7b40347-a8b8-e144-f2c2-5ad5c83d42b6
+
+	column Country
+		dataType: string
+		lineageTag: c52836da-0344-b0e1-5625-15adc55d4cf0
+		summarizeBy: none
+		sourceColumn: Country
+
+	column 'Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: eadb93c0-c2e8-a0fd-240c-b3ed9df4f3c9
+		summarizeBy: sum
+		sourceColumn: Sales Amount valor
+
+	column 'PY Sales Amount valor'
+		dataType: double
+		isHidden
+		formatString: \$#,0
+		lineageTag: 95b1aa25-93a5-1ad0-0b9a-39cb241a073e
+		summarizeBy: sum
+		sourceColumn: PY Sales Amount valor
+
+	partition Ventas = m
+		mode: import
+		source =
+				let
+					Origen = #table(
+						type table [Country = text, #"Sales Amount valor" = number, #"PY Sales Amount valor" = number],
+						{
+							{"United States", 60834428, 74777327},
+							{"China", 21158530, 24876694},
+							{"Germany", 14120864, 13883310},
+							{"Japan", 11155483, 9431713},
+							{"United Kingdom", 10000662, 11730005},
+							{"France", 6752632, 6385994},
+							{"India", 6563710, 5002417},
+							{"Canada", 5637991, 4693280},
+							{"Italy", 4542859, 5624783},
+							{"Brazil", 4700037, 4383154},
+							{"South Korea", 3654023, 4040306},
+							{"Australia", 3164041, 2372434},
+							{"Spain", 2798919, 3079054},
+							{"Mexico", 3236189, 3587876},
+							{"Netherlands", 2532134, 2866209},
+							{"Russia", 2323954, 2322583},
+							{"Switzerland", 2017237, 1587709},
+							{"Saudi Arabia", 2426529, 2399113},
+							{"Turkey", 2101546, 2386789},
+							{"Indonesia", 1901930, 1740581},
+							{"Poland", 1850201, 1468490},
+							{"Sweden", 1711482, 1789336},
+							{"Belgium", 1732891, 1937010},
+							{"Argentina", 1486602, 1132079},
+							{"Norway", 1315990, 1620231},
+							{"Austria", 1614760, 1291607},
+							{"United Arab Emirates", 1407182, 1577276},
+							{"Ireland", 1371979, 1233207},
+							{"Israel", 1384286, 1381194},
+							{"Denmark", 1107771, 1028876},
+							{"South Africa", 1309031, 1004089},
+							{"Thailand", 1238854, 1292261},
+							{"Malaysia", 1244924, 1086524},
+							{"Philippines", 1259039, 1312672},
+							{"Colombia", 984043, 805677},
+							{"Chile", 1134474, 861484},
+							{"Finland", 942793, 1104731},
+							{"Egypt", 917188, 922679},
+							{"Vietnam", 939542, 901034},
+							{"Portugal", 961315, 743236},
+							{"Czechia", 998516, 804255},
+							{"Romania", 848317, 673402},
+							{"New Zealand", 821089, 809385},
+							{"Peru", 799793, 622840},
+							{"Greece", 757876, 857570},
+							{"Kazakhstan", 786234, 610749},
+							{"Hungary", 862578, 961424},
+							{"Qatar", 790864, 973705},
+							{"Algeria", 721326, 778932},
+							{"Morocco", 744456, 674367},
+							{"Kuwait", 688710, 584842},
+							{"Ukraine", 615424, 677034},
+							{"Nigeria", 579874, 445242},
+							{"Pakistan", 622913, 465768},
+							{"Bangladesh", 645940, 642859},
+							{"Ecuador", 691103, 821230},
+							{"Slovakia", 627090, 703756},
+							{"Kenya", 539272, 492991},
+							{"Dominican Rep.", 578869, 613484},
+							{"Guatemala", 625755, 624891},
+							{"Oman", 643168, 584347},
+							{"Sri Lanka", 503028, 464531},
+							{"Bulgaria", 574089, 436792},
+							{"Ethiopia", 467082, 391574},
+							{"Uruguay", 609508, 483657},
+							{"Croatia", 591235, 711762},
+							{"Panama", 564307, 450589},
+							{"Costa Rica", 575017, 428903},
+							{"Lithuania", 436576, 383647},
+							{"Serbia", 438747, 471971},
+							{"Slovenia", 441495, 334443},
+							{"Tanzania", 421873, 393227},
+							{"Ghana", 448146, 374364},
+							{"Jordan", 448536, 365239},
+							{"Côte d'Ivoire", 417490, 376912},
+							{"Tunisia", 515780, 538674},
+							{"Bolivia", 421043, 354671},
+							{"Paraguay", 403793, 420933},
+							{"Latvia", 426420, 387431},
+							{"Estonia", 418061, 444223},
+							{"Cameroon", 443030, 519137},
+							{"Uganda", 433002, 336942},
+							{"Iceland", 357983, 408374},
+							{"Luxembourg", 443393, 435676},
+							{"Honduras", 384150, 289489},
+							{"El Salvador", 375911, 374133},
+							{"Mongolia", 445788, 464812},
+							{"Angola", 423541, 356809},
+							{"Zambia", 334668, 291573},
+							{"Senegal", 330871, 246391},
+							{"Botswana", 378620, 390567},
+							{"Namibia", 358823, 268140},
+							{"Mozambique", 406257, 397537},
+							{"Madagascar", 402214, 352302},
+							{"Nepal", 354822, 371892},
+							{"Cambodia", 396323, 485055},
+							{"Jamaica", 374613, 355712},
+							{"Georgia", 322521, 340601},
+							{"Armenia", 354195, 266045},
+							{"Azerbaijan", 301192, 349567},
+							{"Uzbekistan", 377401, 298746},
+							{"Belarus", 363122, 328772},
+							{"Albania", 319409, 285636},
+							{"Papua New Guinea", 351578, 283180},
+							{"Venezuela", 334088, 250435},
+							{"Cuba", 269902, 264349},
+							{"Greenland", 291351, 292570},
+							{"Online", 170585196, 227353453}
+						}
+					)
+				in
+					Origen
+
+	annotation PBI_ResultType = Table

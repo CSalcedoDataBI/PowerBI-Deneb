@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Benchmark_Ventas_Por_Pais"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1ec32155-3d7a-94c0-449e-8d5704a00370"
+  }
+}
