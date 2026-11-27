@@ -216,14 +216,19 @@ If these visualizations help your dashboards shine, please:
 
 ⭐ **Star this repository** — It helps others discover this resource  
 🔗 **Share with your team** — Spread the knowledge  
-💬 **Leave feedback** — Tell us what you'd like next  
+💬 **Leave feedback** — Tell us what you'd like next
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by [Cristobal Salcedo](https://www.csalcedodatabi.com)**
+[![Sitio](https://img.shields.io/badge/Sitio-csalcedodatabi.com-1F3A5F?style=for-the-badge&logo=googlechrome&logoColor=white)](https://csalcedodatabi.com)
+[![Blog](https://img.shields.io/badge/Blog-art%C3%ADculos-1F3A5F?style=for-the-badge&logo=rss&logoColor=white)](https://csalcedodatabi.com/blog/)
+[![Galería HTML](https://img.shields.io/badge/Galer%C3%ADa-HTML-1F3A5F?style=for-the-badge&logo=html5&logoColor=white)](https://csalcedodatabi.com/recursos/galeria-html/)
+[![Galería Deneb](https://img.shields.io/badge/Galer%C3%ADa-Deneb-1F3A5F?style=for-the-badge&logo=powerbi&logoColor=white)](https://csalcedodatabi.com/deneb/)
 
-**Powered by [Deneb](https://deneb-viz.github.io/) | Built with [Vega](https://vega.github.io/) & [Vega-Lite](https://vega.github.io/vega-lite/)**
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-cristobal--salcedo-1F3A5F?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/cristobal-salcedo)
+[![YouTube](https://img.shields.io/badge/YouTube-@CSalcedoDataBI-1F3A5F?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@CSalcedoDataBI)
+[![Contacto](https://img.shields.io/badge/Contacto-escr%C3%ADbeme-1F3A5F?style=for-the-badge&logo=maildotru&logoColor=white)](https://csalcedodatabi.com/contacto/)
 
 </div>
