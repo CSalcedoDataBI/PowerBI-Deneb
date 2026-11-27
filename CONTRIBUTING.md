@@ -10,6 +10,10 @@ Cada visual entra con su carpeta, su fila en la galería del README y su foto. L
 
 **Cómo se saca:** con el mismo motor de la galería de csalcedodatabi.com: `npx tsx scripts/render-deneb-one.ts <slug> preview.png --scale 2` dibuja el spec sin Desktop. Un visual que no esté en la web se captura del PBIP abierto con `pbi-captura.ps1` y se recorta exacto al visual.
 
+## La tarjeta de la galería (`card.png`)
+
+La foto encajada en un lienzo blanco de 1600×900 (16:9), para que todas las celdas de la galería midan igual. Se genera desde `preview.png` con sharp: recorte del blanco sobrante, `fit: contain` en 1520×820 y 40 px de margen.
+
 ## La carpeta
 
 `Nombre_Con_Guiones_Bajos/` con `README.md`, `Nombre_Con_Guiones_Bajos.zip`, la pieza suelta (`<slug>.json`) y `pbip/Nombre_Con_Guiones_Bajos.pbip`.

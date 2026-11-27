@@ -14,7 +14,8 @@ Get-ChildItem $root -Directory | Where-Object { $_.Name -notin '.git', '.github'
   $u = [uri]::EscapeUriString($_.Name).Replace('(', '%28').Replace(')', '%29')
   if (-not $img) { Write-Host "FAIL $($_.Name): no preview image"; $fail++; return }
   if ($img.Extension -ne '.gif') { Add-Type -AssemblyName System.Drawing; try { $bm = [System.Drawing.Image]::FromFile($img.FullName); if ($bm.Width -lt 1200) { Write-Host "FAIL $($_.Name): preview is $($bm.Width) px wide, needs 1200+ (2x)"; $fail++ }; $bm.Dispose() } catch {} }
-  if (-not $readme.Contains("$u/$($img.Name)")) { Write-Host "FAIL $($_.Name): not in the README gallery"; $fail++ }
+  if (-not (Test-Path (Join-Path $_.FullName 'card.png'))) { Write-Host "FAIL $($_.Name): no card.png (1600x900 white card for the grid)"; $fail++ }
+  if (-not $readme.Contains("$u/card.png")) { Write-Host "FAIL $($_.Name): not in the README gallery"; $fail++ }
 }
 if ($fail) { exit 1 }
 Write-Host 'OK: every visual has its screenshot in the README gallery'
