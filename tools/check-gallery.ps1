@@ -1,0 +1,19 @@
+<#
+.SYNOPSIS
+  Fails when a visual folder has no screenshot or no row in the README gallery.
+.DESCRIPTION
+  Every visual folder must carry preview.(png|webp|jpg|gif) and the root README
+  must show it as an image linking to the folder. Run it before publishing:
+    pwsh -NoProfile -File tools/check-gallery.ps1
+#>
+$root = Split-Path $PSScriptRoot -Parent
+$readme = Get-Content (Join-Path $root 'README.md') -Raw
+$fail = 0
+Get-ChildItem $root -Directory | Where-Object { $_.Name -notin '.git', '.github', 'tools' } | ForEach-Object {
+  $img = Get-ChildItem $_.FullName -File -Filter 'preview.*' | Where-Object Extension -in '.png', '.webp', '.jpg', '.gif' | Select-Object -First 1
+  $u = [uri]::EscapeUriString($_.Name)
+  if (-not $img) { Write-Host "FAIL $($_.Name): no preview image"; $fail++; return }
+  if (-not $readme.Contains("$u/$($img.Name)")) { Write-Host "FAIL $($_.Name): not in the README gallery"; $fail++ }
+}
+if ($fail) { exit 1 }
+Write-Host 'OK: every visual has its screenshot in the README gallery'
