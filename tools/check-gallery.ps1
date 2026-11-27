@@ -11,7 +11,7 @@ $readme = Get-Content (Join-Path $root 'README.md') -Raw
 $fail = 0
 Get-ChildItem $root -Directory | Where-Object { $_.Name -notin '.git', '.github', 'tools' } | ForEach-Object {
   $img = Get-ChildItem $_.FullName -File -Filter 'preview.*' | Where-Object Extension -in '.png', '.webp', '.jpg', '.gif' | Select-Object -First 1
-  $u = [uri]::EscapeUriString($_.Name)
+  $u = [uri]::EscapeUriString($_.Name).Replace('(', '%28').Replace(')', '%29')
   if (-not $img) { Write-Host "FAIL $($_.Name): no preview image"; $fail++; return }
   if (-not $readme.Contains("$u/$($img.Name)")) { Write-Host "FAIL $($_.Name): not in the README gallery"; $fail++ }
 }
