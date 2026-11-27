@@ -15,7 +15,6 @@
 - [🖼️ Galería](#️-galería)
 - [✨ What's Inside](#-whats-inside)
 - [🚀 Quick Start](#-quick-start)
-- [📚 Visualization Gallery](#-visualization-gallery)
 - [💻 How to Use](#-how-to-use)
 - [📥 Download & Import](#-download--import)
 - [🎬 Video Tutorials](#-video-tutorials)
@@ -35,7 +34,7 @@ Haz clic en una imagen para abrir la carpeta del visual: README, spec y PBIP o .
 | [<img src="Combo_Barras_Linea/preview.webp" width="260" alt="Combo Barras Linea">](Combo_Barras_Linea/)<br>**[Combo Barras Linea](Combo_Barras_Linea/)** | [<img src="Diagramas_Pareto/preview.webp" width="260" alt="Diagramas Pareto">](Diagramas_Pareto/)<br>**[Diagramas Pareto](Diagramas_Pareto/)** | [<img src="Dispersion_Etiquetados/preview.webp" width="260" alt="Dispersion Etiquetados">](Dispersion_Etiquetados/)<br>**[Dispersion Etiquetados](Dispersion_Etiquetados/)** |
 | [<img src="Dispersi%C3%B3n_Regresi%C3%B3n/preview.webp" width="260" alt="Dispersión Regresión">](Dispersi%C3%B3n_Regresi%C3%B3n/)<br>**[Dispersión Regresión](Dispersi%C3%B3n_Regresi%C3%B3n/)** | [<img src="Diverging_Stacked_Bar_Chart_Population_Pyramid/preview.webp" width="260" alt="Diverging Stacked Bar Chart Population Pyramid">](Diverging_Stacked_Bar_Chart_Population_Pyramid/)<br>**[Diverging Stacked Bar Chart Population Pyramid](Diverging_Stacked_Bar_Chart_Population_Pyramid/)** | [<img src="Dynamic%20Bar_Chart_Encoding_Colors_with_Hexadecimal_or_Color_Names/preview.webp" width="260" alt="Dynamic Bar Chart Encoding Colors with Hexadecimal or Color Names">](Dynamic%20Bar_Chart_Encoding_Colors_with_Hexadecimal_or_Color_Names/)<br>**[Dynamic Bar Chart Encoding Colors with Hexadecimal or Color Names](Dynamic%20Bar_Chart_Encoding_Colors_with_Hexadecimal_or_Color_Names/)** |
 | [<img src="Exploring_the_Power_of_the_pbiFormat/preview.png" width="260" alt="Exploring the Power of the pbiFormat">](Exploring_the_Power_of_the_pbiFormat/)<br>**[Exploring the Power of the pbiFormat](Exploring_the_Power_of_the_pbiFormat/)** | [<img src="Formato_Dinamico_Con_SWITCH/preview.webp" width="260" alt="Formato Dinamico Con SWITCH">](Formato_Dinamico_Con_SWITCH/)<br>**[Formato Dinamico Con SWITCH](Formato_Dinamico_Con_SWITCH/)** | [<img src="Gantt_Chart/preview.webp" width="260" alt="Gantt Chart">](Gantt_Chart/)<br>**[Gantt Chart](Gantt_Chart/)** |
-| [<img src="Grilla_Termometros_IBCS/preview.webp" width="260" alt="Grilla Termometros IBCS">](Grilla_Termometros_IBCS/)<br>**[Grilla Termometros IBCS](Grilla_Termometros_IBCS/)** | [<img src="Group_Bar_Chart_With_Cross_Filtering/preview.webp" width="260" alt="Group Bar Chart With Cross Filtering">](Group_Bar_Chart_With_Cross_Filtering/)<br>**[Group Bar Chart With Cross Filtering](Group_Bar_Chart_With_Cross_Filtering/)** | [<img src="Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/preview.webp" width="260" alt="Grouped Bar Chart (Multiple Measure With Repeat)">](Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/)<br>**[Grouped Bar Chart (Multiple Measure With Repeat)](Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/)** |
+| [<img src="Grilla_Termometros_IBCS/preview.webp" width="260" alt="Grilla Termometros IBCS">](Grilla_Termometros_IBCS/)<br>**[Grilla Termometros IBCS](Grilla_Termometros_IBCS/)** | [<img src="Group_Bar_Chart_With_Cross_Filtering/preview.webp" width="260" alt="Group Bar Chart With Cross Filtering">](Group_Bar_Chart_With_Cross_Filtering/)<br>**[Group Bar Chart With Cross Filtering](Group_Bar_Chart_With_Cross_Filtering/)** | [<img src="Grouped_Bar_Chart_%28Multiple_Measure_With_Repeat%29/preview.webp" width="260" alt="Grouped Bar Chart (Multiple Measure With Repeat)">](Grouped_Bar_Chart_%28Multiple_Measure_With_Repeat%29/)<br>**[Grouped Bar Chart (Multiple Measure With Repeat)](Grouped_Bar_Chart_%28Multiple_Measure_With_Repeat%29/)** |
 | [<img src="Grupos_De_Calculo_Formato/preview.webp" width="260" alt="Grupos De Calculo Formato">](Grupos_De_Calculo_Formato/)<br>**[Grupos De Calculo Formato](Grupos_De_Calculo_Formato/)** | [<img src="Herencia_Del_Formato_De_Medida/preview.webp" width="260" alt="Herencia Del Formato De Medida">](Herencia_Del_Formato_De_Medida/)<br>**[Herencia Del Formato De Medida](Herencia_Del_Formato_De_Medida/)** | [<img src="Horizontal_Stacked_Bar_Chart/preview.webp" width="260" alt="Horizontal Stacked Bar Chart">](Horizontal_Stacked_Bar_Chart/)<br>**[Horizontal Stacked Bar Chart](Horizontal_Stacked_Bar_Chart/)** |
 | [<img src="Layered_Bar_Chart/preview.webp" width="260" alt="Layered Bar Chart">](Layered_Bar_Chart/)<br>**[Layered Bar Chart](Layered_Bar_Chart/)** | [<img src="Linea_Elegante_Interanual/preview.webp" width="260" alt="Linea Elegante Interanual">](Linea_Elegante_Interanual/)<br>**[Linea Elegante Interanual](Linea_Elegante_Interanual/)** | [<img src="Mapa_Mundial_Ventas_Pais/preview.webp" width="260" alt="Mapa Mundial Ventas Pais">](Mapa_Mundial_Ventas_Pais/)<br>**[Mapa Mundial Ventas Pais](Mapa_Mundial_Ventas_Pais/)** |
 | [<img src="Momentum_Medias_Moviles/preview.webp" width="260" alt="Momentum Medias Moviles">](Momentum_Medias_Moviles/)<br>**[Momentum Medias Moviles](Momentum_Medias_Moviles/)** | [<img src="Multiples_Tarjetas/preview.png" width="260" alt="Multiples Tarjetas">](Multiples_Tarjetas/)<br>**[Multiples Tarjetas](Multiples_Tarjetas/)** | [<img src="Normalized_Percentage_Stacked_Bar_Chart/preview.webp" width="260" alt="Normalized Percentage Stacked Bar Chart">](Normalized_Percentage_Stacked_Bar_Chart/)<br>**[Normalized Percentage Stacked Bar Chart](Normalized_Percentage_Stacked_Bar_Chart/)** |
@@ -97,92 +96,11 @@ Each folder contains:
 
 ---
 
-## 📚 Visualization Gallery
-
-### 📊 1. **Barras con Alineación Dinámica** (Dynamic Bar Alignment)
-
-**Use Case:** Toggle between left-aligned and right-aligned bar labels with a parameter.
-
-![Dynamic Alignment](Barras_Eje_Dinamico/Files/Alineaci%C3%B3n_Din%C3%A1mica_del_Eje.png)
-
-**Features:**
-- Parameter-driven label positioning
-- Real-time axis switching
-- Responsive sizing
-
-📖 **[View Full Docs →](Barras_Eje_Dinamico/README.md)**
-
----
-
-### 📈 2. **Gráfico de Pareto Vertical** (Pareto 80/20)
-
-**Use Case:** Identify the 20% of products driving 80% of revenue.
-
-![Pareto Vertical](Pareto_Verticales/Files/Pareto_Vertical_PowerBI_Deneb_VegaLite_P2.gif)
-
-**Features:**
-- Cumulative percentage line
-- Color-coded zones (80%, 20%)
-- Sorted by impact
-- Tooltip summary
-
-📖 **[View Full Docs →](Pareto_Verticales/README.md)**
-
----
-
-### 🎯 3. **Gráfico de Dispersión con Regresión** (Scatter + Regression)
-
-**Use Case:** Show correlation between two metrics with trend line.
-
-![Scatter Regression](Dispersi%C3%B3n_Regresi%C3%B3n/Files/ScatterPlot_Regression_Selected.png)
-
-**Features:**
-- Linear regression line
-- Individual point highlighting
-- Correlation coefficient display
-- Cross-filtering support
-
-📖 **[View Full Docs →](Dispersi%C3%B3n_Regresi%C3%B3n/README.md)**
-
----
-
-### 🏷️ 4. **Dispersión con Etiquetas** (Labeled Scatter)
-
-**Use Case:** Bubble chart showing product names, sizes, and relationships.
-
-![Labeled Scatter](Dispersi%C3%B3n_Etiquetados/Files/Dispersi%C3%B3n_Etiquetados_PowerBI_Deneb.png)
-
-**Features:**
-- Smart label positioning
-- Bubble sizing by measure
-- Color by category
-- Cross-filtering active
-
-📖 **[View Full Docs →](Dispersi%C3%B3n_Etiquetados/README.md)**
-
----
-
-### 📊 5. **Gráficos de Barras Adaptables** (Responsive Bars)
-
-**Use Case:** Bars that scale to container size with no manual resizing.
-
-![Adaptive Bars](Gr%C3%A1ficos_Barras_Adaptables/Barras_Adaptables_VegaLite.gif)
-
-**Features:**
-- Container-aware sizing
-- Responsive padding
-- Mobile-friendly
-- Touch support
-
-📖 **[View Full Docs →](Gr%C3%A1ficos_Barras_Adaptables/README.md)**
-
----
-
 ## 💻 How to Use
 
 ### **Option A: Copy-Paste JSON (Fastest)**
 
-1. Open [Barras_Eje_Dinamico/Files/template.json](Barras_Eje_Dinamico/Files/)
+1. Open the visual folder from the [Galería](#️-galería) and copy its spec (`.json`)
 2. Copy all JSON content
 3. In Power BI:
    - Insert → **Deneb**
@@ -211,13 +129,7 @@ Then use any `.pbix` or `.json` directly.
 
 ## 📥 Download & Import
 
-| Visualization | Download | JSON Template |
-|---|---|---|
-| 📊 Dynamic Bars | [.pbix](Barras_Eje_Dinamico/Files/) | [template.json](Barras_Eje_Dinamico/Files/template.json) |
-| 📈 Pareto 80/20 | [.pbix](Diagramas_Pareto/FIles/) | [template.json](Diagramas_Pareto/FIles/template.json) |
-| 🎯 Scatter Regression | [.pbix](Dispersi%C3%B3n_Regresi%C3%B3n/Files/) | [template.json](Dispersi%C3%B3n_Regresi%C3%B3n/Files/template.json) |
-| 🏷️ Labeled Scatter | [.pbix](Dispersi%C3%B3n_Etiquetados/Files/) | [template.json](Dispersi%C3%B3n_Etiquetados/Files/template.json) |
-| 📊 Adaptive Bars | [.pbix](Gr%C3%A1ficos_Barras_Adaptables/) | [template.json](Gr%C3%A1ficos_Barras_Adaptables/) |
+Each visual folder in the [Galería](#️-galería) has its `.pbix` or `pbip/`, its spec (`.json`) and a README. Click an image to open it.
 
 ---
 
