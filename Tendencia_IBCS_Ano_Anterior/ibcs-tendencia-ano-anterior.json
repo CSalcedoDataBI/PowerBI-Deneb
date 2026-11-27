@@ -124,20 +124,32 @@
       "as": "label"
     },
     {
-      "calculate": "pbiFormat(abs(datum.actual), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1), precision: (abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) >= 100 || abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1) == round(abs(datum.actual)/(abs(datum.actual)>=1e9?1e9:abs(datum.actual)>=1e6?1e6:abs(datum.actual)>=1e3?1e3:1))) ? 0 : 1})",
+      "calculate": "'$' + (abs(datum.actual)>=1e9 ? format(abs(datum.actual)/1e9,'.1f')+'B' : abs(datum.actual)>=1e6 ? format(abs(datum.actual)/1e6,'.1f')+'M' : abs(datum.actual)>=1e3 ? format(abs(datum.actual)/1e3,'.0f')+'K' : format(abs(datum.actual),'.0f'))",
       "as": "actualLabel"
     },
     {
-      "calculate": "datum.py != null ? pbiFormat(abs(datum.py), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1), precision: (abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) >= 100 || abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1) == round(abs(datum.py)/(abs(datum.py)>=1e9?1e9:abs(datum.py)>=1e6?1e6:abs(datum.py)>=1e3?1e3:1))) ? 0 : 1}) : '—'",
+      "calculate": "datum.py != null ? '$' + (abs(datum.py)>=1e9 ? format(abs(datum.py)/1e9,'.1f')+'B' : abs(datum.py)>=1e6 ? format(abs(datum.py)/1e6,'.1f')+'M' : abs(datum.py)>=1e3 ? format(abs(datum.py)/1e3,'.0f')+'K' : format(abs(datum.py),'.0f')) : '—'",
       "as": "pyLabel"
     },
     {
-      "calculate": "datum.deltaAbs != null ? (datum.deltaAbs >= 0 ? '+' : '−') + pbiFormat(abs(datum.deltaAbs), (isValid(datum['__dataset.1____format']) ? datum['__dataset.1____format'] : '$ #,0'), {value: (abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1), precision: (abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) >= 100 || abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1) == round(abs(datum.deltaAbs)/(abs(datum.deltaAbs)>=1e9?1e9:abs(datum.deltaAbs)>=1e6?1e6:abs(datum.deltaAbs)>=1e3?1e3:1))) ? 0 : 1}) : '—'",
+      "calculate": "datum.deltaAbs != null ? (datum.deltaAbs >= 0 ? '+' : '−') + '$' + (abs(datum.deltaAbs)>=1e9 ? format(abs(datum.deltaAbs)/1e9,'.1f')+'B' : abs(datum.deltaAbs)>=1e6 ? format(abs(datum.deltaAbs)/1e6,'.1f')+'M' : abs(datum.deltaAbs)>=1e3 ? format(abs(datum.deltaAbs)/1e3,'.0f')+'K' : format(abs(datum.deltaAbs),'.0f')) : '—'",
       "as": "deltaLabel"
     },
     {
       "calculate": "datum.deltaPct != null ? pbiFormat(datum.deltaPct, '+0.0%;−0.0%;0.0%') : '—'",
       "as": "deltaPctLabel"
+    },
+    {
+      "calculate": "max(datum.actual, datum.py != null ? datum.py : 0)",
+      "as": "labTop"
+    },
+    {
+      "calculate": "(abs(datum.actual)>=1e9 ? format(abs(datum.actual)/1e9,'.1f')+'B' : abs(datum.actual)>=1e6 ? format(abs(datum.actual)/1e6,'.1f')+'M' : abs(datum.actual)>=1e3 ? format(abs(datum.actual)/1e3,'.0f')+'K' : format(abs(datum.actual),'.0f'))",
+      "as": "barLabel"
+    },
+    {
+      "calculate": "datum.deltaAbs != null ? (datum.deltaAbs >= 0 ? '+' : '−') + (abs(datum.deltaAbs)>=1e9 ? format(abs(datum.deltaAbs)/1e9,'.1f')+'B' : abs(datum.deltaAbs)>=1e6 ? format(abs(datum.deltaAbs)/1e6,'.1f')+'M' : abs(datum.deltaAbs)>=1e3 ? format(abs(datum.deltaAbs)/1e3,'.0f')+'K' : format(abs(datum.deltaAbs),'.0f')) : ''",
+      "as": "deltaBarLabel"
     }
   ],
   "padding": {
@@ -291,7 +303,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 8,
             "baseline": "bottom",
             "dy": -5
           },
@@ -334,7 +346,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 8,
             "baseline": "top",
             "dy": 5
           },
@@ -479,7 +491,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 8,
             "baseline": "bottom",
             "dy": -4
           },
@@ -503,7 +515,7 @@
               "type": "quantitative"
             },
             "text": {
-              "field": "deltaLabel"
+              "field": "deltaBarLabel"
             },
             "color": {
               "condition": {
@@ -522,7 +534,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 8,
             "baseline": "top",
             "dy": 4
           },
@@ -546,7 +558,7 @@
               "type": "quantitative"
             },
             "text": {
-              "field": "deltaLabel"
+              "field": "deltaBarLabel"
             },
             "color": {
               "condition": {
@@ -709,18 +721,18 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 8,
             "baseline": "bottom",
             "dy": -4,
             "color": "#333333"
           },
           "encoding": {
             "y": {
-              "field": "actual",
+              "field": "labTop",
               "type": "quantitative"
             },
             "text": {
-              "field": "actualLabel"
+              "field": "barLabel"
             }
           }
         }
